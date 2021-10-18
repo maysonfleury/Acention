@@ -13,6 +13,7 @@ public class GrapplingHook : MonoBehaviour
     public RigidBodyMovement rbMove;
     public Transform gunTip, cam, player;
     public LayerMask whatIsGrappleable;
+    public ParticleSystem particleShot;
     public float maxGrappleDistance = 100f;
 
     private void Awake() {
@@ -53,6 +54,10 @@ public class GrapplingHook : MonoBehaviour
 
     private void StartGrapple()
     {
+        // Particle Effect
+        particleShot.Play();
+
+        // Raycast
         RaycastHit hit;
         if(Physics.Raycast(cam.position, cam.forward, out hit, maxGrappleDistance, whatIsGrappleable))
         {

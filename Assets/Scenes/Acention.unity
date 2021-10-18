@@ -1533,18 +1533,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 342311683032374145, guid: 9b4a87acbca3e0b4d9e918afbf0722c1, type: 3}
-      propertyPath: gravity
-      value: 175
-      objectReference: {fileID: 0}
-    - target: {fileID: 342311683032374145, guid: 9b4a87acbca3e0b4d9e918afbf0722c1, type: 3}
-      propertyPath: airStrafeForward
-      value: 0.55
-      objectReference: {fileID: 0}
-    - target: {fileID: 342311683032374145, guid: 9b4a87acbca3e0b4d9e918afbf0722c1, type: 3}
-      propertyPath: airStrafeSideways
-      value: 0.55
-      objectReference: {fileID: 0}
     - target: {fileID: 342311683032374147, guid: 9b4a87acbca3e0b4d9e918afbf0722c1, type: 3}
       propertyPath: m_Name
       value: First Person Player RigidBody
