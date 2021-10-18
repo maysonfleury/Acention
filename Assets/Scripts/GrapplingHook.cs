@@ -54,13 +54,14 @@ public class GrapplingHook : MonoBehaviour
 
     private void StartGrapple()
     {
-        // Particle Effect
-        particleShot.Play();
-
-        // Raycast
+        // If the Raycast hits a target
         RaycastHit hit;
         if(Physics.Raycast(cam.position, cam.forward, out hit, maxGrappleDistance, whatIsGrappleable))
         {
+            // Show Particle Effect
+            particleShot.Play();
+
+            // Initialize Spring Component
             grapplePoint = hit.point;
             springJoint = player.gameObject.AddComponent<SpringJoint>();
             springJoint.autoConfigureConnectedAnchor = false;
@@ -80,6 +81,12 @@ public class GrapplingHook : MonoBehaviour
             lr.positionCount = 2;
             currentGrapplePosition = gunTip.position;
         }
+        else
+        {
+            // If the target missed
+        }
+
+        // No grappling more than once per airtime
         canShoot = false;
     }
 

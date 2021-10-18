@@ -482,7 +482,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   particleShot: {fileID: 847203719428501056}
-  maxGrappleDistance: 100
+  maxGrappleDistance: 30
 --- !u!1 &342311682158402458
 GameObject:
   m_ObjectHideFlags: 0
