@@ -71,11 +71,11 @@ public class GrapplingHook : MonoBehaviour
 
             // Distance the grapple will try to keep from grapple point
             springJoint.maxDistance = distanceFromPoint * 0.9f;
-            springJoint.minDistance = distanceFromPoint * 0.9f;
+            springJoint.minDistance = distanceFromPoint * 0.75f;
 
             // Test and change
             springJoint.spring = 4.5f;
-            springJoint.damper = 7f;
+            springJoint.damper = 5f;
             springJoint.massScale = 4.5f;
 
             lr.positionCount = 2;
@@ -87,7 +87,7 @@ public class GrapplingHook : MonoBehaviour
         }
 
         // No grappling more than once per airtime
-        canShoot = false;
+        //canShoot = false;
     }
 
     private void StopGrapple()
