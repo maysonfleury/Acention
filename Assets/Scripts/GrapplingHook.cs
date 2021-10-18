@@ -36,6 +36,10 @@ public class GrapplingHook : MonoBehaviour
         {
             RetractGrapple();
         }
+        else if(Input.GetButtonUp("Jump") && isGrappling())
+        {
+            StopRetracting();
+        }
 
         if(rbMove.isGrounded())
         {
@@ -60,8 +64,8 @@ public class GrapplingHook : MonoBehaviour
             float distanceFromPoint = Vector3.Distance(player.position, grapplePoint);
 
             // Distance the grapple will try to keep from grapple point
-            springJoint.maxDistance = distanceFromPoint * 0.8f;
-            springJoint.minDistance = distanceFromPoint * 0.8f;
+            springJoint.maxDistance = distanceFromPoint * 0.9f;
+            springJoint.minDistance = distanceFromPoint * 0.9f;
 
             // Test and change
             springJoint.spring = 4.5f;
@@ -82,9 +86,15 @@ public class GrapplingHook : MonoBehaviour
 
     private void RetractGrapple()
     {
-        float distanceFromPoint = Vector3.Distance(player.position, grapplePoint);
         springJoint.maxDistance = 0.25f;
         springJoint.minDistance = 0.25f;
+    }
+
+    private void StopRetracting()
+    {
+        float distanceFromPoint = Vector3.Distance(player.position, grapplePoint);
+        springJoint.maxDistance = distanceFromPoint * 0.9f;
+        springJoint.minDistance = distanceFromPoint * 0.9f;
     }
 
     private void DrawChain()
