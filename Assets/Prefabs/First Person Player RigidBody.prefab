@@ -1020,7 +1020,7 @@ MonoBehaviour:
   airStrafeForward: 0.55
   airStrafeSideways: 0.55
   dashForce: 25
-  allowStairClimb: 1
+  allowStairClimb: 0
   stepHeight: 1
   stepSmooth: 3
 --- !u!1001 &8682837023828193650

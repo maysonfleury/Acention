@@ -62,7 +62,7 @@ public class RigidBodyMovement : MonoBehaviour
 
     // Stair Climb
     [Header("Stair Climbing")]
-    public bool allowStairClimb = true;
+    public bool allowStairClimb = false;
     public float stepHeight = 0.95f;
     public float stepSmooth = 3f;
 
