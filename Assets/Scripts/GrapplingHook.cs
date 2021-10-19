@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class GrapplingHook : MonoBehaviour
 {
-    private LineRenderer lr;
     private Vector3 grapplePoint;
     private SpringJoint springJoint;
     private Vector3 currentGrapplePosition;
@@ -19,11 +18,6 @@ public class GrapplingHook : MonoBehaviour
     public int shotsLeft = 3;
 
     private GameObject tempProjectile;
-
-    private void Awake() {
-        lr = GetComponent<LineRenderer>();
-        lr.positionCount = 0;
-    }
 
     private void Update() {
         if(Input.GetMouseButtonDown(0))
@@ -43,14 +37,6 @@ public class GrapplingHook : MonoBehaviour
         {
             StopGrapple();
         }
-        /*else if (Input.GetButton("Jump") && isGrappling())
-        {
-            RetractGrapple();
-        }
-        else if(Input.GetButtonUp("Jump") && isGrappling())
-        {
-            StopRetracting();
-        }*/
         else if (Input.GetMouseButtonDown(1) && isGrappling())
         {
             RetractGrapple();
@@ -65,10 +51,6 @@ public class GrapplingHook : MonoBehaviour
             canShoot = true;
             shotsLeft = 3;
         }
-    }
-
-    private void LateUpdate() {
-        DrawLineRenderer();
     }
 
     private void StartGrapple()
@@ -97,10 +79,6 @@ public class GrapplingHook : MonoBehaviour
             springJoint.spring = 4.5f;
             springJoint.damper = 5f;
             springJoint.massScale = 4.5f;
-
-            // Add vertices to line renderer
-            lr.positionCount = 2;
-            currentGrapplePosition = gunTip.position;
         }
         else
         {
@@ -113,9 +91,6 @@ public class GrapplingHook : MonoBehaviour
             tempProjectile = Instantiate(projectilePrefab, gunTip.position, gunTip.rotation);
             tempProjectile.GetComponent<Rigidbody>().AddForce(gunTip.forward * 500f);
             Destroy(tempProjectile, 1.5f);
-
-            lr.positionCount = 2;
-            currentGrapplePosition = gunTip.position;
         }
 
         // No grappling more than once per airtime
@@ -127,13 +102,13 @@ public class GrapplingHook : MonoBehaviour
 
     private void StopGrapple()
     {
-        lr.positionCount = 0;
         Destroy(springJoint);
+        Destroy(tempProjectile);
     }
 
     private void RetractGrapple()
     {
-        springJoint.maxDistance = 5f;
+        springJoint.maxDistance = 2.5f;
         springJoint.minDistance = 0.25f;
         //springJoint.spring = 10f;
         Debug.Log("Retract");
@@ -145,31 +120,6 @@ public class GrapplingHook : MonoBehaviour
         springJoint.maxDistance = distanceFromPoint * 0.9f;
         springJoint.minDistance = distanceFromPoint * 0.65f;
         springJoint.spring = 4.5f;
-    }
-
-    private void DrawLineRenderer()
-    {
-        // Don't draw if we're not grappled
-        //if(!springJoint) return;
-        if(lr.positionCount == 0) return;
-
-        if(tempProjectile)
-        {
-            currentGrapplePosition = Vector3.Lerp(currentGrapplePosition, tempProjectile.transform.position, Time.deltaTime * 8f);
-        }
-        else if(!tempProjectile && isGrappling())
-        {
-            currentGrapplePosition = Vector3.Lerp(currentGrapplePosition, grapplePoint, Time.deltaTime * 8f);
-        }
-        else
-        {
-            lr.positionCount = 0;
-        }
-
-        if(lr.positionCount == 0) return;
-
-        lr.SetPosition(0, gunTip.position);
-        lr.SetPosition(1, currentGrapplePosition);
     }
 
     public bool isGrappling()

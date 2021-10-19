@@ -2620,14 +2620,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 342311681357748142, guid: 9b4a87acbca3e0b4d9e918afbf0722c1, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0.3712
+    - target: {fileID: 342311683032374145, guid: 9b4a87acbca3e0b4d9e918afbf0722c1, type: 3}
+      propertyPath: gravity
+      value: 375
       objectReference: {fileID: 0}
-    - target: {fileID: 342311682150972133, guid: 9b4a87acbca3e0b4d9e918afbf0722c1, type: 3}
-      propertyPath: projectilePrefab
-      value: 
-      objectReference: {fileID: 8333869302400229472, guid: 61982c2c99063e44e9e4646d763c0439, type: 3}
     - target: {fileID: 342311683032374147, guid: 9b4a87acbca3e0b4d9e918afbf0722c1, type: 3}
       propertyPath: m_Name
       value: First Person Player RigidBody
