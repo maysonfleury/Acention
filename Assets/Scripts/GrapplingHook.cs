@@ -19,46 +19,50 @@ public class GrapplingHook : MonoBehaviour
 
     private GameObject tempProjectile;
     private bool tempProjectileAlive = false;
+    public bool isPaused;
 
     private void Update() {
-        if(Input.GetMouseButtonDown(0))
+        if (!isPaused)
         {
-            if(shotsLeft < 1)
+            if (Input.GetMouseButtonDown(0))
             {
-                particleShot.Play();
-                // Play no shot SFX
-                canShoot = false;
+                if (shotsLeft < 1)
+                {
+                    particleShot.Play();
+                    // Play no shot SFX
+                    canShoot = false;
+                }
+                if (canShoot)
+                {
+                    StartGrapple();
+                }
             }
-            if(canShoot)
+            else if (Input.GetMouseButtonUp(0))
             {
-                StartGrapple();
+                StopGrapple();
             }
-        }
-        else if (Input.GetMouseButtonUp(0))
-        {
-            StopGrapple();
-        }
-        else if (Input.GetMouseButtonDown(1) && isGrappling())
-        {
-            RetractGrapple();
-        }
-        else if(Input.GetMouseButtonUp(1) && isGrappling())
-        {
-            StopRetracting();
-        }
+            else if (Input.GetMouseButtonDown(1) && isGrappling())
+            {
+                RetractGrapple();
+            }
+            else if (Input.GetMouseButtonUp(1) && isGrappling())
+            {
+                StopRetracting();
+            }
 
-        if(rbMove.isGrounded())
-        {
-            canShoot = true;
-            shotsLeft = 3;
-        }
-        if(shotsLeft < 1)
-        {
-            hookPrefab.SetActive(false);
-        }
-        else if(canShoot && !isGrappling())
-        {
-            hookPrefab.SetActive(true);
+            if (rbMove.isGrounded())
+            {
+                canShoot = true;
+                shotsLeft = 3;
+            }
+            if (shotsLeft < 1)
+            {
+                hookPrefab.SetActive(false);
+            }
+            else if (canShoot && !isGrappling())
+            {
+                hookPrefab.SetActive(true);
+            }
         }
     }
 

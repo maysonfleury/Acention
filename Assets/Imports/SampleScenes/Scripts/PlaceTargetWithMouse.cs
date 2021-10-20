@@ -27,6 +27,6 @@ namespace UnityStandardAssets.SceneUtils
             {
                 setTargetOn.SendMessage("SetTarget", transform);
             }
-        }
+        } 
     }
 }

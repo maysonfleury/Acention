@@ -864,6 +864,7 @@ GameObject:
   - component: {fileID: 7478014834135939694}
   - component: {fileID: 7478014834135939695}
   - component: {fileID: 7478014834135939688}
+  - component: {fileID: 5888569925623884535}
   m_Layer: 5
   m_Name: UI
   m_TagString: Untagged
@@ -973,6 +974,18 @@ MonoBehaviour:
   progressPercentage: {fileID: 7478014834400329693}
   locationText: {fileID: 7478014834215251397}
   locationBroadcast: {fileID: 7478014834979942267}
+--- !u!114 &5888569925623884535
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7478014834135939689}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e24edb1e0408479aabee4aab0833870, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7478014834136938555
 GameObject:
   m_ObjectHideFlags: 0
