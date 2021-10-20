@@ -18,6 +18,7 @@ public class GrapplingHook : MonoBehaviour
     public int shotsLeft = 3;
 
     private GameObject tempProjectile;
+    private bool tempProjectileAlive = false;
 
     private void Update() {
         if(Input.GetMouseButtonDown(0))
@@ -51,6 +52,14 @@ public class GrapplingHook : MonoBehaviour
             canShoot = true;
             shotsLeft = 3;
         }
+        if(shotsLeft < 1)
+        {
+            hookPrefab.SetActive(false);
+        }
+        else if(canShoot && !isGrappling())
+        {
+            hookPrefab.SetActive(true);
+        }
     }
 
     private void StartGrapple()
@@ -79,17 +88,23 @@ public class GrapplingHook : MonoBehaviour
             springJoint.spring = 4.5f;
             springJoint.damper = 5f;
             springJoint.massScale = 4.5f;
+
+            hookPrefab.SetActive(false);
         }
         else
         {
-            // If the target missed we don't need to make a spring component
-
             // Show Particle Effect
             particleShot.Play();
             // Play SFX
 
+            // Gets the players current velocity then shoots a Hook out
+            Vector3 moveVelocity = rbMove.GetComponent<Rigidbody>().velocity;
             tempProjectile = Instantiate(hookPrefab, gunTip.position, gunTip.rotation);
-            tempProjectile.AddComponent<Rigidbody>().AddForce(gunTip.forward * 500f);
+            tempProjectile.transform.Rotate(0f, 180f, 0f);
+            tempProjectile.AddComponent<Rigidbody>();
+            tempProjectile.GetComponent<Rigidbody>().velocity = moveVelocity;
+            tempProjectile.GetComponent<Rigidbody>().AddForce(gunTip.forward * 1750f);
+            grapplePoint = tempProjectile.transform.position;
             Destroy(tempProjectile, 1.5f);
         }
 
