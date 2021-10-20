@@ -13,7 +13,7 @@ public class GrapplingHook : MonoBehaviour
     public Transform gunTip, cam, player;
     public LayerMask whatIsGrappleable;
     public ParticleSystem particleShot;
-    public GameObject projectilePrefab;
+    public GameObject hookPrefab;
     public float maxGrappleDistance = 100f;
     public int shotsLeft = 3;
 
@@ -88,8 +88,8 @@ public class GrapplingHook : MonoBehaviour
             particleShot.Play();
             // Play SFX
 
-            tempProjectile = Instantiate(projectilePrefab, gunTip.position, gunTip.rotation);
-            tempProjectile.GetComponent<Rigidbody>().AddForce(gunTip.forward * 500f);
+            tempProjectile = Instantiate(hookPrefab, gunTip.position, gunTip.rotation);
+            tempProjectile.AddComponent<Rigidbody>().AddForce(gunTip.forward * 500f);
             Destroy(tempProjectile, 1.5f);
         }
 
