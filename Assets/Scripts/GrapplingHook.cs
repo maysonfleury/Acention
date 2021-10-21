@@ -12,7 +12,6 @@ public class GrapplingHook : MonoBehaviour
     public RigidBodyMovement rbMove;
     public Transform gunTip, cam, player;
     public LayerMask whatIsGrappleable;
-    public LayerMask NotGrappleable;
     public ParticleSystem particleShot;
     public GameObject hookPrefab;
     public float maxGrappleDistance = 100f;
@@ -29,7 +28,7 @@ public class GrapplingHook : MonoBehaviour
             {
                 if (shotsLeft < 1)
                 {
-                    particleShot.Play();
+                    //particleShot.Play();
                     // Play no shot SFX
                     canShoot = false;
                 }
@@ -69,46 +68,36 @@ public class GrapplingHook : MonoBehaviour
 
     private void StartGrapple()
     {
+        // Show Particle Effect
+        particleShot.Play();
+
         // If the Raycast misses a target
         RaycastHit hit;
         if(Physics.Raycast(cam.position, cam.forward, out hit, maxGrappleDistance, whatIsGrappleable))
         {
-            // Show Particle Effect
-            particleShot.Play();
+            // TODO: Play shot hit SFX
+            
+            // Initialize Spring Component
+            grapplePoint = hit.point;
+            springJoint = player.gameObject.AddComponent<SpringJoint>();
+            springJoint.autoConfigureConnectedAnchor = false;
+            springJoint.connectedAnchor = grapplePoint;
 
-            // If the object we hit is not grappleable, we don't grapple to it.
-            if (hit.transform.gameObject.layer == NotGrappleable)
-            {
+            float distanceFromPoint = Vector3.Distance(player.position, grapplePoint);
 
-            }
-            else
-            {
-                // Initialize Spring Component
-                grapplePoint = hit.point;
-                springJoint = player.gameObject.AddComponent<SpringJoint>();
-                springJoint.autoConfigureConnectedAnchor = false;
-                springJoint.connectedAnchor = grapplePoint;
-    
-                float distanceFromPoint = Vector3.Distance(player.position, grapplePoint);
-    
-                // Distance the grapple will try to keep from grapple point
-                springJoint.maxDistance = distanceFromPoint * 0.9f;
-                springJoint.minDistance = distanceFromPoint * 0.75f;
-    
-                // How the rope feels
-                // Test and change
-                springJoint.spring = 4.5f;
-                springJoint.damper = 5f;
-                springJoint.massScale = 4.5f;
-            }
+            // Distance the grapple will try to keep from grapple point
+            springJoint.maxDistance = distanceFromPoint * 0.9f;
+            springJoint.minDistance = distanceFromPoint * 0.75f;
 
-            hookPrefab.SetActive(false);
+            // How the rope feels
+            // Test and change
+            springJoint.spring = 4.5f;
+            springJoint.damper = 5f;
+            springJoint.massScale = 4.5f;
         }
         else
         {
-            // Show Particle Effect
-            particleShot.Play();
-            // Play SFX
+            // TODO: Play shot miss SFX
 
             // Gets the players current velocity then shoots a Hook out
             Vector3 moveVelocity = rbMove.GetComponent<Rigidbody>().velocity;
@@ -116,7 +105,7 @@ public class GrapplingHook : MonoBehaviour
             tempProjectile.transform.Rotate(0f, 180f, 0f);
             tempProjectile.AddComponent<Rigidbody>();
             tempProjectile.GetComponent<Rigidbody>().velocity = moveVelocity;
-            tempProjectile.GetComponent<Rigidbody>().AddForce(gunTip.forward * 1750f);
+            tempProjectile.GetComponent<Rigidbody>().AddForce(gunTip.forward * 2500f);
             grapplePoint = tempProjectile.transform.position;
             Destroy(tempProjectile, 1.5f);
         }
@@ -126,6 +115,7 @@ public class GrapplingHook : MonoBehaviour
 
         // Reduce shots by 1
         shotsLeft--;
+        hookPrefab.SetActive(false);
     }
 
     private void StopGrapple()

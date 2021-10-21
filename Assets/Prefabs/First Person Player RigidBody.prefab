@@ -539,14 +539,11 @@ MonoBehaviour:
   player: {fileID: 342311683032374150}
   whatIsGrappleable:
     serializedVersion: 2
-    m_Bits: 64
-  NotGrappleable:
-    serializedVersion: 2
     m_Bits: 128
   particleShot: {fileID: 847203719428501056}
   hookPrefab: {fileID: 2686209462645092893}
   maxGrappleDistance: 30
-  shotsLeft: 3
+  shotsLeft: 1
   isPaused: 0
 --- !u!114 &508518608
 MonoBehaviour:
@@ -877,7 +874,7 @@ MonoBehaviour:
   grounded: 0
   whatIsGround:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 192
   counterMovement: 0.175
   maxSlopeAngle: 35
   slideForce: 400
@@ -886,7 +883,7 @@ MonoBehaviour:
   gravity: 375
   airStrafeForward: 0.55
   airStrafeSideways: 0.55
-  dashForce: 50
+  dashForce: 40
   allowStairClimb: 0
   stepHeight: 1
   stepSmooth: 3
@@ -1027,15 +1024,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8340241066318847794, guid: 69c706c5f7694914f974ad6a8e8ee3b8, type: 3}
       propertyPath: playOnAwake
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8340241066318847796, guid: 69c706c5f7694914f974ad6a8e8ee3b8, type: 3}
       propertyPath: playOnAwake
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8340241066318847798, guid: 69c706c5f7694914f974ad6a8e8ee3b8, type: 3}
       propertyPath: playOnAwake
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 69c706c5f7694914f974ad6a8e8ee3b8, type: 3}
