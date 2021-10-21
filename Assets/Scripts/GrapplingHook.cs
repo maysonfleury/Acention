@@ -12,6 +12,7 @@ public class GrapplingHook : MonoBehaviour
     public RigidBodyMovement rbMove;
     public Transform gunTip, cam, player;
     public LayerMask whatIsGrappleable;
+    public LayerMask NotGrappleable;
     public ParticleSystem particleShot;
     public GameObject hookPrefab;
     public float maxGrappleDistance = 100f;
@@ -75,23 +76,31 @@ public class GrapplingHook : MonoBehaviour
             // Show Particle Effect
             particleShot.Play();
 
-            // Initialize Spring Component
-            grapplePoint = hit.point;
-            springJoint = player.gameObject.AddComponent<SpringJoint>();
-            springJoint.autoConfigureConnectedAnchor = false;
-            springJoint.connectedAnchor = grapplePoint;
+            // If the object we hit is not grappleable, we don't grapple to it.
+            if (hit.transform.gameObject.layer == NotGrappleable)
+            {
 
-            float distanceFromPoint = Vector3.Distance(player.position, grapplePoint);
-
-            // Distance the grapple will try to keep from grapple point
-            springJoint.maxDistance = distanceFromPoint * 0.9f;
-            springJoint.minDistance = distanceFromPoint * 0.75f;
-
-            // How the rope feels
-            // Test and change
-            springJoint.spring = 4.5f;
-            springJoint.damper = 5f;
-            springJoint.massScale = 4.5f;
+            }
+            else
+            {
+                // Initialize Spring Component
+                grapplePoint = hit.point;
+                springJoint = player.gameObject.AddComponent<SpringJoint>();
+                springJoint.autoConfigureConnectedAnchor = false;
+                springJoint.connectedAnchor = grapplePoint;
+    
+                float distanceFromPoint = Vector3.Distance(player.position, grapplePoint);
+    
+                // Distance the grapple will try to keep from grapple point
+                springJoint.maxDistance = distanceFromPoint * 0.9f;
+                springJoint.minDistance = distanceFromPoint * 0.75f;
+    
+                // How the rope feels
+                // Test and change
+                springJoint.spring = 4.5f;
+                springJoint.damper = 5f;
+                springJoint.massScale = 4.5f;
+            }
 
             hookPrefab.SetActive(false);
         }

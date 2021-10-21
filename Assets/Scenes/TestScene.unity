@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641258, b: 0.5748171, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -222,6 +222,11 @@ Transform:
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7478014835035687161, guid: a68cf5b35efb7c7489a97b51f1a78d7d, type: 3}
   m_PrefabInstance: {fileID: 911397152}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &454839729 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 342311681363546934, guid: 9b4a87acbca3e0b4d9e918afbf0722c1, type: 3}
+  m_PrefabInstance: {fileID: 1223400372}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &480871129 stripped
 GameObject:
@@ -667,6 +672,10 @@ PrefabInstance:
       propertyPath: m_BackGroundColor.a
       value: 0.3254902
       objectReference: {fileID: 0}
+    - target: {fileID: 342311683032374145, guid: 9b4a87acbca3e0b4d9e918afbf0722c1, type: 3}
+      propertyPath: grappleGun
+      value: 
+      objectReference: {fileID: 454839729}
     - target: {fileID: 342311683032374147, guid: 9b4a87acbca3e0b4d9e918afbf0722c1, type: 3}
       propertyPath: m_Name
       value: First Person Player RigidBody

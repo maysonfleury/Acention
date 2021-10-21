@@ -6,6 +6,7 @@ public class RigidBodyMovement : MonoBehaviour
 {
     [Header("Transforms")]
     public Transform playerCam;
+    public Transform grapplePosition;
     public Transform orientation;
     public Transform groundCheck;
     public Transform stepRayUpper;
@@ -21,8 +22,8 @@ public class RigidBodyMovement : MonoBehaviour
     
     // Movement
     [Header("Movement")]
-    public float moveSpeed = 4500;
-    public float maxSpeed = 20;
+    public float moveSpeed = 1750;
+    public float maxSpeed = 13;
     public bool grounded;
     public LayerMask whatIsGround;
     
@@ -32,6 +33,7 @@ public class RigidBodyMovement : MonoBehaviour
 
     // Crouch & Slide
     private Vector3 crouchScale = new Vector3(1, 0.5f, 1);
+    private Vector3 grappleGunScale = new Vector3(1, 2f, 1);
     private Vector3 playerScale;
     public float slideForce = 400;
     public float slideCounterMovement = 0.2f;
@@ -39,15 +41,15 @@ public class RigidBodyMovement : MonoBehaviour
     // Jumping
     [Header("Aerial Movement")]
     public float jumpForce = 550f;
-    public float gravity = 9.81f;
-    public float airStrafeForward = 1f;
-    public float airStrafeSideways = 1f;
+    public float gravity = 375f;
+    public float airStrafeForward = 0.55f;
+    public float airStrafeSideways = 0.55f;
     private bool readyToJump = true;
     private float jumpCooldown = 0.25f;
 
     // Dashing
     private bool canDash = true;
-    public float dashForce = 150f;
+    public float dashForce = 50f;
 
     // Input
     float x, y;
@@ -115,6 +117,7 @@ public class RigidBodyMovement : MonoBehaviour
 
     private void StartCrouch() {
         transform.localScale = crouchScale;
+        grapplePosition.localScale = grappleGunScale;
         transform.position = new Vector3(transform.position.x, transform.position.y - 0.3f, transform.position.z);
         if (rb.velocity.magnitude > 0.5f) {
             if (grounded) {
@@ -125,6 +128,7 @@ public class RigidBodyMovement : MonoBehaviour
 
     private void StopCrouch() {
         transform.localScale = playerScale;
+        grapplePosition.localScale = Vector3.one;
         transform.position = new Vector3(transform.position.x, transform.position.y + 0.5f, transform.position.z);
     }
 
@@ -304,38 +308,8 @@ public class RigidBodyMovement : MonoBehaviour
         }
     }
 
-    private bool cancellingGrounded;
-    /*
-    /// <summary>
-    /// Handle ground detection
-    /// </summary>
-    private void OnCollisionStay(Collision other) {
-        // Make sure we are only checking for walkable layers
-        int layer = other.gameObject.layer;
-        if (whatIsGround != (whatIsGround | (1 << layer))) return;
-
-        // Iterate through every collision in a physics update
-        for (int i = 0; i < other.contactCount; i++) {
-            Vector3 normal = other.contacts[i].normal;
-            // FLOOR
-            if (IsFloor(normal)) {
-                grounded = true;
-                cancellingGrounded = false;
-                normalVector = normal;
-                CancelInvoke(nameof(StopGrounded));
-            }
-        }
-
-        // Invoke ground/wall cancel, since we can't check normals with CollisionExit
-        float delay = 3f;
-        if (!cancellingGrounded) {
-            cancellingGrounded = true;
-            Invoke(nameof(StopGrounded), Time.deltaTime * delay);
-        }
-    }
-
     private void StopGrounded() {
         grounded = false;
     }
-    */
+    
 }
