@@ -54,6 +54,7 @@ public class PauseMenu : MonoBehaviour
         grapple.isPaused = false;
         pauseMenu.SetActive(false);
         controlMenu.SetActive(false);
+        settingsMenu.SetActive(false);
 
         Time.timeScale = m_TimeScaleRef;
         AudioListener.volume = m_VolumeRef;

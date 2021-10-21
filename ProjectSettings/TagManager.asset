@@ -15,8 +15,8 @@ TagManager:
   - UI
   - Ground
   - Grappleable
-  - 
-  - 
+  - NotGrappleable
+  - Slide
   - 
   - 
   - 

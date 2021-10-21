@@ -53,17 +53,17 @@ public class UIManager : MonoBehaviour
 
         if (dToD < 50.0f)
         {          
-            UpdateLocation("Maysom", area1_discovered);
+            UpdateLocation("The World Tree", area1_discovered);
             area1_discovered = true;
         }
         else if (dToD > 50.0f && dToD < 100f)
         {
-            UpdateLocation("Half way", area2_discovered);
+            UpdateLocation("Half Way", area2_discovered);
             area2_discovered = true;
         }
         else if (dToD == 100f)
         {
-            UpdateLocation("You made it", area3_discovered);
+            UpdateLocation("Demo Completed", area3_discovered);
             area3_discovered = true;
         }
     }

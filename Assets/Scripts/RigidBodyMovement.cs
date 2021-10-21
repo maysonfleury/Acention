@@ -25,7 +25,9 @@ public class RigidBodyMovement : MonoBehaviour
     public float moveSpeed = 1750;
     public float maxSpeed = 13;
     public bool grounded;
+    public bool sliding;
     public LayerMask whatIsGround;
+    public LayerMask whatIsSlides;
     
     public float counterMovement = 0.175f;
     private float threshold = 0.01f;
@@ -96,6 +98,7 @@ public class RigidBodyMovement : MonoBehaviour
         Look();
 
         grounded = Physics.CheckSphere(groundCheck.position, groundDistance, whatIsGround);
+        sliding = Physics.CheckSphere(groundCheck.position, groundDistance, whatIsSlides);
     }
 
     /// <summary>
@@ -176,6 +179,9 @@ public class RigidBodyMovement : MonoBehaviour
         
         // Movement while sliding
         if (grounded && crouching) multiplierV = 0f;
+
+        // Movement while being on a Slide
+        if (sliding) multiplierV = 0f;
 
         // Apply forces to move player
         rb.AddForce(orientation.transform.forward * y * moveSpeed * Time.deltaTime * multiplier * multiplierV);

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GrapplingHook : MonoBehaviour
 {
@@ -14,6 +15,7 @@ public class GrapplingHook : MonoBehaviour
     public LayerMask whatIsGrappleable;
     public ParticleSystem particleShot;
     public GameObject hookPrefab;
+    public Image crosshair;
     public float maxGrappleDistance = 100f;
     public int shotsLeft = 3;
 
@@ -53,7 +55,7 @@ public class GrapplingHook : MonoBehaviour
             if (rbMove.isGrounded())
             {
                 canShoot = true;
-                shotsLeft = 3;
+                shotsLeft = 1;
             }
             if (shotsLeft < 1)
             {
@@ -62,6 +64,17 @@ public class GrapplingHook : MonoBehaviour
             else if (canShoot && !isGrappling())
             {
                 hookPrefab.SetActive(true);
+            }
+
+            // Change crosshair colour when hovering over grappleable object
+            RaycastHit crossHit;
+            if(Physics.Raycast(cam.position, cam.forward, out crossHit, maxGrappleDistance, whatIsGrappleable))
+            {
+                crosshair.color = new Color(0, 1, 1, 1);
+            }
+            else
+            {
+                crosshair.color = new Color(0, 0, 0, 0.7255f);
             }
         }
     }

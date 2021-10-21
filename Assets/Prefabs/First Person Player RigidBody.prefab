@@ -542,6 +542,7 @@ MonoBehaviour:
     m_Bits: 128
   particleShot: {fileID: 847203719428501056}
   hookPrefab: {fileID: 2686209462645092893}
+  crosshair: {fileID: 0}
   maxGrappleDistance: 30
   shotsLeft: 1
   isPaused: 0
@@ -869,12 +870,17 @@ MonoBehaviour:
   groundCheck: {fileID: 342311682158402459}
   stepRayUpper: {fileID: 214414385}
   stepRayLower: {fileID: 299018508}
+  sensMultiplier: 1
   moveSpeed: 1750
   maxSpeed: 16
   grounded: 0
+  sliding: 0
   whatIsGround:
     serializedVersion: 2
     m_Bits: 192
+  whatIsSlides:
+    serializedVersion: 2
+    m_Bits: 512
   counterMovement: 0.175
   maxSlopeAngle: 35
   slideForce: 400
