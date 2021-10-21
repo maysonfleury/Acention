@@ -18,6 +18,9 @@ public class UIManager : MonoBehaviour
     Image dash1;
     Image dash2;
 
+    [SerializeField] TextMeshProUGUI timer;
+    float timeRemaining = 3600f;
+
     bool transitioning;
 
     bool area1_discovered;
@@ -33,6 +36,13 @@ public class UIManager : MonoBehaviour
 
     private void Update()
     {
+        if (timeRemaining > 0)
+        {
+            timeRemaining -= Time.deltaTime;
+        }
+        timer.text = (Mathf.Floor(timeRemaining / 60f)).ToString("00") + ":" + Mathf.Floor(timeRemaining % 60f).ToString("00");
+
+
         if (player.grounded)
         {
             dToD = playerGO.transform.position.y / destination.position.y * 100;
