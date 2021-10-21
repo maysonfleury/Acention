@@ -2,6 +2,7 @@ using System;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Audio;
+using TMPro;
 
 public class PauseMenu : MonoBehaviour
 {
@@ -11,6 +12,9 @@ public class PauseMenu : MonoBehaviour
 
     [SerializeField] GameObject pauseMenu;
     [SerializeField] GameObject controlMenu;
+    [SerializeField] GameObject settingsMenu;
+
+    [SerializeField] TextMeshProUGUI mouseSens;
 
     RigidBodyMovement player;
     GrapplingHook grapple;
@@ -65,7 +69,13 @@ public class PauseMenu : MonoBehaviour
     public void ApplyChanges ()
     {
         pauseMenu.SetActive(true);
-        controlMenu.SetActive(false);
+        settingsMenu.SetActive(false);
+    }
+
+    public void Return ()
+    {
+        pauseMenu.SetActive(true);
+        controlMenu.SetActive(false);        
     }
 
     public void LudwigCheck (System.Single vol)
@@ -79,6 +89,7 @@ public class PauseMenu : MonoBehaviour
     public void ChangeMouseSens (float sens)
     {
         player.sensMultiplier = sens;
+        mouseSens.text = sens.ToString("f1");
     }
 
     public void SetMasterVolume (float volume)
@@ -95,6 +106,15 @@ public class PauseMenu : MonoBehaviour
         audioMixer.SetFloat("MusicVolume", volume);
     }
 
+    public void SetQuality (int qualityLevel)
+    {
+        QualitySettings.SetQualityLevel(qualityLevel);
+    }
+
+    public void SetFullscreen (bool isFullscreen)
+    {
+        Screen.fullScreen = isFullscreen;
+    }
 
     public void OnMenuStatusChange ()
     {
