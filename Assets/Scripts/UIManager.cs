@@ -27,6 +27,12 @@ public class UIManager : MonoBehaviour
     bool area2_discovered;
     bool area3_discovered;
 
+    [SerializeField] Material skybox1;
+    [SerializeField] Material skybox2;
+    [SerializeField] Material skybox3;
+    [SerializeField] Material skybox4;
+
+
     private void Awake()
     {
         player = playerGO.GetComponent<RigidBodyMovement>();
@@ -36,6 +42,8 @@ public class UIManager : MonoBehaviour
 
     private void Update()
     {
+        RenderSettings.skybox.SetFloat("_Rotation", Time.time * 0.3f);
+
         if (timeRemaining > 0)
         {
             timeRemaining -= Time.deltaTime;
@@ -45,26 +53,49 @@ public class UIManager : MonoBehaviour
 
         if (player.grounded)
         {
-            dToD = playerGO.transform.position.y / destination.position.y * 100;
+            dToD = (playerGO.transform.position.y / destination.position.y * 100)-0.88f;
             if (dToD > 100f)
                 dToD = 100f;
             progressPercentage.text = dToD.ToString("F2") + "%";
-        }
+        }                
 
         if (dToD < 50.0f)
         {          
             UpdateLocation("The World Tree", area1_discovered);
             area1_discovered = true;
+            UpdateSkybox(1);
         }
-        else if (dToD > 50.0f && dToD < 100f)
+        else if (dToD > 50.0f && dToD < 99f)
         {
             UpdateLocation("Half Way", area2_discovered);
             area2_discovered = true;
+            UpdateSkybox(2);
         }
-        else if (dToD == 100f)
+        else if (dToD >= 99f)
         {
             UpdateLocation("Demo Completed", area3_discovered);
             area3_discovered = true;
+            UpdateSkybox(3);
+        }
+    }
+
+    public void UpdateSkybox(int skyboxIndex)
+    {
+        if (skyboxIndex == 1)
+        {
+            RenderSettings.skybox = skybox1;
+        }
+        else if (skyboxIndex == 2)
+        {
+            RenderSettings.skybox = skybox2;
+        }
+        else if (skyboxIndex == 3)
+        {
+            RenderSettings.skybox = skybox3;
+        }
+        else if (skyboxIndex == 4)
+        {
+            RenderSettings.skybox = skybox4;
         }
     }
     public void UpdateLocation(string locationName, bool locationDiscovered)
