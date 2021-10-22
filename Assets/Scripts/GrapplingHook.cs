@@ -70,10 +70,11 @@ public class GrapplingHook : MonoBehaviour
             RaycastHit crossHit;
             if(Physics.Raycast(cam.position, cam.forward, out crossHit, maxGrappleDistance, whatIsGrappleable))
             {
-                crosshair.color = new Color(0, 1, 1, 1);
+                if (shotsLeft > 0)
+                    crosshair.color = new Color(0, 1, 1, 1);
             }
             else
-            {
+            {             
                 crosshair.color = new Color(0, 0, 0, 0.7255f);
             }
         }

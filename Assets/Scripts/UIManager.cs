@@ -23,6 +23,10 @@ public class UIManager : MonoBehaviour
 
     bool transitioning;
 
+    [SerializeField] Transform area1_start;
+    [SerializeField] Transform area2_start;
+    [SerializeField] Transform area3_start;
+
     bool area1_discovered;
     bool area2_discovered;
     bool area3_discovered;
@@ -53,7 +57,10 @@ public class UIManager : MonoBehaviour
 
         if (player.grounded)
         {
+            
             dToD = (playerGO.transform.position.y / destination.position.y * 100)-0.88f;
+            if (dToD < 0f)
+                dToD = 0;
             if (dToD > 100f)
                 dToD = 100f;
             progressPercentage.text = dToD.ToString("F2") + "%";
@@ -97,6 +104,11 @@ public class UIManager : MonoBehaviour
         {
             RenderSettings.skybox = skybox4;
         }
+    }
+
+    public void ResetPosition()
+    {
+        playerGO.transform.position = area1_start.position;
     }
     public void UpdateLocation(string locationName, bool locationDiscovered)
     {

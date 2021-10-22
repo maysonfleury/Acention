@@ -6,6 +6,7 @@ TagManager:
   tags:
   - FxTemporaire
   - Fire
+  - WindArea
   layers:
   - Default
   - TransparentFX
@@ -17,7 +18,7 @@ TagManager:
   - Grappleable
   - NotGrappleable
   - Slide
-  - 
+  - WindArea
   - 
   - 
   - 

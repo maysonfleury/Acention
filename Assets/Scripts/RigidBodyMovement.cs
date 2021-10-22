@@ -26,8 +26,10 @@ public class RigidBodyMovement : MonoBehaviour
     public float maxSpeed = 13;
     public bool grounded;
     public bool sliding;
+    public bool inWindArea;
     public LayerMask whatIsGround;
     public LayerMask whatIsSlides;
+    public LayerMask whatIsWindArea;
     
     public float counterMovement = 0.175f;
     private float threshold = 0.01f;
@@ -61,6 +63,10 @@ public class RigidBodyMovement : MonoBehaviour
     private Vector3 normalVector = Vector3.up;
     private Vector3 wallNormalVector;
 
+    // Wind Information
+    private float windMagnitude;
+    private Vector3 windDirection;
+
     // Ground Check
     private float groundDistance = 0.3f;
 
@@ -72,6 +78,7 @@ public class RigidBodyMovement : MonoBehaviour
 
     // Pause Menu Check
     public bool isPaused;
+    
 
     void Awake() {
         rb = GetComponent<Rigidbody>();
@@ -99,6 +106,22 @@ public class RigidBodyMovement : MonoBehaviour
 
         grounded = Physics.CheckSphere(groundCheck.position, groundDistance, whatIsGround);
         sliding = Physics.CheckSphere(groundCheck.position, groundDistance, whatIsSlides);
+        inWindArea = Physics.CheckSphere(groundCheck.position, groundDistance, whatIsWindArea);
+
+        if (inWindArea)
+        {
+            rb.AddForce(windDirection * windMagnitude);
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "WindArea")
+        {
+            GameObject windArea = other.gameObject;
+            windDirection = windArea.GetComponent<WindArea>().direction;
+            windMagnitude = windArea.GetComponent<WindArea>().magnitude;
+        }
     }
 
     /// <summary>
