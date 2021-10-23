@@ -26,9 +26,11 @@ public class RigidBodyMovement : MonoBehaviour
     public float maxSpeed = 13;
     public bool grounded;
     public bool sliding;
+    public bool bouncing;
     public bool inWindArea;
     public LayerMask whatIsGround;
     public LayerMask whatIsSlides;
+    public LayerMask whatIsBouncy;
     public LayerMask whatIsWindArea;
     
     public float counterMovement = 0.175f;
@@ -106,12 +108,8 @@ public class RigidBodyMovement : MonoBehaviour
 
         grounded = Physics.CheckSphere(groundCheck.position, groundDistance, whatIsGround);
         sliding = Physics.CheckSphere(groundCheck.position, groundDistance, whatIsSlides);
+        bouncing = Physics.CheckSphere(groundCheck.position, groundDistance + 0.2f, whatIsBouncy);
         inWindArea = Physics.CheckSphere(groundCheck.position, groundDistance, whatIsWindArea);
-
-        if (inWindArea)
-        {
-            rb.AddForce(windDirection * windMagnitude);
-        }
     }
 
     private void OnTriggerEnter(Collider other)
@@ -205,6 +203,21 @@ public class RigidBodyMovement : MonoBehaviour
 
         // Movement while being on a Slide
         if (sliding) multiplierV = 0f;
+
+        // Movement while hitting a Bouncy obstacle
+        if (bouncing)
+        {
+            Vector3 v = rb.velocity;
+            v.y = 0;
+            rb.velocity = v;
+            rb.AddForce(Vector3.up * 40f, ForceMode.Impulse);
+        }
+
+        // Movement while in wind area
+        if (inWindArea)
+        {
+            rb.AddForce(windDirection * windMagnitude);
+        }
 
         // Apply forces to move player
         rb.AddForce(orientation.transform.forward * y * moveSpeed * Time.deltaTime * multiplier * multiplierV);
