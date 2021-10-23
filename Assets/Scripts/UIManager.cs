@@ -36,24 +36,30 @@ public class UIManager : MonoBehaviour
     [SerializeField] Material skybox3;
     [SerializeField] Material skybox4;
 
-
     private void Awake()
     {
         player = playerGO.GetComponent<RigidBodyMovement>();
         dash1 = locationBroadcast.gameObject.transform.GetChild(0).gameObject.GetComponent<Image>();
         dash2 = locationBroadcast.gameObject.transform.GetChild(1).gameObject.GetComponent<Image>();
+
+        area2_start.position = player.transform.position;
     }
 
     private void Update()
     {
         RenderSettings.skybox.SetFloat("_Rotation", Time.time * 0.3f);
 
-        if (timeRemaining > 0)
+        if (player.gameStart == true)
         {
-            timeRemaining -= Time.deltaTime;
+            timer.gameObject.SetActive(true);
+            locationText.gameObject.SetActive(true);
+            progressPercentage.gameObject.SetActive(true);
+            if (timeRemaining > 0)
+            {
+                timeRemaining -= Time.deltaTime;
+            }
+            timer.text = (Mathf.Floor(timeRemaining / 60f)).ToString("00") + ":" + Mathf.Floor(timeRemaining % 60f).ToString("00");
         }
-        timer.text = (Mathf.Floor(timeRemaining / 60f)).ToString("00") + ":" + Mathf.Floor(timeRemaining % 60f).ToString("00");
-
 
         if (player.grounded)
         {
@@ -66,7 +72,7 @@ public class UIManager : MonoBehaviour
             progressPercentage.text = dToD.ToString("F2") + "%";
         }                
 
-        if (dToD < 50.0f)
+        if (dToD < 50.0f && player.gameStart == true)
         {          
             UpdateLocation("The World Tree", area1_discovered);
             area1_discovered = true;
@@ -84,8 +90,16 @@ public class UIManager : MonoBehaviour
             area3_discovered = true;
             UpdateSkybox(3);
         }
+
+        if (Input.GetKeyDown(KeyCode.R))
+            Restart();
+            
     }
 
+    void Restart()
+    {
+        player.transform.position = area2_start.position;
+    }
     public void UpdateSkybox(int skyboxIndex)
     {
         if (skyboxIndex == 1)

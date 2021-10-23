@@ -13,6 +13,8 @@ public class PauseMenu : MonoBehaviour
     [SerializeField] GameObject pauseMenu;
     [SerializeField] GameObject controlMenu;
     [SerializeField] GameObject settingsMenu;
+    [SerializeField] GameObject anykeyButton;
+    [SerializeField] GameObject returnButton;
 
     [SerializeField] TextMeshProUGUI mouseSens;
 
@@ -20,13 +22,18 @@ public class PauseMenu : MonoBehaviour
     GrapplingHook grapple;
 
     public AudioMixer audioMixer;
+    private bool tempControls;
 
     void Awake()
     {
         grapple = FindObjectOfType<GrapplingHook>();
         player = FindObjectOfType<RigidBodyMovement>();
-	}
 
+        tempControls = true;
+        controlMenu.SetActive(true);
+        anykeyButton.SetActive(true);
+        returnButton.SetActive(false);
+	}
 
     private void MenuOn ()
     {
@@ -35,6 +42,7 @@ public class PauseMenu : MonoBehaviour
         player.isPaused = true;
         grapple.isPaused = true;
         pauseMenu.SetActive(true);
+        returnButton.SetActive(true);
 
         m_TimeScaleRef = Time.timeScale;
         Time.timeScale = 0f;
@@ -55,6 +63,7 @@ public class PauseMenu : MonoBehaviour
         pauseMenu.SetActive(false);
         controlMenu.SetActive(false);
         settingsMenu.SetActive(false);
+        returnButton.SetActive(false);
 
         Time.timeScale = m_TimeScaleRef;
         AudioListener.volume = m_VolumeRef;
@@ -136,6 +145,15 @@ public class PauseMenu : MonoBehaviour
             OnMenuStatusChange();
             Cursor.visible = m_Paused; //force the cursor visible if anythign had hidden it
 		}
+        if(tempControls)
+        {
+            if (Input.anyKey)
+            {
+                controlMenu.SetActive(false);
+                tempControls = false;
+                anykeyButton.SetActive(false);
+            }
+        }
 	}
 
 }

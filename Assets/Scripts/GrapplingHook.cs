@@ -23,6 +23,13 @@ public class GrapplingHook : MonoBehaviour
     private bool tempProjectileAlive = false;
     public bool isPaused;
 
+    AudioManager am;
+
+    private void Awake()
+    {
+        am = FindObjectOfType<AudioManager>();
+    }
+
     private void Update() {
         if (!isPaused)
         {
@@ -36,6 +43,8 @@ public class GrapplingHook : MonoBehaviour
                 }
                 if (canShoot)
                 {
+                    am.Play("grapple_shot");
+                    am.Play("grapple_rope");
                     StartGrapple();
                 }
             }
@@ -51,6 +60,8 @@ public class GrapplingHook : MonoBehaviour
             {
                 StopRetracting();
             }
+
+                
 
             if (rbMove.isGrounded())
             {
@@ -89,8 +100,8 @@ public class GrapplingHook : MonoBehaviour
         RaycastHit hit;
         if(Physics.Raycast(cam.position, cam.forward, out hit, maxGrappleDistance, whatIsGrappleable))
         {
-            // TODO: Play shot hit SFX
-            
+            am.Play("wood_impact");
+
             // Initialize Spring Component
             grapplePoint = hit.point;
             springJoint = player.gameObject.AddComponent<SpringJoint>();
@@ -141,7 +152,7 @@ public class GrapplingHook : MonoBehaviour
     private void RetractGrapple()
     {
         springJoint.maxDistance = 2.5f;
-        springJoint.minDistance = 0.25f;
+        springJoint.minDistance = 0.25f;      
         //springJoint.spring = 10f;
         Debug.Log("Retract");
     }

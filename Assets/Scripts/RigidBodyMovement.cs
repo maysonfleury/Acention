@@ -80,7 +80,10 @@ public class RigidBodyMovement : MonoBehaviour
 
     // Pause Menu Check
     public bool isPaused;
-    
+
+    public bool isFast;
+
+    public bool gameStart;
 
     void Awake() {
         rb = GetComponent<Rigidbody>();
@@ -110,6 +113,23 @@ public class RigidBodyMovement : MonoBehaviour
         sliding = Physics.CheckSphere(groundCheck.position, groundDistance, whatIsSlides);
         bouncing = Physics.CheckSphere(groundCheck.position, groundDistance + 0.2f, whatIsBouncy);
         inWindArea = Physics.CheckSphere(groundCheck.position, groundDistance, whatIsWindArea);
+
+
+
+
+        if (rb.velocity.magnitude > 30f && !isFast)
+        {
+            isFast = true;
+            FindObjectOfType<AudioManager>().Play("woosh");
+        }
+        else if (rb.velocity.magnitude < 20f)
+        {
+            FindObjectOfType<AudioManager>().Stop("woosh");
+        }
+        else if (rb.velocity.magnitude < 10f)
+        {
+            isFast = false;
+        }
     }
 
     private void OnTriggerEnter(Collider other)
@@ -119,6 +139,11 @@ public class RigidBodyMovement : MonoBehaviour
             GameObject windArea = other.gameObject;
             windDirection = windArea.GetComponent<WindArea>().direction;
             windMagnitude = windArea.GetComponent<WindArea>().magnitude;
+        }
+
+        if (other.gameObject.tag == "GameStartTrigger")
+        {
+            gameStart = true;
         }
     }
 
