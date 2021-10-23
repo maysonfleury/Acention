@@ -44,7 +44,7 @@ public class GrapplingHook : MonoBehaviour
                 }
                 if (canShoot)
                 {
-                    am.Play("grapple_shot");
+                    
                     am.Play("grapple_rope");
                     StartGrapple();
                 }
@@ -124,7 +124,7 @@ public class GrapplingHook : MonoBehaviour
         else
         {
             // TODO: Play shot miss SFX
-
+            am.Play("grapple_shot");
             // Gets the players current velocity then shoots a Hook out
             Vector3 moveVelocity = rbMove.GetComponent<Rigidbody>().velocity;
             tempProjectile = Instantiate(hookPrefab, gunTip.position, gunTip.rotation);
