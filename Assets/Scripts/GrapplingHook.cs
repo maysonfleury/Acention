@@ -13,6 +13,7 @@ public class GrapplingHook : MonoBehaviour
     public RigidBodyMovement rbMove;
     public Transform gunTip, cam, player;
     public LayerMask whatIsGrappleable;
+    public LayerMask whatIsNotGrappleable;
     public ParticleSystem particleShot;
     public GameObject hookPrefab;
     public Image crosshair;
@@ -79,15 +80,40 @@ public class GrapplingHook : MonoBehaviour
             }
 
             // Change crosshair colour when hovering over grappleable object
-            RaycastHit crossHit;
-            if(Physics.Raycast(cam.position, cam.forward, out crossHit, maxGrappleDistance, whatIsGrappleable))
+            RaycastHit[] crossHits;
+            crossHits = Physics.RaycastAll(cam.position, cam.forward, maxGrappleDistance);
+
+            if(crossHits.Length == 0 || shotsLeft < 1)
             {
-                if (shotsLeft > 0)
-                    crosshair.color = new Color(0, 1, 1, 1);
+                crosshair.color = new Color(0, 0, 0, 0.7255f);
             }
             else
-            {             
-                crosshair.color = new Color(0, 0, 0, 0.7255f);
+            {
+                RaycastHit closestHit = crossHits[0];
+                for(int i = 1; i < crossHits.Length; i++)
+                {
+                    RaycastHit crossHit = crossHits[i];
+                    if (crossHit.distance < closestHit.distance)
+                    {
+                        closestHit = crossHit;
+                    }
+                }
+
+
+                if(whatIsGrappleable == (whatIsGrappleable | (1 << closestHit.collider.gameObject.layer)))
+                {
+                    if (shotsLeft > 0)
+                        crosshair.color = new Color(0, 1, 1, 1);
+                        
+                }
+                else if(whatIsNotGrappleable == (whatIsNotGrappleable| (1 << closestHit.collider.gameObject.layer)))
+                {
+                    crosshair.color = new Color(0, 0, 0, 0.7255f);
+                }
+                else
+                {
+                    crosshair.color = new Color(0, 0, 0, 0.7255f);
+                }
             }
         }
     }
@@ -97,34 +123,16 @@ public class GrapplingHook : MonoBehaviour
         // Show Particle Effect
         particleShot.Play();
 
-        // If the Raycast misses a target
-        RaycastHit hit;
-        if(Physics.Raycast(cam.position, cam.forward, out hit, maxGrappleDistance, whatIsGrappleable))
+        // Get a raycast array of all objects hit
+        RaycastHit[] crossHits;
+        crossHits = Physics.RaycastAll(cam.position, cam.forward, maxGrappleDistance);
+
+        // If we're not hovering an object, nothing to grapple to
+        if(crossHits.Length == 0)
         {
-            am.Play("wood_impact");
-
-            // Initialize Spring Component
-            grapplePoint = hit.point;
-            springJoint = player.gameObject.AddComponent<SpringJoint>();
-            springJoint.autoConfigureConnectedAnchor = false;
-            springJoint.connectedAnchor = grapplePoint;
-
-            float distanceFromPoint = Vector3.Distance(player.position, grapplePoint);
-
-            // Distance the grapple will try to keep from grapple point
-            springJoint.maxDistance = distanceFromPoint * 0.9f;
-            springJoint.minDistance = distanceFromPoint * 0.75f;
-
-            // How the rope feels
-            // Test and change
-            springJoint.spring = 4.5f;
-            springJoint.damper = 5f;
-            springJoint.massScale = 4.5f;
-        }
-        else
-        {
-            // TODO: Play shot miss SFX
+            // Play shot miss SFX
             am.Play("grapple_shot");
+
             // Gets the players current velocity then shoots a Hook out
             Vector3 moveVelocity = rbMove.GetComponent<Rigidbody>().velocity;
             tempProjectile = Instantiate(hookPrefab, gunTip.position, gunTip.rotation);
@@ -134,6 +142,53 @@ public class GrapplingHook : MonoBehaviour
             tempProjectile.GetComponent<Rigidbody>().AddForce(gunTip.forward * 2500f);
             grapplePoint = tempProjectile.transform.position;
             Destroy(tempProjectile, 1.5f);
+        }
+        else
+        {
+            // Gets the closest object hit by the raycast
+            RaycastHit closestHit = crossHits[0];
+            for(int i = 1; i < crossHits.Length; i++)
+            {
+                RaycastHit crossHit = crossHits[i];
+                if (crossHit.distance < closestHit.distance)
+                {
+                    closestHit = crossHit;
+                }
+            }
+
+            // If the closest object is grappleable, grapple to it
+            if(whatIsGrappleable == (whatIsGrappleable | (1 << closestHit.collider.gameObject.layer)))
+            {
+                am.Play("wood_impact");
+
+                // Initialize Spring Component
+                grapplePoint = closestHit.point;
+                springJoint = player.gameObject.AddComponent<SpringJoint>();
+                springJoint.autoConfigureConnectedAnchor = false;
+                springJoint.connectedAnchor = grapplePoint;
+
+                float distanceFromPoint = Vector3.Distance(player.position, grapplePoint);
+
+                // Distance the grapple will try to keep from grapple point
+                springJoint.maxDistance = distanceFromPoint * 0.9f;
+                springJoint.minDistance = distanceFromPoint * 0.75f;
+
+                // How the rope feels
+                // Test and change
+                springJoint.spring = 4.5f;
+                springJoint.damper = 5f;
+                springJoint.massScale = 4.5f;
+            }
+            else if(whatIsNotGrappleable == (whatIsNotGrappleable| (1 << closestHit.collider.gameObject.layer)))
+            {
+                // Play shot miss SFX if the layer is not grappleable
+                am.Play("grapple_shot");
+            }
+            else
+            {
+                // Just in case the code above bugs out, default to a miss (sorry players)
+                am.Play("grapple_shot");
+            }
         }
 
         // No grappling more than once per airtime
