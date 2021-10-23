@@ -24,6 +24,7 @@ public class GrapplingHook : MonoBehaviour
     public bool isPaused;
 
     AudioManager am;
+    public Animator grappleAnimator;
 
     private void Awake()
     {
@@ -145,20 +146,22 @@ public class GrapplingHook : MonoBehaviour
 
     private void StopGrapple()
     {
+        grappleAnimator.SetTrigger("Idle");
         Destroy(springJoint);
         Destroy(tempProjectile);
     }
 
     private void RetractGrapple()
     {
+        grappleAnimator.SetTrigger("Retract");
         springJoint.maxDistance = 2.5f;
         springJoint.minDistance = 0.25f;      
         //springJoint.spring = 10f;
-        Debug.Log("Retract");
     }
 
     private void StopRetracting()
     {
+        grappleAnimator.SetTrigger("Idle");
         float distanceFromPoint = Vector3.Distance(player.position, grapplePoint);
         springJoint.maxDistance = distanceFromPoint * 0.9f;
         springJoint.minDistance = distanceFromPoint * 0.65f;
