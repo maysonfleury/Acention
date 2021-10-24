@@ -106,17 +106,18 @@ public class RigidBodyMovement : MonoBehaviour
     }
 
     private void Update() {
+        
+        // Get player input
         MyInput();
         Look();
 
+        // Checking for what type of object the player is currently on for physics
         grounded = Physics.CheckSphere(groundCheck.position, groundDistance, whatIsGround);
         sliding = Physics.CheckSphere(groundCheck.position, groundDistance, whatIsSlides);
         bouncing = Physics.CheckSphere(groundCheck.position, groundDistance + 0.2f, whatIsBouncy);
         inWindArea = Physics.CheckSphere(groundCheck.position, groundDistance, whatIsWindArea);
 
-
-
-
+        // Play different SFX based on speed
         if (rb.velocity.magnitude > 30f && !isFast)
         {
             isFast = true;
@@ -148,7 +149,7 @@ public class RigidBodyMovement : MonoBehaviour
     }
 
     /// <summary>
-    /// Find user input. Should put this in its own class but im lazy
+    /// Find user input.
     /// </summary>
     private void MyInput() {
         x = Input.GetAxisRaw("Horizontal");
