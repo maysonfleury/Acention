@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.38377097, g: 0.47102243, b: 0.60287905, a: 1}
+  m_IndirectSpecularColor: {r: 0.38354573, g: 0.4709047, b: 0.6028211, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1388,7 +1388,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: c4edb6eb52577b843a9af92fc8c91dff, type: 3}
+  - {fileID: 2100000, guid: 2fcd1e4c215b45340b4528cba8444866, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -20107,6 +20107,10 @@ PrefabInstance:
       propertyPath: whatIsNotGrappleable.m_Bits
       value: 3959
       objectReference: {fileID: 0}
+    - target: {fileID: 342311683032374144, guid: 9b4a87acbca3e0b4d9e918afbf0722c1, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 342311683032374145, guid: 9b4a87acbca3e0b4d9e918afbf0722c1, type: 3}
       propertyPath: whatIsBouncy.m_Bits
       value: 2048
@@ -20133,7 +20137,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 342311683032374150, guid: 9b4a87acbca3e0b4d9e918afbf0722c1, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 423.16
+      value: 690
       objectReference: {fileID: 0}
     - target: {fileID: 342311683032374150, guid: 9b4a87acbca3e0b4d9e918afbf0722c1, type: 3}
       propertyPath: m_LocalPosition.z
