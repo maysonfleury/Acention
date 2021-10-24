@@ -137,7 +137,9 @@ public class RigidBodyMovement : MonoBehaviour
 
         if (gameOver.isGameOver)
         {
-            rb.velocity = (gameOver.transform.position - (rb.transform.position + rb.centerOfMass)) * Time.deltaTime;
+            //rb.velocity = (gameOver.transform.position - (rb.transform.position + rb.centerOfMass)) * Time.deltaTime;
+            transform.position = Vector3.MoveTowards(transform.position, gameOver.transform.position, 0.1f);
+            rb.useGravity = false;
             gameObject.GetComponentInChildren<CapsuleCollider>().enabled = false;
         }
 
@@ -194,8 +196,15 @@ public class RigidBodyMovement : MonoBehaviour
     }
 
     private void Movement() {
-        // Extra gravity
-        rb.AddForce(Vector3.down * Time.deltaTime * gravity);
+        if(gameOver.isGameOver)
+        {
+            // Mommy
+        }
+        else
+        {
+            // Extra gravity
+            rb.AddForce(Vector3.down * Time.deltaTime * gravity);
+        }
         
         // Find actual velocity relative to where player is looking
         Vector2 mag = FindVelRelativeToLook();
