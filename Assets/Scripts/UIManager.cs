@@ -36,6 +36,9 @@ public class UIManager : MonoBehaviour
     [SerializeField] Material skybox2;
     [SerializeField] Material skybox3;
     [SerializeField] Material skybox4;
+    [SerializeField] Material skybox_gameOver;
+
+    bool gameOver;
 
     private void Awake()
     {
@@ -50,7 +53,7 @@ public class UIManager : MonoBehaviour
     {
         RenderSettings.skybox.SetFloat("_Rotation", Time.time * 0.3f);
 
-        if (player.gameStart == true)
+        if (player.gameStart == true && !gameOver)
         {
             timer.gameObject.SetActive(true);
             locationText.gameObject.SetActive(true);
@@ -58,8 +61,17 @@ public class UIManager : MonoBehaviour
             if (timeRemaining > 0)
             {
                 timeRemaining -= Time.deltaTime;
+                timer.text = (Mathf.Floor(timeRemaining / 60f)).ToString("00") + ":" + Mathf.Floor(timeRemaining % 60f).ToString("00");
             }
-            timer.text = (Mathf.Floor(timeRemaining / 60f)).ToString("00") + ":" + Mathf.Floor(timeRemaining % 60f).ToString("00");
+            else
+            {
+                if (!gameOver)
+                {
+                    FindObjectOfType<GameOver>().EndGame();
+                    EndGame();
+                    timer.gameObject.SetActive(false);
+                }
+            }          
         }
 
         if (player.grounded)
@@ -97,27 +109,45 @@ public class UIManager : MonoBehaviour
             
     }
 
+    void EndGame()
+    {
+        AudioManager am = FindObjectOfType<AudioManager>();
+        gameOver = true;
+        progressPercentage.gameObject.SetActive(false);
+        locationText.gameObject.SetActive(false);
+        UpdateLocation("The Crystal Hungers", false);
+        dash1.rectTransform.position += new Vector3(-45f, 0, 0);
+        dash2.rectTransform.position += new Vector3(45f, 0, 0);
+        am.Play("gameover_1");
+        am.Play("gameover_2");
+        am.Play("gameover_3");
+        RenderSettings.skybox = skybox_gameOver;
+    }
+
     void Restart() // FOR DEVELOPMENT ONLY - REMEMBER TO REMOVE
     {
         player.transform.position = area2_start.position;
     }
     public void UpdateSkybox(int skyboxIndex)
     {
-        if (skyboxIndex == 1)
+        if (!gameOver)
         {
-            RenderSettings.skybox = skybox1;
-        }
-        else if (skyboxIndex == 2)
-        {
-            RenderSettings.skybox = skybox2;
-        }
-        else if (skyboxIndex == 3)
-        {
-            RenderSettings.skybox = skybox3;
-        }
-        else if (skyboxIndex == 4)
-        {
-            RenderSettings.skybox = skybox4;
+            if (skyboxIndex == 1)
+            {
+                RenderSettings.skybox = skybox1;
+            }
+            else if (skyboxIndex == 2)
+            {
+                RenderSettings.skybox = skybox2;
+            }
+            else if (skyboxIndex == 3)
+            {
+                RenderSettings.skybox = skybox3;
+            }
+            else if (skyboxIndex == 4)
+            {
+                RenderSettings.skybox = skybox4;
+            }
         }
     }
 
@@ -129,7 +159,7 @@ public class UIManager : MonoBehaviour
             playerGO.transform.position = tutorial_start.position;
     }
     public void UpdateLocation(string locationName, bool locationDiscovered)
-    {
+    {      
         locationText.text = locationName;      
         if (!locationDiscovered)
             BroadcastLocation(locationName);
@@ -148,8 +178,11 @@ public class UIManager : MonoBehaviour
     
     IEnumerator FadeTo(float aValue, float aTime)
     {
-
-        Color opaque = new Color(1, 1, 1, 1);
+        Color opaque;
+        if (gameOver)
+            opaque = new Color(0.5f, 0, 0, 1);
+        else
+            opaque = new Color(1, 1, 1, 1);
         locationBroadcast.color = opaque;
         dash1.color = opaque;
         dash2.color = opaque; 
@@ -161,7 +194,11 @@ public class UIManager : MonoBehaviour
         }
         for (float t = 0.0f; t < 1.0f; t += Time.deltaTime / aTime)
         {
-            Color newColor = new Color(1, 1, 1, Mathf.Lerp(alpha, aValue, t));
+            Color newColor;
+            if (gameOver)
+                newColor = new Color(0.5f, 0, 0, Mathf.Lerp(alpha, aValue, t));
+            else
+                newColor = new Color(1, 1, 1, Mathf.Lerp(alpha, aValue, t));
             locationBroadcast.color = newColor;
             dash1.color = newColor;
             dash2.color = newColor;

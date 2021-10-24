@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.3836212, g: 0.47090495, b: 0.60279655, a: 1}
+  m_IndirectSpecularColor: {r: 0.3836326, g: 0.47089726, b: 0.6028002, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2175,6 +2175,23 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 164999227}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &170263020 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 342311682988872375, guid: 9b4a87acbca3e0b4d9e918afbf0722c1, type: 3}
+  m_PrefabInstance: {fileID: 342311681028919722}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &170263024
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 170263020}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae381f51aebf2b442a1d30936c045cdd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &174347145
 GameObject:
   m_ObjectHideFlags: 0
@@ -6567,6 +6584,10 @@ PrefabInstance:
       propertyPath: destination
       value: 
       objectReference: {fileID: 1802943133}
+    - target: {fileID: 7478014834135939688, guid: a68cf5b35efb7c7489a97b51f1a78d7d, type: 3}
+      propertyPath: skybox_gameOver
+      value: 
+      objectReference: {fileID: 2100000, guid: 46de896c64c7bf74284e3c0bdc4c76c1, type: 2}
     - target: {fileID: 7478014834135939689, guid: a68cf5b35efb7c7489a97b51f1a78d7d, type: 3}
       propertyPath: m_Name
       value: UI
@@ -6726,6 +6747,18 @@ PrefabInstance:
     - target: {fileID: 7478014834979942245, guid: a68cf5b35efb7c7489a97b51f1a78d7d, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7478014834979942267, guid: a68cf5b35efb7c7489a97b51f1a78d7d, type: 3}
+      propertyPath: m_fontColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7478014834979942267, guid: a68cf5b35efb7c7489a97b51f1a78d7d, type: 3}
+      propertyPath: m_fontColor.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7478014834979942267, guid: a68cf5b35efb7c7489a97b51f1a78d7d, type: 3}
+      propertyPath: m_fontColor.r
+      value: 0.4745098
       objectReference: {fileID: 0}
     - target: {fileID: 7478014835073245051, guid: a68cf5b35efb7c7489a97b51f1a78d7d, type: 3}
       propertyPath: m_Value
@@ -14994,7 +15027,7 @@ MonoBehaviour:
   - clip: {fileID: 8300000, guid: 1e53500932e57044fb3488e31ac11c1b, type: 3}
     group: {fileID: 8055230971828797560, guid: 744e29381e4a0534ba09cc4e61ed626d, type: 2}
     name: grapple_retract
-    volume: 0.3
+    volume: 0.7
     pitch: 1.11
     loop: 0
     source: {fileID: 0}
@@ -15003,6 +15036,27 @@ MonoBehaviour:
     name: whoosh
     volume: 0.3
     pitch: 1.11
+    loop: 0
+    source: {fileID: 0}
+  - clip: {fileID: 8300000, guid: e2855021a0c85a04b85f84a2d69be2c0, type: 3}
+    group: {fileID: 8055230971828797560, guid: 744e29381e4a0534ba09cc4e61ed626d, type: 2}
+    name: gameover_1
+    volume: 0.7
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - clip: {fileID: 8300000, guid: 33f74bcc7a5d2d54da311a29f3555bbd, type: 3}
+    group: {fileID: 8055230971828797560, guid: 744e29381e4a0534ba09cc4e61ed626d, type: 2}
+    name: gameover_2
+    volume: 0.7
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - clip: {fileID: 8300000, guid: 349bb52626192a343bff3b22efecdab5, type: 3}
+    group: {fileID: 8055230971828797560, guid: 744e29381e4a0534ba09cc4e61ed626d, type: 2}
+    name: gameover_3
+    volume: 0.7
+    pitch: 1
     loop: 0
     source: {fileID: 0}
 --- !u!4 &1143369959
@@ -29229,6 +29283,7 @@ GameObject:
   - component: {fileID: 5974643642801138207}
   - component: {fileID: 7925387687263330291}
   - component: {fileID: 1767186367265663941}
+  - component: {fileID: 1767186367265663942}
   m_Layer: 0
   m_Name: TempCrystal
   m_TagString: Untagged
@@ -29250,6 +29305,19 @@ CapsuleCollider:
   m_Height: 13.619769
   m_Direction: 1
   m_Center: {x: 0, y: 3.1935048, z: 24.715698}
+--- !u!114 &1767186367265663942
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1767186367265663940}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3dcff2a41206cf44aa633b7df9847fb1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isGameOver: 0
 --- !u!1 &3608763373234124770 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: fd62b0bba5fed7143816fcac2c53ed11, type: 3}

@@ -85,12 +85,15 @@ public class RigidBodyMovement : MonoBehaviour
 
     public bool gameStart;
 
+    GameOver gameOver;
+
     void Awake() {
         rb = GetComponent<Rigidbody>();
         stepRayUpper.transform.position = new Vector3(stepRayUpper.position.x, stepHeight, stepRayUpper.position.z);
     }
     
     void Start() {
+        gameOver = FindObjectOfType<GameOver>();
         playerScale =  transform.localScale;
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
@@ -131,6 +134,14 @@ public class RigidBodyMovement : MonoBehaviour
         {
             isFast = false;
         }
+
+        if (gameOver.isGameOver)
+        {
+            rb.velocity = (gameOver.transform.position - (rb.transform.position + rb.centerOfMass)) * Time.deltaTime;
+            gameObject.GetComponentInChildren<CapsuleCollider>().enabled = false;
+        }
+
+
     }
 
     private void OnTriggerEnter(Collider other)
