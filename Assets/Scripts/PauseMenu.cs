@@ -15,6 +15,7 @@ public class PauseMenu : MonoBehaviour
     [SerializeField] GameObject settingsMenu;
     [SerializeField] GameObject anykeyButton;
     [SerializeField] GameObject returnButton;
+    [SerializeField] GameObject tip;
 
     [SerializeField] TextMeshProUGUI mouseSens;
 
@@ -34,6 +35,7 @@ public class PauseMenu : MonoBehaviour
         tempControls = true;
         controlMenu.SetActive(true);
         anykeyButton.SetActive(true);
+        tip.SetActive(true);
         returnButton.SetActive(false);
 	}
 
@@ -166,6 +168,7 @@ public class PauseMenu : MonoBehaviour
                 controlMenu.SetActive(false);
                 tempControls = false;
                 anykeyButton.SetActive(false);
+                tip.SetActive(false);
             }
         }
 	}
