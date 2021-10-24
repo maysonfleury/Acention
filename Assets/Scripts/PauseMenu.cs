@@ -20,6 +20,7 @@ public class PauseMenu : MonoBehaviour
 
     RigidBodyMovement player;
     GrapplingHook grapple;
+    UIManager ui;
 
     public AudioMixer audioMixer;
     private bool tempControls;
@@ -28,6 +29,7 @@ public class PauseMenu : MonoBehaviour
     {
         grapple = FindObjectOfType<GrapplingHook>();
         player = FindObjectOfType<RigidBodyMovement>();
+        ui = FindObjectOfType<UIManager>();
 
         tempControls = true;
         controlMenu.SetActive(true);
@@ -72,7 +74,7 @@ public class PauseMenu : MonoBehaviour
 
     public void SaveAndQuit ()
     {
-        Debug.Log("Qutting game");
+        SaveSystem.SaveGameState(player, ui);
         Application.Quit();
     }
 
@@ -105,15 +107,27 @@ public class PauseMenu : MonoBehaviour
     public void SetMasterVolume (float volume)
     {
         audioMixer.SetFloat("MasterVolume", volume);
+        if (volume == -40)
+        {
+            audioMixer.SetFloat("MasterVolume", -80); // Mutes if player goes to lowest option
+        }
     }
 
     public void SetSFXVolume (float volume)
     {
         audioMixer.SetFloat("SFXVolume", volume);
+        if (volume == -40)
+        {
+            audioMixer.SetFloat("SFXVolume", -80); 
+        }
     }
     public void SetMusicVolume(float volume)
     {
         audioMixer.SetFloat("MusicVolume", volume);
+        if (volume == -40)
+        {
+            audioMixer.SetFloat("MusicVolume", -80); 
+        }
     }
 
     public void SetQuality (int qualityLevel)

@@ -23,13 +23,14 @@ public class UIManager : MonoBehaviour
 
     bool transitioning;
 
+    [SerializeField] Transform tutorial_start;
     [SerializeField] Transform area1_start;
     [SerializeField] Transform area2_start;
     [SerializeField] Transform area3_start;
 
-    bool area1_discovered;
-    bool area2_discovered;
-    bool area3_discovered;
+    public bool area1_discovered;
+    public bool area2_discovered;
+    public bool area3_discovered;
 
     [SerializeField] Material skybox1;
     [SerializeField] Material skybox2;
@@ -96,7 +97,7 @@ public class UIManager : MonoBehaviour
             
     }
 
-    void Restart()
+    void Restart() // FOR DEVELOPMENT ONLY - REMEMBER TO REMOVE
     {
         player.transform.position = area2_start.position;
     }
@@ -122,7 +123,10 @@ public class UIManager : MonoBehaviour
 
     public void ResetPosition()
     {
-        playerGO.transform.position = area1_start.position;
+        if (player.gameStart == true)
+            playerGO.transform.position = area1_start.position;
+        else
+            playerGO.transform.position = tutorial_start.position;
     }
     public void UpdateLocation(string locationName, bool locationDiscovered)
     {
