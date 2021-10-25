@@ -50,12 +50,29 @@ public class MusicManager : MonoBehaviour
     }
     public void ChangeSong(int index)
     {
+        if (songs[index].volume > 0.5f)
+        {
+            return;
+        }
+        else
+        {
+            foreach (AudioSource song in songs)
+            {
+                if (song.volume > 0)
+                    StartCoroutine(FadeVolume(song, false));
+            }
+            StartCoroutine(FadeVolume(songs[index], true));
+        }     
+    }
+
+    public void GameOver()
+    {
         foreach (AudioSource song in songs)
         {
-            if(song.volume > 0)
-                StartCoroutine(FadeVolume(song, false));
+            song.Stop();
         }
-        StartCoroutine(FadeVolume(songs[index], true));
+        songs[5].volume = 1f;
+        Play("siren");
     }
 
     IEnumerator FadeVolume(AudioSource song, bool increasing)

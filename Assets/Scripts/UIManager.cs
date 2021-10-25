@@ -43,7 +43,7 @@ public class UIManager : MonoBehaviour
 
     private void Awake()
     {
-        SaveSystem.DeleteGameState();
+        //SaveSystem.DeleteGameState();
         player = playerGO.GetComponent<RigidBodyMovement>();
         dash1 = locationBroadcast.gameObject.transform.GetChild(0).gameObject.GetComponent<Image>();
         dash2 = locationBroadcast.gameObject.transform.GetChild(1).gameObject.GetComponent<Image>();
@@ -94,6 +94,7 @@ public class UIManager : MonoBehaviour
                 mm.GameStart();
             else
                 mm.ChangeSong(1);
+
             UpdateLocation("The World Tree", area1_discovered);
             area1_discovered = true;
             UpdateSkybox(1);
@@ -121,6 +122,7 @@ public class UIManager : MonoBehaviour
     void EndGame()
     {
         AudioManager am = FindObjectOfType<AudioManager>();
+        MusicManager mm = FindObjectOfType<MusicManager>();
         gameOver = true;
         progressPercentage.gameObject.SetActive(false);
         locationText.gameObject.SetActive(false);
@@ -130,6 +132,7 @@ public class UIManager : MonoBehaviour
         am.Play("gameover_1");
         am.Play("gameover_2");
         am.Play("gameover_3");
+        mm.GameOver();
         RenderSettings.skybox = skybox_gameOver;
     }
 
