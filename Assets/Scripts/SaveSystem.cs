@@ -35,4 +35,17 @@ public static class SaveSystem
             return null;
         }
     }
+
+    public static void DeleteGameState ()
+    {
+        string path = Application.persistentDataPath + "/player.info";
+        if (File.Exists(path))
+        {
+            File.Delete(path);
+        }
+        else
+        {
+            Debug.LogError("Save file not found in " + path);
+        }
+    }
 }

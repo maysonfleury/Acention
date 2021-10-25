@@ -39,14 +39,18 @@ public class UIManager : MonoBehaviour
     [SerializeField] Material skybox_gameOver;
 
     bool gameOver;
+    MusicManager mm;
 
     private void Awake()
     {
+        SaveSystem.DeleteGameState();
         player = playerGO.GetComponent<RigidBodyMovement>();
         dash1 = locationBroadcast.gameObject.transform.GetChild(0).gameObject.GetComponent<Image>();
         dash2 = locationBroadcast.gameObject.transform.GetChild(1).gameObject.GetComponent<Image>();
 
         area2_start.position = player.transform.position;
+
+        mm = FindObjectOfType<MusicManager>();
     }
 
     private void Update()
@@ -83,25 +87,30 @@ public class UIManager : MonoBehaviour
             if (dToD > 100f)
                 dToD = 100f;
             progressPercentage.text = dToD.ToString("F2") + "%";
-        }                
-
-        if (dToD < 50.0f && player.gameStart == true)
-        {          
+        }
+        if (dToD < 5.0f && player.gameStart == true)
+        {
+            if (!area1_discovered)
+                mm.GameStart();
+            else
+                mm.ChangeSong(1);
             UpdateLocation("The World Tree", area1_discovered);
             area1_discovered = true;
             UpdateSkybox(1);
         }
-        else if (dToD > 50.0f && dToD < 99f)
+        else if (dToD > 5.0f && dToD < 15f)
         {
             UpdateLocation("Half Way", area2_discovered);
             area2_discovered = true;
             UpdateSkybox(2);
+            mm.ChangeSong(2);
         }
-        else if (dToD >= 99f)
+        else if (dToD >= 15f)
         {
             UpdateLocation("Demo Completed", area3_discovered);
             area3_discovered = true;
             UpdateSkybox(3);
+            mm.ChangeSong(3);
         }
 
         if (Input.GetKeyDown(KeyCode.R))
