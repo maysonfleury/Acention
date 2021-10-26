@@ -44,10 +44,10 @@ public class VanishPlatform : MonoBehaviour
         {
             Color opaque = new Color(1, 1, 1, Mathf.Lerp(vanishMaterial.color.a, 1.0f, time));
             vanishMaterial.color = opaque;
+            gameObject.GetComponent<BoxCollider>().enabled = true;
             yield return null;
         }
 
-        gameObject.GetComponent<BoxCollider>().enabled = true;
         timer = 0;
         transitioning = false;        
         yield return null;
