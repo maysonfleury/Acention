@@ -30,12 +30,11 @@ public class UIManager : MonoBehaviour
 
     [SerializeField] Transform tutorial_start;
     [SerializeField] Transform area1_start;
-    [SerializeField] Transform area2_start;
-    [SerializeField] Transform area3_start;
 
     public bool area1_discovered;
     public bool area2_discovered;
     public bool area3_discovered;
+    public bool area4_discovered;
 
     [SerializeField] Material skybox1;
     [SerializeField] Material skybox2;
@@ -52,8 +51,6 @@ public class UIManager : MonoBehaviour
         player = playerGO.GetComponent<RigidBodyMovement>();
         dash1 = locationBroadcast.gameObject.transform.GetChild(0).gameObject.GetComponent<Image>();
         dash2 = locationBroadcast.gameObject.transform.GetChild(1).gameObject.GetComponent<Image>();
-
-        area2_start.position = player.transform.position;
 
         mm = FindObjectOfType<MusicManager>();
     }
@@ -93,7 +90,7 @@ public class UIManager : MonoBehaviour
                 dToD = 100f;
             progressPercentage.text = dToD.ToString("F2") + "%";
         }
-        if (dToD < 5.0f && player.gameStart == true)
+        if (dToD < 33.5f && player.gameStart == true)
         {
             if (!area1_discovered)
                 mm.GameStart();
@@ -104,31 +101,29 @@ public class UIManager : MonoBehaviour
             area1_discovered = true;
             UpdateSkybox(1);
         }
-        else if (dToD > 5.0f && dToD < 15f)
+        else if (dToD > 33.5f && dToD < 53.4f)
         {
-            UpdateLocation("Half Way", area2_discovered);
+            UpdateLocation("Crystal Core", area2_discovered);
             area2_discovered = true;
             UpdateSkybox(2);
             mm.ChangeSong(2);
         }
-        else if (dToD >= 15f && dToD < 99f)
+        else if (dToD >= 53.4f && dToD < 99f)
         {
-            UpdateLocation("Demo Completed", area3_discovered);
+            UpdateLocation("Sacred Spire", area3_discovered);
             area3_discovered = true;
             UpdateSkybox(3);
             mm.ChangeSong(3);
         }
         else if (dToD > 99f )
         {
+            UpdateLocation("True Core", area4_discovered);
+            area4_discovered = true;
             UpdateSkybox(4);
             mm.ChangeSong(4);
             if (!gameWon && player.gameWon)
                 WinGame();
-        }
-
-        if (Input.GetKeyDown(KeyCode.R))
-            Restart();
-            
+        }    
     }
 
     void EndGame()
@@ -172,11 +167,6 @@ public class UIManager : MonoBehaviour
                         t.Seconds,
                         t.Milliseconds);
         finalTime.text = time;
-    }
-
-    void Restart() // FOR DEVELOPMENT ONLY - REMEMBER TO REMOVE
-    {
-        player.transform.position = area2_start.position;
     }
     public void UpdateSkybox(int skyboxIndex)
     {
