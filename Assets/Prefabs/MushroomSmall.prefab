@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6603952160340833679}
   - component: {fileID: 6475244106201979042}
   - component: {fileID: 5944441769961012760}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: MushTargetStem
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -107,7 +107,7 @@ GameObject:
   - component: {fileID: 7087404275524392522}
   - component: {fileID: 5025863160782365312}
   - component: {fileID: 5944441769961012761}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: MushroomSmall
   m_TagString: Untagged
   m_Icon: {fileID: 0}

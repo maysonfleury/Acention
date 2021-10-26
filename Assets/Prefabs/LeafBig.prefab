@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 3831559515759679344}
   - component: {fileID: 8058610708197267384}
   - component: {fileID: 4277743771133876464}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Colliders
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -97,7 +97,7 @@ GameObject:
   - component: {fileID: 2215539340341458276}
   - component: {fileID: 3104725425225767525}
   - component: {fileID: 1471542264960430125}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: LeafBig
   m_TagString: Untagged
   m_Icon: {fileID: 0}

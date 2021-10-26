@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4759067361758664070}
   - component: {fileID: 244411253558643138}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: StemCollider (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -54,7 +54,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2153232658201201447}
   - component: {fileID: 5941103706372242263}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: StemCollider (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -179,7 +179,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4290848589286895660}
   - component: {fileID: 3191953990879500052}
-  m_Layer: 11
+  m_Layer: 7
   m_Name: CapBottom
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -321,7 +321,7 @@ GameObject:
   m_Component:
   - component: {fileID: 629608127291639075}
   - component: {fileID: 3343787877100698307}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: StemCollider (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -365,7 +365,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4233890657370816519}
   - component: {fileID: 2223909001837538424}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: StemCollider (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -410,7 +410,7 @@ GameObject:
   - component: {fileID: 6365928482553548027}
   - component: {fileID: 7549598456251357943}
   - component: {fileID: 8210002760819445019}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: MushStemLong
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -496,7 +496,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4338567280261446784}
   - component: {fileID: 7447196921446940764}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: StemCollider (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -540,7 +540,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6680832704293309626}
   - component: {fileID: 2791918508555039323}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: StemCollider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
