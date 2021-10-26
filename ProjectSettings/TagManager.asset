@@ -8,6 +8,10 @@ TagManager:
   - Fire
   - WindArea
   - GameStartTrigger
+  - Wood
+  - Crystal
+  - Mushroom
+  - Leaf
   layers:
   - Default
   - TransparentFX

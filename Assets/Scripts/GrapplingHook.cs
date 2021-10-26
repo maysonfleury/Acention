@@ -140,7 +140,7 @@ public class GrapplingHook : MonoBehaviour
             tempProjectile.transform.Rotate(0f, 180f, 0f);
             tempProjectile.AddComponent<Rigidbody>();
             tempProjectile.GetComponent<Rigidbody>().velocity = moveVelocity;
-            tempProjectile.GetComponent<Rigidbody>().AddForce(gunTip.forward * 2500f);
+            tempProjectile.GetComponent<Rigidbody>().AddForce(gunTip.forward * 4500f);
             grapplePoint = tempProjectile.transform.position;
             Destroy(tempProjectile, 1.5f);
         }
@@ -160,7 +160,23 @@ public class GrapplingHook : MonoBehaviour
             // If the closest object is grappleable, grapple to it
             if(whatIsGrappleable == (whatIsGrappleable | (1 << closestHit.collider.gameObject.layer)))
             {
-                am.Play("wood_impact");
+                if(closestHit.collider.gameObject.CompareTag("Wood"))
+                {
+                    Debug.Log("Wooud");
+                    am.Play("wood_impact");
+                }
+                else if(closestHit.collider.gameObject.CompareTag("Crystal"))
+                {
+                    Debug.Log("Crystal");
+                }
+                else if(closestHit.collider.gameObject.CompareTag("Mushroom"))
+                {
+                    Debug.Log("MooshMoosh");
+                }
+                else if(closestHit.collider.gameObject.CompareTag("Leaf"))
+                {
+                    Debug.Log("Lief Debugson");
+                }
 
                 // Initialize Spring Component
                 grapplePoint = closestHit.point;
@@ -175,7 +191,6 @@ public class GrapplingHook : MonoBehaviour
                 springJoint.minDistance = distanceFromPoint * 0.75f;
 
                 // How the rope feels
-                // Test and change
                 springJoint.spring = 4.5f;
                 springJoint.damper = 5f;
                 springJoint.massScale = 4.5f;
