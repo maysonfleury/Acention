@@ -47,6 +47,7 @@ public class GrapplingHook : MonoBehaviour
                 {
                     
                     am.Play("grapple_rope");
+                    am.Play("grapple_whizz");
                     StartGrapple();
                 }
             }
