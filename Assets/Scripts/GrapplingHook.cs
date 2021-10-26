@@ -172,6 +172,7 @@ public class GrapplingHook : MonoBehaviour
                 }
                 else if(closestHit.collider.gameObject.CompareTag("Mushroom"))
                 {
+                    am.Play("shroom_impact");
                     Debug.Log("MooshMoosh");
                 }
                 else if(closestHit.collider.gameObject.CompareTag("Leaf"))
