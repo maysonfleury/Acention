@@ -12,6 +12,7 @@ TagManager:
   - Crystal
   - Mushroom
   - Leaf
+  - Funnel
   layers:
   - Default
   - TransparentFX

@@ -167,6 +167,7 @@ public class GrapplingHook : MonoBehaviour
                 }
                 else if(closestHit.collider.gameObject.CompareTag("Crystal"))
                 {
+                    am.Play("crystal_sound");
                     Debug.Log("Crystal");
                 }
                 else if(closestHit.collider.gameObject.CompareTag("Mushroom"))

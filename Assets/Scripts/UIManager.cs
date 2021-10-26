@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using System;
 
 public class UIManager : MonoBehaviour
 {
@@ -12,14 +13,18 @@ public class UIManager : MonoBehaviour
 
     float dToD; // distance to destination
 
+    [SerializeField] GameObject victoryScreen;
+    [SerializeField] GameObject reticle;
+
     [SerializeField] TextMeshProUGUI progressPercentage;
     [SerializeField] TextMeshProUGUI locationText;
-    [SerializeField] TextMeshProUGUI locationBroadcast; 
+    [SerializeField] TextMeshProUGUI locationBroadcast;
+    [SerializeField] TextMeshProUGUI finalTime;
     Image dash1;
     Image dash2;
 
     [SerializeField] TextMeshProUGUI timer;
-    float timeRemaining = 10f;
+    float timeRemaining = 3600f;
 
     bool transitioning;
 
@@ -39,11 +44,11 @@ public class UIManager : MonoBehaviour
     [SerializeField] Material skybox_gameOver;
 
     bool gameOver;
+    bool gameWon;
     MusicManager mm;
 
     private void Awake()
     {
-        //SaveSystem.DeleteGameState();
         player = playerGO.GetComponent<RigidBodyMovement>();
         dash1 = locationBroadcast.gameObject.transform.GetChild(0).gameObject.GetComponent<Image>();
         dash2 = locationBroadcast.gameObject.transform.GetChild(1).gameObject.GetComponent<Image>();
@@ -106,12 +111,19 @@ public class UIManager : MonoBehaviour
             UpdateSkybox(2);
             mm.ChangeSong(2);
         }
-        else if (dToD >= 15f)
+        else if (dToD >= 15f && dToD < 99f)
         {
             UpdateLocation("Demo Completed", area3_discovered);
             area3_discovered = true;
             UpdateSkybox(3);
             mm.ChangeSong(3);
+        }
+        else if (dToD > 99f )
+        {
+            UpdateSkybox(4);
+            mm.ChangeSong(4);
+            if (!gameWon && player.gameWon)
+                WinGame();
         }
 
         if (Input.GetKeyDown(KeyCode.R))
@@ -139,6 +151,29 @@ public class UIManager : MonoBehaviour
         RenderSettings.skybox = skybox_gameOver;
     }
 
+    void WinGame()
+    {
+        gameWon = true;
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+        Time.timeScale = 0f;
+        reticle.SetActive(false);
+
+        GrapplingHook grapple = FindObjectOfType<GrapplingHook>();
+        player.isPaused = true;
+        grapple.isPaused = true;
+        timer.gameObject.SetActive(false);
+        victoryScreen.SetActive(true);
+        TimeSpan t = TimeSpan.FromSeconds(3600f - timeRemaining);
+
+        string time = string.Format("{0:D2}h:{1:D2}m:{2:D2}s:{3:D3}ms",
+                        t.Hours,
+                        t.Minutes,
+                        t.Seconds,
+                        t.Milliseconds);
+        finalTime.text = time;
+    }
+
     void Restart() // FOR DEVELOPMENT ONLY - REMEMBER TO REMOVE
     {
         player.transform.position = area2_start.position;
@@ -164,6 +199,11 @@ public class UIManager : MonoBehaviour
                 RenderSettings.skybox = skybox4;
             }
         }
+    }
+
+    public void ExitGame()
+    {
+        Application.Quit();
     }
 
     public void ResetPosition()

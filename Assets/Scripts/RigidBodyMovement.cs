@@ -84,6 +84,7 @@ public class RigidBodyMovement : MonoBehaviour
     public bool isFast;
 
     public bool gameStart;
+    public bool gameWon;
 
     GameOver gameOver;
 
@@ -158,6 +159,23 @@ public class RigidBodyMovement : MonoBehaviour
         if (other.gameObject.tag == "GameStartTrigger")
         {
             gameStart = true;
+        }
+
+        if (other.gameObject.tag == "Crystal")
+        {
+            gameWon = true;
+        }
+
+        if (other.gameObject.tag == "Funnel")
+        {
+            if (other.gameObject.name == "Teleporter")
+                transform.position = new Vector3(-1.82f, 172f, 6.9f);
+            else if (other.gameObject.name == "Teleporter (1)")
+                transform.position = new Vector3(-169.7f, 177f, -62.4f);
+            else if (other.gameObject.name == "Teleporter (2)")
+                transform.position = new Vector3(-220f, 105f, -186.5f);
+            else if (other.gameObject.name == "Teleporter (3)")
+                transform.position = new Vector3(-148.2f, 204f, -371.1f);
         }
     }
 
