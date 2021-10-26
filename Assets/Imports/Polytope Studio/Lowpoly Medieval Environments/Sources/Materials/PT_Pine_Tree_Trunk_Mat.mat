@@ -67,7 +67,6 @@ Material:
     - _BumpScale: 1
     - _CUSTOMCOLORSTINTING: 0
     - _CUSTOMWIND: 1
-    - _CUSTOMWIND1: 1
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
@@ -98,16 +97,12 @@ Material:
     - _WINDMASKONOFF: 0
     - _WINDTRUNKMASKONOFF: 1
     - _WindDensity: 0.05
-    - _WindDensity1: 0.2
     - _WindMovement: 3
-    - _WindMovement1: 0.5
     - _WindStrength: 0.5
-    - _WindStrength1: 0.3
     - _ZWrite: 1
     - __dirty: 0
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _GroundColor: {r: 0.08490568, g: 0.05234205, b: 0.04846032, a: 1}
-    - _TopColor: {r: 0.8207547, g: 0.51327837, b: 0.18325019, a: 1}
-  m_BuildTextureStacks: []
+    - _TopColor: {r: 0.4811321, g: 0.4036026, b: 0.2382966, a: 1}
