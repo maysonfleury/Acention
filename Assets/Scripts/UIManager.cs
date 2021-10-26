@@ -19,7 +19,7 @@ public class UIManager : MonoBehaviour
     Image dash2;
 
     [SerializeField] TextMeshProUGUI timer;
-    float timeRemaining = 3600f;
+    float timeRemaining = 10f;
 
     bool transitioning;
 
@@ -123,9 +123,11 @@ public class UIManager : MonoBehaviour
     {
         AudioManager am = FindObjectOfType<AudioManager>();
         MusicManager mm = FindObjectOfType<MusicManager>();
+        CrystalEffects crystal = FindObjectOfType<CrystalEffects>();
         gameOver = true;
         progressPercentage.gameObject.SetActive(false);
         locationText.gameObject.SetActive(false);
+        timer.gameObject.SetActive(false);
         UpdateLocation("The Crystal Hungers", false);
         dash1.rectTransform.position += new Vector3(-45f, 0, 0);
         dash2.rectTransform.position += new Vector3(45f, 0, 0);
@@ -133,6 +135,7 @@ public class UIManager : MonoBehaviour
         am.Play("gameover_2");
         am.Play("gameover_3");
         mm.GameOver();
+        crystal.GameEnd();
         RenderSettings.skybox = skybox_gameOver;
     }
 
