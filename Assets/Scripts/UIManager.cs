@@ -90,7 +90,7 @@ public class UIManager : MonoBehaviour
                 dToD = 100f;
             progressPercentage.text = dToD.ToString("F2") + "%";
         }
-        if (dToD < 33.5f && player.gameStart == true)
+        if (dToD < 33.4f && player.gameStart == true)
         {
             if (!area1_discovered)
                 mm.GameStart();
@@ -101,14 +101,14 @@ public class UIManager : MonoBehaviour
             area1_discovered = true;
             UpdateSkybox(1);
         }
-        else if (dToD > 33.5f && dToD < 53.4f)
+        else if (dToD > 33.4f && dToD < 53.4f)
         {
             UpdateLocation("Crystal Core", area2_discovered);
             area2_discovered = true;
             UpdateSkybox(2);
             mm.ChangeSong(2);
         }
-        else if (dToD >= 53.4f && dToD < 99f)
+        else if (dToD > 53.4f && dToD < 99f)
         {
             UpdateLocation("Sacred Spire", area3_discovered);
             area3_discovered = true;
