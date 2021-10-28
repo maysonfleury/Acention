@@ -136,10 +136,17 @@ public class RigidBodyMovement : MonoBehaviour
             isFast = false;
         }
 
+        
+
         if (gameOver.isGameOver)
         {
-            //rb.velocity = (gameOver.transform.position - (rb.transform.position + rb.centerOfMass)) * Time.deltaTime;
-            transform.position = Vector3.MoveTowards(transform.position, gameOver.transform.position, 0.1f);
+            float speed = 0.1f;
+            if (Vector3.Distance(transform.position, gameOver.transform.position) > 300f)
+                speed = 0.3f;
+            else if (Vector3.Distance(transform.position, gameOver.transform.position) > 200f)
+                speed = 0.2f;
+
+            transform.position = Vector3.MoveTowards(transform.position, gameOver.transform.position, speed);
             rb.useGravity = false;
             gameObject.GetComponentInChildren<CapsuleCollider>().enabled = false;
         }
