@@ -5613,6 +5613,18 @@ PrefabInstance:
       propertyPath: m_MinValue
       value: -40
       objectReference: {fileID: 0}
+    - target: {fileID: 7562671686492002702, guid: a68cf5b35efb7c7489a97b51f1a78d7d, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8393470779130385570, guid: a68cf5b35efb7c7489a97b51f1a78d7d, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8393470779130385570, guid: a68cf5b35efb7c7489a97b51f1a78d7d, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8476248599267873681, guid: a68cf5b35efb7c7489a97b51f1a78d7d, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
