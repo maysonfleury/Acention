@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class RigidBodyMovement : MonoBehaviour
 {
@@ -54,8 +55,11 @@ public class RigidBodyMovement : MonoBehaviour
     private float jumpCooldown = 0.25f;
 
     // Dashing
+    [SerializeField] Slider dashMeter;
     private bool canDash = true;
-    public float dashForce = 50f;
+    private float lastDash = 60f;
+    public float dashForce = 60f;
+    public float dashBarAmount = 60f;
 
     // Input
     float x, y;
@@ -98,6 +102,12 @@ public class RigidBodyMovement : MonoBehaviour
         playerScale =  transform.localScale;
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+
+        dashMeter.maxValue = 60f;
+        dashMeter.minValue = 0f;
+        dashMeter.value = 60f;
+        dashForce = 60f;
+        lastDash = 60f;
     }
 
     
@@ -120,6 +130,42 @@ public class RigidBodyMovement : MonoBehaviour
         sliding = Physics.CheckSphere(groundCheck.position, groundDistance, whatIsSlides);
         bouncing = Physics.CheckSphere(groundCheck.position, groundDistance + 0.2f, whatIsBouncy);
         inWindArea = Physics.CheckSphere(groundCheck.position, groundDistance, whatIsWindArea);
+
+        // Decrease dashBarAmount while holding left shift, or increase it if grounded
+        if(dashing)
+        {
+            dashBarAmount -= 0.5f;
+        }
+        else if(grounded && dashBarAmount < 60)
+        {
+            dashBarAmount += 3;
+            lastDash = dashBarAmount;
+        }
+        else if(grounded && dashBarAmount == 60)
+        {
+            lastDash = 60f;
+        }
+
+        if(dashBarAmount > 60)
+        {
+            dashBarAmount = 60;
+        }
+        if(dashBarAmount < 1)
+        {
+            dashBarAmount = 1;
+        }
+        dashMeter.value = dashBarAmount;
+        dashForce = lastDash - dashBarAmount;
+
+        // Check whether there is any dash magic remaining
+        if (dashBarAmount > 0)
+        {
+            canDash = true;
+        }
+        else
+        {
+            canDash = false;
+        }
 
         // Play different SFX based on speed
         if (rb.velocity.magnitude > 30f && !isFast)
@@ -201,6 +247,9 @@ public class RigidBodyMovement : MonoBehaviour
             StartCrouch();
         if (Input.GetKeyUp(KeyCode.LeftControl))
             StopCrouch();
+
+        if (Input.GetKeyUp(KeyCode.LeftShift))
+            Dash();
     }
 
     private void StartCrouch() {
@@ -240,10 +289,6 @@ public class RigidBodyMovement : MonoBehaviour
         
         // If holding jump && ready to jump, then jump
         if (readyToJump && jumping) Jump();
-
-        // If holding dash && ready to dash, then dash
-        if (canDash && dashing) Dash();
-        if (grounded) { canDash = true; }
 
         // Set max speed
         float maxSpeed = this.maxSpeed;
@@ -322,8 +367,12 @@ public class RigidBodyMovement : MonoBehaviour
     {
         if (!grounded && canDash)
         {
-            canDash = false;
             rb.AddForce(orientation.transform.forward * dashForce, ForceMode.Impulse);
+            lastDash = lastDash - dashForce;
+        }
+        if(dashBarAmount == 1)
+        {
+            dashBarAmount = 0;
         }
     }
     
