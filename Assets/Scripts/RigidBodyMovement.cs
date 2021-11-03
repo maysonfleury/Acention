@@ -55,11 +55,8 @@ public class RigidBodyMovement : MonoBehaviour
     private float jumpCooldown = 0.25f;
 
     // Dashing
-    [SerializeField] Slider dashMeter;
     private bool canDash = true;
-    private float lastDash = 60f;
-    public float dashForce = 60f;
-    public float dashBarAmount = 60f;
+    public float dashForce = 50f;
 
     // Input
     float x, y;
@@ -102,12 +99,6 @@ public class RigidBodyMovement : MonoBehaviour
         playerScale =  transform.localScale;
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
-
-        dashMeter.maxValue = 60f;
-        dashMeter.minValue = 0f;
-        dashMeter.value = 60f;
-        dashForce = 60f;
-        lastDash = 60f;
     }
 
     
@@ -132,39 +123,9 @@ public class RigidBodyMovement : MonoBehaviour
         inWindArea = Physics.CheckSphere(groundCheck.position, groundDistance, whatIsWindArea);
 
         // Decrease dashBarAmount while holding left shift, or increase it if grounded
-        if(dashing)
-        {
-            dashBarAmount -= 0.5f;
-        }
-        else if(grounded && dashBarAmount < 60)
-        {
-            dashBarAmount += 3;
-            lastDash = dashBarAmount;
-        }
-        else if(grounded && dashBarAmount == 60)
-        {
-            lastDash = 60f;
-        }
-
-        if(dashBarAmount > 60)
-        {
-            dashBarAmount = 60;
-        }
-        if(dashBarAmount < 1)
-        {
-            dashBarAmount = 1;
-        }
-        dashMeter.value = dashBarAmount;
-        dashForce = lastDash - dashBarAmount;
-
-        // Check whether there is any dash magic remaining
-        if (dashBarAmount > 0)
+        if(grounded)
         {
             canDash = true;
-        }
-        else
-        {
-            canDash = false;
         }
 
         // Play different SFX based on speed
@@ -248,7 +209,7 @@ public class RigidBodyMovement : MonoBehaviour
         if (Input.GetKeyUp(KeyCode.LeftControl))
             StopCrouch();
 
-        if (Input.GetKeyUp(KeyCode.LeftShift))
+        if (Input.GetKey(KeyCode.LeftShift))
             Dash();
     }
 
@@ -327,6 +288,7 @@ public class RigidBodyMovement : MonoBehaviour
             v.y = 0;
             rb.velocity = v;
             rb.AddForce(Vector3.up * 40f, ForceMode.Impulse);
+            canDash = true;
         }
 
         // Movement while in wind area
@@ -368,11 +330,7 @@ public class RigidBodyMovement : MonoBehaviour
         if (!grounded && canDash)
         {
             rb.AddForce(orientation.transform.forward * dashForce, ForceMode.Impulse);
-            lastDash = lastDash - dashForce;
-        }
-        if(dashBarAmount == 1)
-        {
-            dashBarAmount = 0;
+            canDash = false;
         }
     }
     
@@ -445,6 +403,11 @@ public class RigidBodyMovement : MonoBehaviour
     public bool isGrounded()
     {
         return grounded;
+    }
+
+    public bool isBouncing()
+    {
+        return bouncing;
     }
 
     private bool IsFloor(Vector3 v) {

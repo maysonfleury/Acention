@@ -66,10 +66,17 @@ public class GrapplingHook : MonoBehaviour
 
                 
 
-            if (rbMove.isGrounded())
+            if (rbMove.isGrounded() || rbMove.isBouncing())
             {
                 canShoot = true;
-                shotsLeft = 1;
+                if(isGrappling())
+                {
+                    shotsLeft = 1;
+                }
+                else
+                {
+                    shotsLeft = 2;
+                }
             }
             if (shotsLeft < 1)
             {
