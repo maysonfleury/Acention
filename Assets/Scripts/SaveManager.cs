@@ -5,16 +5,19 @@ using UnityEngine;
 public class SaveManager : MonoBehaviour
 {
     RigidBodyMovement player;
+    UIManager ui;
 
     void Start()
     {
         player = FindObjectOfType<RigidBodyMovement>();
+        ui = FindObjectOfType<UIManager>();
 
         try
         {
             GameData data = SaveSystem.LoadGameState();
 
             player.gameStart = data.gameStart;
+            ui.timeRemaining = data.timeRemaining;
 
             Vector3 position;
             position.x = data.position[0];

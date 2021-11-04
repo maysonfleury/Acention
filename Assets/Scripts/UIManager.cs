@@ -24,7 +24,7 @@ public class UIManager : MonoBehaviour
     Image dash2;
 
     [SerializeField] TextMeshProUGUI timer;
-    float timeRemaining = 3600f;
+    public float timeRemaining = 3600f;
 
     bool transitioning;
 
@@ -93,7 +93,10 @@ public class UIManager : MonoBehaviour
         if (dToD < 33.4f && player.gameStart == true)
         {
             if (!area1_discovered)
+            {
                 mm.GameStart();
+                mm.ChangeSong(1);
+            }
             else
                 mm.ChangeSong(1);
 
@@ -103,6 +106,11 @@ public class UIManager : MonoBehaviour
         }
         else if (dToD >= 33.4f && dToD < 53.3f)
         {
+            if (!area1_discovered)
+            {
+                mm.GameStart();
+                mm.ChangeSong(2);
+            }
             UpdateLocation("Crystal Core", area2_discovered);
             area2_discovered = true;
             UpdateSkybox(2);
@@ -110,6 +118,11 @@ public class UIManager : MonoBehaviour
         }
         else if (dToD >= 53.3f && dToD < 99f)
         {
+            if (!area1_discovered)
+            {
+                mm.GameStart();
+                mm.ChangeSong(3);
+            }
             UpdateLocation("Sacred Spire", area3_discovered);
             area3_discovered = true;
             UpdateSkybox(3);
@@ -117,6 +130,11 @@ public class UIManager : MonoBehaviour
         }
         else if (dToD >= 99f )
         {
+            if (!area1_discovered)
+            {
+                mm.GameStart();
+                mm.ChangeSong(4);
+            }
             UpdateLocation("True Core", area4_discovered);
             area4_discovered = true;
             UpdateSkybox(4);

@@ -26,9 +26,7 @@ public class MusicManager : MonoBehaviour
             Play("area_1");
             Play("area_2");
             Play("area_3");
-            Play("area_4");
-
-            ChangeSong(1);
+            Play("area_4");            
 
             songs = gameObject.GetComponents<AudioSource>();
         }

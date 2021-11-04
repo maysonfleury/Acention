@@ -76,7 +76,7 @@ public class PauseMenu : MonoBehaviour
 
     public void SaveAndQuit ()
     {
-        SaveSystem.SaveGameState(player);
+        SaveSystem.SaveGameState(player, ui);
         Application.Quit();
     }
 
