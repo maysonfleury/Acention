@@ -21,7 +21,6 @@ public class GrapplingHook : MonoBehaviour
     public int shotsLeft = 3;
 
     private GameObject tempProjectile;
-    private bool tempProjectileAlive = false;
     public bool isPaused;
 
     AudioManager am;
