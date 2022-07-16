@@ -30,21 +30,22 @@ public class UIManager_MainMenu : MonoBehaviour
         RenderSettings.skybox.SetFloat("_Rotation", Time.time * 0.3f);
     }
 
-    void NewGame()
+    public void NewGame()
     {
         // Delete Old Save
         // Switch to main game scene
     }
 
-    void ContinueGame()
+    public void ContinueGame()
     {
         // Check for Save file
         // Continue from save file if there is one, new game if not
     }
 
-    void QuitGame()
+    public void QuitGame()
     {
         // TODO: Save?
+        Debug.Log("Quitting Game...");
         Application.Quit();
     }
 }
