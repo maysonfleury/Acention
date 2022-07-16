@@ -21,6 +21,7 @@ public class PauseMenu : MonoBehaviour
     RigidBodyMovement player;
     GrapplingHook grapple;
     UIManager ui;
+    SettingsManager settings;
 
     public AudioMixer audioMixer;
     private bool tempControls;
@@ -36,6 +37,11 @@ public class PauseMenu : MonoBehaviour
         anykeyButton.SetActive(true);
         returnButton.SetActive(false);
 	}
+
+    private void Start()
+    {
+        InitializeSettings();
+    }
 
     private void MenuOn ()
     {
@@ -90,18 +96,19 @@ public class PauseMenu : MonoBehaviour
         controlMenu.SetActive(false);        
     }
 
-    public void LudwigCheck (System.Single vol)
+    private void InitializeSettings()
     {
-        if (vol == 1.0)
-        {
-            
-        }
+        settings = SaveSystem.LoadSettings();
+        ChangeMouseSens(settings.mouseSens);
+        SetMasterVolume(settings.masterVolume);
+        SetSFXVolume(settings.sfxVolume);
     }
 
     public void ChangeMouseSens (float sens)
     {
         player.sensMultiplier = sens;
         mouseSens.text = sens.ToString("f1");
+        settings.SaveMouseSens(sens);
     }
 
     public void SetMasterVolume (float volume)
@@ -111,6 +118,7 @@ public class PauseMenu : MonoBehaviour
         {
             audioMixer.SetFloat("MasterVolume", -80); // Mutes if player goes to lowest option
         }
+        settings.SaveMasterVolume(volume);
     }
 
     public void SetSFXVolume (float volume)
@@ -120,7 +128,9 @@ public class PauseMenu : MonoBehaviour
         {
             audioMixer.SetFloat("SFXVolume", -80); 
         }
+        setting.SaveSFXVolume(volume);
     }
+
     public void SetMusicVolume(float volume)
     {
         audioMixer.SetFloat("MusicVolume", volume);
@@ -128,16 +138,19 @@ public class PauseMenu : MonoBehaviour
         {
             audioMixer.SetFloat("MusicVolume", -80); 
         }
+        settings.SaveMusicVolume(volume);
     }
 
     public void SetQuality (int qualityLevel)
     {
         QualitySettings.SetQualityLevel(qualityLevel);
+        settings.SaveQuality(qualityLevel);
     }
 
     public void SetFullscreen (bool isFullscreen)
     {
         Screen.fullScreen = isFullscreen;
+        settings.SaveFullscreen(isFullscreen);
     }
 
     public void OnMenuStatusChange ()

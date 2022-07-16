@@ -16,6 +16,16 @@ public static class SaveSystem
         stream.Close();
     }
 
+    public static void SaveSettings (SettingsManager settings)
+    {
+        BinaryFormatter formatter = new BinaryFormatter();
+        string path = Application.persistentDataPath + "/settings.info";
+        FileStream stream = new FileStream(path, FileMode.Create);
+
+        formatter.Serialize(stream, settings);
+        stream.Close();
+    }
+
     public static GameData LoadGameState ()
     {
         string path = Application.persistentDataPath + "/player.info";
@@ -32,6 +42,26 @@ public static class SaveSystem
         else
         {
             Debug.LogError("Save file not found in " + path);
+            return null;
+        }
+    }
+
+    public static SettingsManager LoadSettings ()
+    {
+        string path = Application.persistentDataPath + "/settings.info";
+        if (File.Exists(path))
+        {
+            BinaryFormatter formatter = new BinaryFormatter();
+            FileStream stream = new FileStream(path, FileMode.Open);
+
+            SettingsManager settings = formatter.Deserialize(stream) as SettingsManager;
+            stream.Close();
+
+            return settings;
+        }
+        else
+        {
+            Debug.LogError("Settings save file not found in " + path);
             return null;
         }
     }

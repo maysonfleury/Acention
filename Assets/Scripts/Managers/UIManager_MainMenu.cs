@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 using System;
 
 public class UIManager_MainMenu : MonoBehaviour
@@ -33,13 +34,17 @@ public class UIManager_MainMenu : MonoBehaviour
     public void NewGame()
     {
         // Delete Old Save
-        // Switch to main game scene
+        Debug.Log("Deleting Save File");
+        SaveSystem.DeleteGameState();
+
+        // Switch to Main Game Scene
+        SceneManager.LoadScene("Acention");
     }
 
     public void ContinueGame()
     {
-        // Check for Save file
-        // Continue from save file if there is one, new game if not
+        // Switch to Main Game Scene
+        SceneManager.LoadScene("Acention");
     }
 
     public void QuitGame()
