@@ -17,7 +17,12 @@ public class PauseMenu : MonoBehaviour
     [SerializeField] GameObject anykeyButton;
     [SerializeField] GameObject returnButton;
 
+    [SerializeField] GameObject masterSlider;
+    [SerializeField] GameObject sfxSlider;
+    [SerializeField] GameObject musicSlider;
+    [SerializeField] GameObject mouseSlider;
     [SerializeField] TextMeshProUGUI mouseSens;
+    [SerializeField] TMP_Dropdown graphicsDropdown;
 
     RigidBodyMovement player;
     GrapplingHook grapple;
@@ -81,6 +86,9 @@ public class PauseMenu : MonoBehaviour
 
     public void SaveAndQuit ()
     {
+        Time.timeScale = m_TimeScaleRef;
+        AudioListener.volume = m_VolumeRef;
+
         SaveSystem.SaveGameState(player, ui);
         SaveSystem.SaveSettings(settings);
         SceneManager.LoadScene("Main Menu");
@@ -111,6 +119,13 @@ public class PauseMenu : MonoBehaviour
             SetMusicVolume(settings.musicVolume);
             SetQuality(settings.qualityLevel);
             SetFullscreen(settings.fullscreenState);
+
+            masterSlider.GetComponent<Slider>().value = settings.masterVolume;
+            sfxSlider.GetComponent<Slider>().value = settings.sfxVolume;
+            musicSlider.GetComponent<Slider>().value = settings.musicVolume;
+            mouseSlider.GetComponent<Slider>().value = settings.mouseSens;
+            mouseSens.text = Math.Round((decimal)settings.mouseSens, 1).ToString();
+            graphicsDropdown.value = settings.qualityLevel;
         }
         catch
         {

@@ -13,10 +13,10 @@ public class SettingsManager
 
     public SettingsManager()
     {
-        mouseSens = 1;
-        masterVolume = 0;
-        sfxVolume = 0;
-        musicVolume = 0;
+        mouseSens = 1.0f;
+        masterVolume = -10f;
+        sfxVolume = -9f;
+        musicVolume = -10f;
         qualityLevel = 4;
         fullscreenState = true;
     }

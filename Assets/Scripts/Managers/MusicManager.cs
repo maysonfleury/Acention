@@ -73,6 +73,14 @@ public class MusicManager : MonoBehaviour
         Play("siren");
     }
 
+    public void LeaveMenu()
+    {
+        foreach (AudioSource song in songs)
+        {
+            song.Stop();
+        }
+    }
+
     IEnumerator FadeVolume(AudioSource song, bool increasing)
     {
         if (increasing)

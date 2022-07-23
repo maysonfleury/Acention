@@ -15,7 +15,12 @@ public class UIManager_MainMenu : MonoBehaviour
     [SerializeField] GameObject settingsMenu;
     [SerializeField] GameObject returnButton;
 
+    [SerializeField] GameObject masterSlider;
+    [SerializeField] GameObject sfxSlider;
+    [SerializeField] GameObject musicSlider;
+    [SerializeField] GameObject mouseSlider;
     [SerializeField] TextMeshProUGUI mouseSens;
+    [SerializeField] TMP_Dropdown graphicsDropdown;
 
     SettingsManager settings;
     MusicManager mm;
@@ -44,13 +49,27 @@ public class UIManager_MainMenu : MonoBehaviour
         Debug.Log("Deleting Save File");
         SaveSystem.DeleteGameState();
 
+        // Save Settings
+        SaveSystem.SaveSettings(settings);
+
+        // Stop Music Manager
+        mm.LeaveMenu();
+
         // Switch to Main Game Scene
+        Debug.Log("Starting Acention");
         SceneManager.LoadScene("Acention");
     }
 
     public void ContinueGame()
     {
+        // Save Settings
+        SaveSystem.SaveSettings(settings);
+
+        // Stop Music Manager
+        mm.LeaveMenu();
+
         // Switch to Main Game Scene
+        Debug.Log("Starting Acention");
         SceneManager.LoadScene("Acention");
     }
 
@@ -71,12 +90,19 @@ public class UIManager_MainMenu : MonoBehaviour
             Debug.Log("Loading player settings.");
             settings = SaveSystem.LoadSettings();
             
-            ChangeMouseSens(settings.mouseSens);
             SetMasterVolume(settings.masterVolume);
             SetSFXVolume(settings.sfxVolume);
             SetMusicVolume(settings.musicVolume);
+            ChangeMouseSens(settings.mouseSens);
             SetQuality(settings.qualityLevel);
             SetFullscreen(settings.fullscreenState);
+
+            masterSlider.GetComponent<Slider>().value = settings.masterVolume;
+            sfxSlider.GetComponent<Slider>().value = settings.sfxVolume;
+            musicSlider.GetComponent<Slider>().value = settings.musicVolume;
+            mouseSlider.GetComponent<Slider>().value = settings.mouseSens;
+            mouseSens.text = Math.Round((decimal)settings.mouseSens, 1).ToString();
+            graphicsDropdown.value = settings.qualityLevel;
         }
         catch
         {
