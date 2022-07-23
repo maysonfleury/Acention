@@ -22,7 +22,9 @@ public static class SaveSystem
         string path = Application.persistentDataPath + "/settings.info";
         FileStream stream = new FileStream(path, FileMode.Create);
 
-        formatter.Serialize(stream, settings);
+        SettingsManager data = settings;
+
+        formatter.Serialize(stream, data);
         stream.Close();
     }
 

@@ -1,45 +1,24 @@
 using System;
 using UnityEngine;
-using UnityEngine.UI;
-using UnityEngine.Audio;
-using TMPro;
 
-public class SettingsManager : MonoBehaviour
+[System.Serializable]
+public class SettingsManager
 {
-    [SerializeField] public float mouseSens;
-    [SerializeField] public float masterVolume;
-    [SerializeField] public float sfxVolume;
-    [SerializeField] public float musicVolume;
-    [SerializeField] public int qualityLevel;
-    [SerializeField] public bool fullscreenState;
+    public float mouseSens;
+    public float masterVolume;
+    public float sfxVolume;
+    public float musicVolume;
+    public int qualityLevel;
+    public bool fullscreenState;
 
-    public void SaveMouseSens (float sens)
+    public SettingsManager()
     {
-        this.mouseSens = sens;
-    }
-
-    public void SaveMasterVolume (float volume)
-    {
-        this.masterVolume = volume;
-    }
-
-    public void SaveSFXVolume (float volume)
-    {
-        this.sfxVolume = volume;
-    }
-    public void SaveMusicVolume(float volume)
-    {
-        this.musicVolume = volume;
-    }
-
-    public void SaveQuality (int level)
-    {
-        this.qualityLevel = level;
-    }
-
-    public void SaveFullscreen (bool isFullscreen)
-    {
-        this.fullscreenState = isFullscreen;
+        mouseSens = 1;
+        masterVolume = 0;
+        sfxVolume = 0;
+        musicVolume = 0;
+        qualityLevel = 4;
+        fullscreenState = true;
     }
 
 }

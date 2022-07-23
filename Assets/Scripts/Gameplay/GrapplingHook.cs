@@ -70,11 +70,13 @@ public class GrapplingHook : MonoBehaviour
                 canShoot = true;
                 if(isGrappling())
                 {
-                    shotsLeft = 1;
+                    //shotsLeft = 1;
+                    shotsLeft = 10;
                 }
                 else
                 {
-                    shotsLeft = 2;
+                    //shotsLeft = 2;
+                    shotsLeft = 10;
                 }
             }
             if (shotsLeft < 1)

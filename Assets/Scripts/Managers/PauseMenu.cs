@@ -2,6 +2,7 @@ using System;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Audio;
+using UnityEngine.SceneManagement;
 using TMPro;
 
 public class PauseMenu : MonoBehaviour
@@ -82,7 +83,7 @@ public class PauseMenu : MonoBehaviour
     {
         SaveSystem.SaveGameState(player, ui);
         SaveSystem.SaveSettings(settings);
-        Application.Quit();
+        SceneManager.LoadScene("Main Menu");
     }
 
     public void ApplyChanges ()
@@ -101,7 +102,9 @@ public class PauseMenu : MonoBehaviour
     {
         try
         {
+            Debug.Log("Loading player settings.");
             settings = SaveSystem.LoadSettings();
+            
             ChangeMouseSens(settings.mouseSens);
             SetMasterVolume(settings.masterVolume);
             SetSFXVolume(settings.sfxVolume);
@@ -111,7 +114,8 @@ public class PauseMenu : MonoBehaviour
         }
         catch
         {
-            Debug.Log("No settings save file detected.");
+            Debug.Log("No settings save file detected, using defaults.");
+            settings = new SettingsManager();
         }
     }
 
@@ -119,7 +123,7 @@ public class PauseMenu : MonoBehaviour
     {
         player.sensMultiplier = sens;
         mouseSens.text = sens.ToString("f1");
-        settings.SaveMouseSens(sens);
+        settings.mouseSens = sens;
     }
 
     public void SetMasterVolume (float volume)
@@ -129,7 +133,7 @@ public class PauseMenu : MonoBehaviour
         {
             audioMixer.SetFloat("MasterVolume", -80); // Mutes if player goes to lowest option
         }
-        settings.SaveMasterVolume(volume);
+        settings.masterVolume = volume;
     }
 
     public void SetSFXVolume (float volume)
@@ -139,7 +143,7 @@ public class PauseMenu : MonoBehaviour
         {
             audioMixer.SetFloat("SFXVolume", -80); 
         }
-        settings.SaveSFXVolume(volume);
+        settings.sfxVolume = volume;
     }
 
     public void SetMusicVolume(float volume)
@@ -149,19 +153,19 @@ public class PauseMenu : MonoBehaviour
         {
             audioMixer.SetFloat("MusicVolume", -80); 
         }
-        settings.SaveMusicVolume(volume);
+        settings.musicVolume = volume;
     }
 
     public void SetQuality (int qualityLevel)
     {
         QualitySettings.SetQualityLevel(qualityLevel);
-        settings.SaveQuality(qualityLevel);
+        settings.qualityLevel = qualityLevel;
     }
 
     public void SetFullscreen (bool isFullscreen)
     {
         Screen.fullScreen = isFullscreen;
-        settings.SaveFullscreen(isFullscreen);
+        settings.fullscreenState = isFullscreen;
     }
 
     public void OnMenuStatusChange ()
