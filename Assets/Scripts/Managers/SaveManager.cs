@@ -28,7 +28,7 @@ public class SaveManager : MonoBehaviour
         }
         catch
         {
-            Debug.Log("no save file detected");
+            Debug.Log("No save file detected.");
         }
     }
 

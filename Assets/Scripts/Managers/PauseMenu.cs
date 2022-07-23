@@ -81,6 +81,7 @@ public class PauseMenu : MonoBehaviour
     public void SaveAndQuit ()
     {
         SaveSystem.SaveGameState(player, ui);
+        SaveSystem.SaveSettings(settings);
         Application.Quit();
     }
 
@@ -98,10 +99,20 @@ public class PauseMenu : MonoBehaviour
 
     private void InitializeSettings()
     {
-        settings = SaveSystem.LoadSettings();
-        ChangeMouseSens(settings.mouseSens);
-        SetMasterVolume(settings.masterVolume);
-        SetSFXVolume(settings.sfxVolume);
+        try
+        {
+            settings = SaveSystem.LoadSettings();
+            ChangeMouseSens(settings.mouseSens);
+            SetMasterVolume(settings.masterVolume);
+            SetSFXVolume(settings.sfxVolume);
+            SetMusicVolume(settings.musicVolume);
+            SetQuality(settings.qualityLevel);
+            SetFullscreen(settings.fullscreenState);
+        }
+        catch
+        {
+            Debug.Log("No settings save file detected.");
+        }
     }
 
     public void ChangeMouseSens (float sens)
@@ -128,7 +139,7 @@ public class PauseMenu : MonoBehaviour
         {
             audioMixer.SetFloat("SFXVolume", -80); 
         }
-        setting.SaveSFXVolume(volume);
+        settings.SaveSFXVolume(volume);
     }
 
     public void SetMusicVolume(float volume)
