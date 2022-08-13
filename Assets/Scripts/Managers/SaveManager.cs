@@ -6,6 +6,7 @@ public class SaveManager : MonoBehaviour
 {
     RigidBodyMovement player;
     UIManager ui;
+    [SerializeField] bool DeleteSave;
 
     void Start()
     {
@@ -32,5 +33,12 @@ public class SaveManager : MonoBehaviour
         }
     }
 
-
+    private void Update()
+    {
+        if(DeleteSave)
+        {
+            DeleteSave = false;
+            SaveSystem.DeleteGameState();
+        }
+    }
 }
