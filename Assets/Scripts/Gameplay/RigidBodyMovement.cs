@@ -21,7 +21,6 @@ public class RigidBodyMovement : MonoBehaviour
     private float sensitivity = 50f;
     public float sensMultiplier = 1f;
     
-    // Movement
     [Header("Movement")]
     public float moveSpeed = 1750;
     public float maxSpeed = 13;
@@ -29,6 +28,7 @@ public class RigidBodyMovement : MonoBehaviour
     public bool sliding;
     public bool bouncing;
     public bool inWindArea;
+
     public LayerMask whatIsGround;
     public LayerMask whatIsSlides;
     public LayerMask whatIsBouncy;
@@ -45,7 +45,6 @@ public class RigidBodyMovement : MonoBehaviour
     public float slideForce = 400;
     public float slideCounterMovement = 0.2f;
 
-    // Jumping
     [Header("Aerial Movement")]
     public float jumpForce = 550f;
     public float gravity = 375f;
@@ -73,17 +72,17 @@ public class RigidBodyMovement : MonoBehaviour
     // Ground Check
     private float groundDistance = 0.3f;
 
-    // Stair Climb
     [Header("Stair Climbing")]
     public bool allowStairClimb = false;
     public float stepHeight = 0.95f;
     public float stepSmooth = 3f;
 
-    // Pause Menu Check
+    [Header("Particle Systems")]
+    public ParticleSystem speedlinesSlow;
+    public ParticleSystem speedlinesFast;
+
+    [Header("Extra Variables")]
     public bool isPaused;
-
-    public bool isFast;
-
     public bool gameStart;
     public bool gameWon;
 
@@ -127,23 +126,6 @@ public class RigidBodyMovement : MonoBehaviour
         {
             canDash = true;
         }
-
-        // Play different SFX based on speed
-        if (rb.velocity.magnitude > 30f && !isFast)
-        {
-            isFast = true;
-            FindObjectOfType<AudioManager>().Play("woosh");
-        }
-        else if (rb.velocity.magnitude < 20f)
-        {
-            FindObjectOfType<AudioManager>().Stop("woosh");
-        }
-        else if (rb.velocity.magnitude < 10f)
-        {
-            isFast = false;
-        }
-
-        
 
         if (gameOver.isGameOver)
         {
@@ -265,6 +247,32 @@ public class RigidBodyMovement : MonoBehaviour
         if (x < 0 && xMag < -maxSpeed) x = 0;
         if (y > 0 && yMag > maxSpeed) y = 0;
         if (y < 0 && yMag < -maxSpeed) y = 0;
+
+        // Apply SpeedLines UI depending on velocity
+        float velo = Mathf.Abs(xMag) + Mathf.Abs(yMag);
+        if(velo > 65)
+        {
+            speedlinesFast.Play();
+        }
+        else if (velo > 50)
+        {
+            if(speedlinesFast.isPlaying)
+            {
+                speedlinesFast.Stop();
+            }
+            speedlinesSlow.Play();
+        }
+        else
+        {
+            if(speedlinesSlow.isPlaying)
+            {
+                speedlinesSlow.Stop();
+            }
+            if(speedlinesFast.isPlaying)
+            {
+                speedlinesFast.Stop();
+            }
+        }
 
         // Some multipliers
         float multiplier = 1f, multiplierV = 1f;
