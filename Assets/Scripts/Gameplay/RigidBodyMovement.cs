@@ -55,7 +55,7 @@ public class RigidBodyMovement : MonoBehaviour
 
     // Dashing
     private bool canDash = true;
-    public float dashForce = 50f;
+    public float dashForce = 40f;
 
     // Input
     float x, y;
@@ -292,10 +292,6 @@ public class RigidBodyMovement : MonoBehaviour
         // Movement while hitting a Bouncy obstacle
         if (bouncing)
         {
-            Vector3 v = rb.velocity;
-            v.y = 0;
-            rb.velocity = v;
-            rb.AddForce(Vector3.up * 40f, ForceMode.Impulse);
             canDash = true;
         }
 
