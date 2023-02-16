@@ -18,7 +18,7 @@ public class GrapplingHook : MonoBehaviour
     public GameObject hookPrefab;
     public Image crosshair;
     public float maxGrappleDistance = 100f;
-    public int shotsLeft = 3;
+    public int shotsLeft = 99;
 
     private GameObject tempProjectile;
     public bool isPaused;
@@ -39,12 +39,11 @@ public class GrapplingHook : MonoBehaviour
                 if (shotsLeft < 1)
                 {
                     //particleShot.Play();
-                    // Play no shot SFX
+                    //TODO: Play no shot SFX
                     canShoot = false;
                 }
                 if (canShoot)
                 {
-                    
                     am.Play("grapple_rope");
                     am.Play("grapple_whizz");
                     StartGrapple();
@@ -62,30 +61,12 @@ public class GrapplingHook : MonoBehaviour
             {
                 StopRetracting();
             }
-
-                
-
+            
+            // Resets shots to 1000 whenever you touch the ground
             if (rbMove.isGrounded() || rbMove.isBouncing())
             {
                 canShoot = true;
-                if(isGrappling())
-                {
-                    //shotsLeft = 1;
-                    shotsLeft = 10;
-                }
-                else
-                {
-                    //shotsLeft = 2;
-                    shotsLeft = 10;
-                }
-            }
-            if (shotsLeft < 1)
-            {
-                hookPrefab.SetActive(false);
-            }
-            else if (canShoot && !isGrappling())
-            {
-                hookPrefab.SetActive(true);
+                shotsLeft = 1000;
             }
 
             // Change crosshair colour when hovering over grappleable object
@@ -129,8 +110,9 @@ public class GrapplingHook : MonoBehaviour
 
     private void StartGrapple()
     {
-        // Show Particle Effect
+        // Show Particle Effect and remove Hook
         particleShot.Play();
+        hookPrefab.SetActive(false);
 
         // Get a raycast array of all objects hit
         RaycastHit[] crossHits;
@@ -227,6 +209,7 @@ public class GrapplingHook : MonoBehaviour
 
     private void StopGrapple()
     {
+        hookPrefab.SetActive(true);
         grappleAnimator.SetTrigger("Idle");
         Destroy(springJoint);
         Destroy(tempProjectile);
