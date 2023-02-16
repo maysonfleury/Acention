@@ -39,3 +39,5 @@ sysinfo.txt
 # Builds
 *.apk
 *.unitypackage
+Assets/Materials/Skyboxes/FS013_Sunset.mat
+Assets/Materials/Skyboxes/FS000_Day_01_Sunless.mat
