@@ -8,7 +8,9 @@ public class GrapplingHook : MonoBehaviour
     private Vector3 grapplePoint;
     private SpringJoint springJoint;
     private Vector3 currentGrapplePosition;
-    private bool canShoot;
+    private bool _canShoot;
+    private bool _isHedroned;
+    private Transform objectWorldPos;
 
     public RigidBodyMovement rbMove;
     public Transform gunTip, cam, player;
@@ -40,9 +42,9 @@ public class GrapplingHook : MonoBehaviour
                 {
                     //particleShot.Play();
                     //TODO: Play no shot SFX
-                    canShoot = false;
+                    _canShoot = false;
                 }
-                if (canShoot)
+                if (_canShoot)
                 {
                     am.Play("grapple_rope");
                     am.Play("grapple_whizz");
@@ -65,8 +67,15 @@ public class GrapplingHook : MonoBehaviour
             // Resets shots to 1000 whenever you touch the ground
             if (rbMove.isGrounded() || rbMove.isBouncing())
             {
-                canShoot = true;
+                _canShoot = true;
                 shotsLeft = 1000;
+            }
+
+            // If grappling a moving object, update the grapple position and spring joint
+            if(_isHedroned)
+            {
+                grapplePoint = objectWorldPos.position;
+                springJoint.connectedAnchor = grapplePoint;
             }
 
             // Change crosshair colour when hovering over grappleable object
@@ -170,15 +179,21 @@ public class GrapplingHook : MonoBehaviour
                     Debug.Log("Lief Debugson");
                 }
 
+                // If we hit a moving object
+                if(closestHit.collider.gameObject.GetComponent<HedronRotator>() != null)
+                {
+                    _isHedroned = true;
+                    objectWorldPos = closestHit.transform;
+                }
+
                 // Initialize Spring Component
                 grapplePoint = closestHit.point;
                 springJoint = player.gameObject.AddComponent<SpringJoint>();
                 springJoint.autoConfigureConnectedAnchor = false;
                 springJoint.connectedAnchor = grapplePoint;
 
+                // How far the rope will stretch
                 float distanceFromPoint = Vector3.Distance(player.position, grapplePoint);
-
-                // Distance the grapple will try to keep from grapple point
                 springJoint.maxDistance = distanceFromPoint * 0.9f;
                 springJoint.minDistance = distanceFromPoint * 0.75f;
 
@@ -200,7 +215,7 @@ public class GrapplingHook : MonoBehaviour
         }
 
         // No grappling more than once per airtime
-        //canShoot = false;
+        //_canShoot = false;
 
         // Reduce shots by 1
         shotsLeft--;
@@ -209,6 +224,7 @@ public class GrapplingHook : MonoBehaviour
 
     private void StopGrapple()
     {
+        _isHedroned = false;
         hookPrefab.SetActive(true);
         grappleAnimator.SetTrigger("Idle");
         Destroy(springJoint);

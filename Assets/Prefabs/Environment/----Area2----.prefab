@@ -16,7 +16,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &5181991264130963717
 Transform:
@@ -25,8 +25,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 244196295974148076}
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5309995778726580166}
@@ -94,12 +94,13 @@ GameObject:
   - component: {fileID: 4289147654541261812}
   - component: {fileID: 1026532749246545095}
   - component: {fileID: 1026532749246545092}
+  - component: {fileID: 654950258}
   m_Layer: 7
   m_Name: Hedron5
   m_TagString: Crystal
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &3709372382443505197
 Transform:
@@ -109,7 +110,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1026532749246545093}
   m_LocalRotation: {x: -0.66552854, y: -0.2388971, z: -0.2388971, w: 0.66552854}
-  m_LocalPosition: {x: 116.24, y: 503.8, z: -91.92}
+  m_LocalPosition: {x: 116.3, y: -31.5, z: 118.05}
   m_LocalScale: {x: 4, y: 4, z: 4}
   m_Children:
   - {fileID: 3121737085702605616}
@@ -191,6 +192,20 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.4027451, y: 0.34564462, z: 0.47360396}
   m_Center: {x: 0.005237088, y: -0.023888469, z: -0.64160544}
+--- !u!114 &654950258
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1026532749246545093}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a347bfda3abbbe4ab79e30555f69ee0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _rotation: {x: 0, y: 0, z: 1}
+  _speed: 50
 --- !u!1 &2225719493446197024
 GameObject:
   m_ObjectHideFlags: 0
@@ -207,7 +222,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &1567894783214045041
 Transform:
@@ -216,8 +231,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2225719493446197024}
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5347355282103265124}
@@ -285,12 +300,13 @@ GameObject:
   - component: {fileID: 2787058027764695807}
   - component: {fileID: 2787058027764695804}
   - component: {fileID: 2787058027764695805}
+  - component: {fileID: 337386253}
   m_Layer: 7
   m_Name: Hedron3 (3)
   m_TagString: Crystal
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &2787058027764695794
 Transform:
@@ -300,7 +316,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2787058027764695795}
   m_LocalRotation: {x: -0.70690453, y: 0.016909279, z: 0.01690917, w: 0.70690465}
-  m_LocalPosition: {x: -132.7, y: 606.19, z: -321.3}
+  m_LocalPosition: {x: -132.64, y: 70.890015, z: -111.32999}
   m_LocalScale: {x: 6, y: 6, z: 4}
   m_Children:
   - {fileID: 2787058028986617546}
@@ -382,6 +398,20 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.36483893, y: 0.30003724, z: 0.41999796}
   m_Center: {x: -0.0011956887, y: -0.008717269, z: -0.6429101}
+--- !u!114 &337386253
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2787058027764695795}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a347bfda3abbbe4ab79e30555f69ee0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _rotation: {x: 0, y: 0, z: 1}
+  _speed: 50
 --- !u!1 &2787058027872196932
 GameObject:
   m_ObjectHideFlags: 0
@@ -398,7 +428,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &2787058027872196935
 Transform:
@@ -407,8 +437,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2787058027872196932}
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2787058027917319248}
@@ -476,12 +506,13 @@ GameObject:
   - component: {fileID: 2787058027917319261}
   - component: {fileID: 2787058027917319250}
   - component: {fileID: 2787058027917319251}
+  - component: {fileID: 149299053}
   m_Layer: 7
   m_Name: Hedron3 (2)
   m_TagString: Crystal
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &2787058027917319248
 Transform:
@@ -491,7 +522,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2787058027917319249}
   m_LocalRotation: {x: -0.5959659, y: -0.3805583, z: -0.3805583, w: 0.5959659}
-  m_LocalPosition: {x: -163.31, y: 593.89996, z: -219.93}
+  m_LocalPosition: {x: -163.25, y: 58.599976, z: -9.959991}
   m_LocalScale: {x: 7, y: 7, z: 4}
   m_Children:
   - {fileID: 2787058027872196935}
@@ -573,6 +604,20 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.36483893, y: 0.30003724, z: 0.41999796}
   m_Center: {x: -0.0011956887, y: -0.008717269, z: -0.6429101}
+--- !u!114 &149299053
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2787058027917319249}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a347bfda3abbbe4ab79e30555f69ee0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _rotation: {x: 0, y: 0, z: 1}
+  _speed: 50
 --- !u!1 &2787058028721161689
 GameObject:
   m_ObjectHideFlags: 0
@@ -589,7 +634,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &2787058028721161688
 Transform:
@@ -598,8 +643,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2787058028721161689}
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2787058029217586469}
@@ -667,12 +712,13 @@ GameObject:
   - component: {fileID: 2787058028846698789}
   - component: {fileID: 2787058028846698810}
   - component: {fileID: 2787058028846698811}
+  - component: {fileID: 1759057237}
   m_Layer: 7
   m_Name: Hedron8 (1)
   m_TagString: Crystal
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &2787058028846698808
 Transform:
@@ -682,7 +728,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2787058028846698809}
   m_LocalRotation: {x: -0.50724226, y: -0.49265143, z: -0.4926513, w: 0.5072422}
-  m_LocalPosition: {x: -0.86931944, y: 541.7, z: -50.231968}
+  m_LocalPosition: {x: -0.8093199, y: 6.4000244, z: 159.73804}
   m_LocalScale: {x: 4, y: 4, z: 4}
   m_Children:
   - {fileID: 2787058029603872094}
@@ -764,6 +810,20 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.3525285, y: 0.35384956, z: 0.44319725}
   m_Center: {x: 0.02004576, y: 0.001532512, z: -0.65680885}
+--- !u!114 &1759057237
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2787058028846698809}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a347bfda3abbbe4ab79e30555f69ee0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _rotation: {x: 0, y: 0, z: 1}
+  _speed: 50
 --- !u!1 &2787058028986617547
 GameObject:
   m_ObjectHideFlags: 0
@@ -780,7 +840,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &2787058028986617546
 Transform:
@@ -789,8 +849,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2787058028986617547}
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2787058027764695794}
@@ -858,12 +918,13 @@ GameObject:
   - component: {fileID: 2787058029120438230}
   - component: {fileID: 2787058029120438231}
   - component: {fileID: 2787058029120438228}
+  - component: {fileID: 2087988777}
   m_Layer: 7
   m_Name: Hedron5 (2)
   m_TagString: Crystal
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &2787058029120438229
 Transform:
@@ -873,7 +934,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2787058029120438058}
   m_LocalRotation: {x: -0.70161337, y: -0.087969266, z: -0.08796935, w: 0.7016135}
-  m_LocalPosition: {x: -101.6, y: 624.1, z: -357.9}
+  m_LocalPosition: {x: -101.53999, y: 88.79999, z: -147.93}
   m_LocalScale: {x: 4, y: 4, z: 4}
   m_Children:
   - {fileID: 2787058029610491045}
@@ -955,6 +1016,20 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.4027451, y: 0.34564462, z: 0.47360396}
   m_Center: {x: 0.005237088, y: -0.023888469, z: -0.64160544}
+--- !u!114 &2087988777
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2787058029120438058}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a347bfda3abbbe4ab79e30555f69ee0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _rotation: {x: 0, y: 0, z: 1}
+  _speed: 50
 --- !u!1 &2787058029217586490
 GameObject:
   m_ObjectHideFlags: 0
@@ -967,12 +1042,13 @@ GameObject:
   - component: {fileID: 2787058029217586470}
   - component: {fileID: 2787058029217586471}
   - component: {fileID: 2787058029217586468}
+  - component: {fileID: 1002655308}
   m_Layer: 7
   m_Name: Hedron2 (1)
   m_TagString: Crystal
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &2787058029217586469
 Transform:
@@ -982,7 +1058,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2787058029217586490}
   m_LocalRotation: {x: -0.7070287, y: 0.010511414, z: 0.01051141, w: 0.7070287}
-  m_LocalPosition: {x: -142.5, y: 580.60004, z: -184.1}
+  m_LocalPosition: {x: -142.44, y: 45.30005, z: 25.869995}
   m_LocalScale: {x: 4, y: 4, z: 4}
   m_Children:
   - {fileID: 2787058028721161688}
@@ -1051,6 +1127,20 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.6540812, y: 0.6536619, z: 0.7316192}
   m_Center: {x: 0.0006166398, y: -0.00000882149, z: -0.36581114}
+--- !u!114 &1002655308
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2787058029217586490}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a347bfda3abbbe4ab79e30555f69ee0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _rotation: {x: 0, y: 0, z: 1}
+  _speed: 50
 --- !u!1 &2787058029603872095
 GameObject:
   m_ObjectHideFlags: 0
@@ -1067,7 +1157,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &2787058029603872094
 Transform:
@@ -1076,8 +1166,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2787058029603872095}
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2787058028846698808}
@@ -1148,7 +1238,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &2787058029610491045
 Transform:
@@ -1157,8 +1247,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2787058029610491066}
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2787058029120438229}
@@ -1222,6 +1312,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3501553019963636175}
+  - component: {fileID: 2075349293}
   m_Layer: 7
   m_Name: ----Grappleable Objects----
   m_TagString: Untagged
@@ -1237,7 +1328,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3501553019963636172}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -0.06, y: 535.3, z: -209.97}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 3901038748959393082}
@@ -1256,6 +1347,20 @@ Transform:
   m_Father: {fileID: 8013817188232245802}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2075349293
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3501553019963636172}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a347bfda3abbbe4ab79e30555f69ee0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _rotation: {x: 0, y: 1, z: 0}
+  _speed: 5
 --- !u!1 &3504667736833142126
 GameObject:
   m_ObjectHideFlags: 0
@@ -1272,7 +1377,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &3121737085702605616
 Transform:
@@ -1281,8 +1386,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3504667736833142126}
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 3709372382443505197}
@@ -1353,7 +1458,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &3265307929479741244
 Transform:
@@ -1362,8 +1467,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3516567226476195323}
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 3696320661495884318}
@@ -1434,7 +1539,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &1069347013782950783
 Transform:
@@ -1443,8 +1548,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3824910970619733145}
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1059042909494839047}
@@ -1512,12 +1617,13 @@ GameObject:
   - component: {fileID: 4315427197359454698}
   - component: {fileID: 3997086760414543932}
   - component: {fileID: 3997086760414543933}
+  - component: {fileID: 110946405}
   m_Layer: 7
   m_Name: Hedron3
   m_TagString: Crystal
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &3901038748959393082
 Transform:
@@ -1527,7 +1633,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3997086760414543922}
   m_LocalRotation: {x: -0.6810643, y: 0.1901354, z: 0.19013537, w: 0.6810643}
-  m_LocalPosition: {x: 110.653404, y: 449.39, z: -263.54938}
+  m_LocalPosition: {x: 110.71341, y: -85.90997, z: -53.579376}
   m_LocalScale: {x: 3, y: 3, z: 3}
   m_Children:
   - {fileID: 7354413571659460057}
@@ -1609,6 +1715,20 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.36483893, y: 0.30003724, z: 0.41999796}
   m_Center: {x: -0.0011956887, y: -0.008717269, z: -0.6429101}
+--- !u!114 &110946405
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3997086760414543922}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a347bfda3abbbe4ab79e30555f69ee0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _rotation: {x: 0, y: 0, z: 1}
+  _speed: 50
 --- !u!1 &4268739062744955191
 GameObject:
   m_ObjectHideFlags: 0
@@ -1622,12 +1742,13 @@ GameObject:
   - component: {fileID: 4375250045326068566}
   - component: {fileID: 4268739062744955185}
   - component: {fileID: 4268739062744955190}
+  - component: {fileID: 741519143}
   m_Layer: 7
   m_Name: Hedron6
   m_TagString: Crystal
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &3696320661495884318
 Transform:
@@ -1637,7 +1758,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4268739062744955191}
   m_LocalRotation: {x: -0.6737056, y: -0.21475784, z: -0.21475776, w: 0.67370546}
-  m_LocalPosition: {x: 138.67, y: 498.44, z: -132.66}
+  m_LocalPosition: {x: 138.73, y: -36.859985, z: 77.31}
   m_LocalScale: {x: 7, y: 7, z: 5}
   m_Children:
   - {fileID: 3265307929479741244}
@@ -1719,6 +1840,20 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.33367288, y: 0.33930644, z: 0.40344545}
   m_Center: {x: 0.0012362512, y: -0.008020341, z: -0.6766845}
+--- !u!114 &741519143
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4268739062744955191}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a347bfda3abbbe4ab79e30555f69ee0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _rotation: {x: 0, y: 0, z: 1}
+  _speed: 50
 --- !u!1 &4981637386645231894
 GameObject:
   m_ObjectHideFlags: 0
@@ -1731,12 +1866,13 @@ GameObject:
   - component: {fileID: 206569730125096983}
   - component: {fileID: 7159668929481245113}
   - component: {fileID: 4981637386645231889}
+  - component: {fileID: 1509513524}
   m_Layer: 7
   m_Name: Hedron7
   m_TagString: Crystal
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &1059042909494839047
 Transform:
@@ -1746,7 +1882,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4981637386645231894}
   m_LocalRotation: {x: -0.70676005, y: 0.02213886, z: 0.022138776, w: 0.7067602}
-  m_LocalPosition: {x: -164.01, y: 604.33, z: -256.03}
+  m_LocalPosition: {x: -163.95, y: 69.03003, z: -46.059998}
   m_LocalScale: {x: 4, y: 4, z: 4}
   m_Children:
   - {fileID: 1069347013782950783}
@@ -1815,6 +1951,20 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.6564115, y: 0.65233904, z: 0.7987108}
   m_Center: {x: -0.0013684928, y: -0.0015508235, z: -0.39935535}
+--- !u!114 &1509513524
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4981637386645231894}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a347bfda3abbbe4ab79e30555f69ee0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _rotation: {x: 0, y: 0, z: 1}
+  _speed: 50
 --- !u!1 &5710762395095315285
 GameObject:
   m_ObjectHideFlags: 0
@@ -1831,7 +1981,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &7354413571659460057
 Transform:
@@ -1840,8 +1990,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5710762395095315285}
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 3901038748959393082}
@@ -1908,12 +2058,13 @@ GameObject:
   - component: {fileID: 8591344453987452549}
   - component: {fileID: 1759099831050380825}
   - component: {fileID: 6532514907406679892}
+  - component: {fileID: 644230986}
   m_Layer: 7
   m_Name: Hedron2
   m_TagString: Crystal
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &5309995778726580166
 Transform:
@@ -1923,7 +2074,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6532514907406679893}
   m_LocalRotation: {x: -0.3014539, y: -0.6397487, z: -0.63942677, w: 0.30163008}
-  m_LocalPosition: {x: -105.21, y: 544.2, z: -86.23}
+  m_LocalPosition: {x: -105.149994, y: 8.900024, z: 123.74}
   m_LocalScale: {x: 4, y: 4, z: 4}
   m_Children:
   - {fileID: 5181991264130963717}
@@ -1992,6 +2143,20 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.6540812, y: 0.6536619, z: 0.7316192}
   m_Center: {x: 0.0006166398, y: -0.00000882149, z: -0.36581114}
+--- !u!114 &644230986
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6532514907406679893}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a347bfda3abbbe4ab79e30555f69ee0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _rotation: {x: 0, y: 0, z: 1}
+  _speed: 50
 --- !u!1 &6667292262325781220
 GameObject:
   m_ObjectHideFlags: 0
@@ -2008,7 +2173,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &1529762495403260396
 Transform:
@@ -2017,8 +2182,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6667292262325781220}
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8643309127483624946}
@@ -2086,12 +2251,13 @@ GameObject:
   - component: {fileID: 7511843944836110164}
   - component: {fileID: 6973594309058136619}
   - component: {fileID: 6973594309058136616}
+  - component: {fileID: 1013414536}
   m_Layer: 7
   m_Name: Hedron4
   m_TagString: Crystal
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &8005506748117332218
 Transform:
@@ -2101,7 +2267,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6973594309058136617}
   m_LocalRotation: {x: -0.69594276, y: 0.12515478, z: 0.12515476, w: 0.69594276}
-  m_LocalPosition: {x: -152.7, y: 564.58, z: -143.5}
+  m_LocalPosition: {x: -152.64, y: 29.28003, z: 66.47}
   m_LocalScale: {x: 7, y: 7, z: 4}
   m_Children:
   - {fileID: 8200022703324352671}
@@ -2183,6 +2349,20 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.44720113, y: 0.38626146, z: 0.425795}
   m_Center: {x: -0.007773366, y: -0.0011976023, z: -0.66548204}
+--- !u!114 &1013414536
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6973594309058136617}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a347bfda3abbbe4ab79e30555f69ee0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _rotation: {x: 0, y: 0, z: 1}
+  _speed: 50
 --- !u!1 &7138500681145096197
 GameObject:
   m_ObjectHideFlags: 0
@@ -2196,12 +2376,13 @@ GameObject:
   - component: {fileID: 1705380764607028841}
   - component: {fileID: 7138500681145096199}
   - component: {fileID: 7138500681145096196}
+  - component: {fileID: 426491498}
   m_Layer: 7
   m_Name: Hedron8
   m_TagString: Crystal
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &8643309127483624946
 Transform:
@@ -2211,7 +2392,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7138500681145096197}
   m_LocalRotation: {x: -0.5075478, y: -0.4923366, z: -0.49233648, w: 0.5075478}
-  m_LocalPosition: {x: 20.39, y: 522.22, z: -43.63}
+  m_LocalPosition: {x: 20.449999, y: -13.080017, z: 166.34}
   m_LocalScale: {x: 7, y: 7, z: 4}
   m_Children:
   - {fileID: 1529762495403260396}
@@ -2293,6 +2474,20 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.3525285, y: 0.35384956, z: 0.44319725}
   m_Center: {x: 0.02004576, y: 0.001532512, z: -0.65680885}
+--- !u!114 &426491498
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7138500681145096197}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a347bfda3abbbe4ab79e30555f69ee0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _rotation: {x: 0, y: 0, z: 1}
+  _speed: 50
 --- !u!1 &7426868324526547793
 GameObject:
   m_ObjectHideFlags: 0
@@ -2306,12 +2501,13 @@ GameObject:
   - component: {fileID: 3998599617215626408}
   - component: {fileID: 7426868324526547795}
   - component: {fileID: 7426868324526547792}
+  - component: {fileID: 1929145301}
   m_Layer: 7
   m_Name: Hedron1
   m_TagString: Crystal
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &5347355282103265124
 Transform:
@@ -2321,7 +2517,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7426868324526547793}
   m_LocalRotation: {x: -0.7071029, y: 0.0023160868, z: 0.0023160551, w: 0.70710313}
-  m_LocalPosition: {x: 133.18, y: 483.7, z: -185.84}
+  m_LocalPosition: {x: 133.23999, y: -51.599976, z: 24.130005}
   m_LocalScale: {x: 4, y: 4, z: 4}
   m_Children:
   - {fileID: 1567894783214045041}
@@ -2403,6 +2599,20 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.3214028, y: 0.38643292, z: 0.38188934}
   m_Center: {x: -0.008192316, y: -0.009054453, z: -0.60827446}
+--- !u!114 &1929145301
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7426868324526547793}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a347bfda3abbbe4ab79e30555f69ee0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _rotation: {x: 0, y: 0, z: 1}
+  _speed: 50
 --- !u!1 &7652833987679921016
 GameObject:
   m_ObjectHideFlags: 0
@@ -2419,7 +2629,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &8200022703324352671
 Transform:
@@ -2428,8 +2638,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7652833987679921016}
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8005506748117332218}
