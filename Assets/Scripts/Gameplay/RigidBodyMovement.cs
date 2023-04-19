@@ -121,7 +121,6 @@ public class RigidBodyMovement : MonoBehaviour
         bouncing = Physics.CheckSphere(groundCheck.position, groundDistance + 0.2f, whatIsBouncy);
         inWindArea = Physics.CheckSphere(groundCheck.position, groundDistance, whatIsWindArea);
 
-        // Decrease dashBarAmount while holding left shift, or increase it if grounded
         if(grounded)
         {
             canDash = true;
@@ -160,18 +159,6 @@ public class RigidBodyMovement : MonoBehaviour
         if (other.gameObject.tag == "Crystal")
         {
             gameWon = true;
-        }
-
-        if (other.gameObject.tag == "Funnel")
-        {
-            if (other.gameObject.name == "Teleporter")
-                transform.position = new Vector3(-1.82f, 172f, 6.9f);
-            else if (other.gameObject.name == "Teleporter (1)")
-                transform.position = new Vector3(-169.7f, 177f, -62.4f);
-            else if (other.gameObject.name == "Teleporter (2)")
-                transform.position = new Vector3(-220f, 105f, -186.5f);
-            else if (other.gameObject.name == "Teleporter (3)")
-                transform.position = new Vector3(-148.2f, 204f, -371.1f);
         }
     }
 
@@ -333,7 +320,10 @@ public class RigidBodyMovement : MonoBehaviour
     {
         if (!grounded && canDash)
         {
-            rb.AddForce(orientation.transform.forward * dashForce, ForceMode.Impulse);
+            if(y == 0 && x == 0) rb.AddForce(orientation.transform.forward * dashForce, ForceMode.Impulse);
+            rb.AddForce(orientation.transform.forward * y * dashForce, ForceMode.Impulse);
+            rb.AddForce(orientation.transform.right * x * dashForce, ForceMode.Impulse);
+
             canDash = false;
         }
     }
@@ -378,6 +368,7 @@ public class RigidBodyMovement : MonoBehaviour
         }
         
         // Limit diagonal running. This will also cause a full stop if sliding fast and un-crouching, so not optimal.
+        // TODO: Fix this
         if (Mathf.Sqrt((Mathf.Pow(rb.velocity.x, 2) + Mathf.Pow(rb.velocity.z, 2))) > maxSpeed) {
             float fallspeed = rb.velocity.y;
             Vector3 n = rb.velocity.normalized * maxSpeed;

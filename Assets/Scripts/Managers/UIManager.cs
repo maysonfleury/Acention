@@ -82,7 +82,6 @@ public class UIManager : MonoBehaviour
 
         if (player.grounded)
         {
-            
             dToD = (playerGO.transform.position.y / destination.position.y * 100)-0.88f;
             if (dToD < 0f)
                 dToD = 0;
@@ -90,7 +89,7 @@ public class UIManager : MonoBehaviour
                 dToD = 100f;
             progressPercentage.text = dToD.ToString("F2") + "%";
         }
-        if (dToD < 33.4f && player.gameStart == true)
+        if (dToD < 32.4f && player.gameStart == true)
         {
             if (!area1_discovered)
             {
@@ -104,7 +103,7 @@ public class UIManager : MonoBehaviour
             area1_discovered = true;
             UpdateSkybox(1);
         }
-        else if (dToD >= 33.4f && dToD < 53.3f)
+        else if (dToD >= 32.4f && dToD < 53.3f)
         {
             if (!area1_discovered)
             {
@@ -116,7 +115,7 @@ public class UIManager : MonoBehaviour
             UpdateSkybox(2);
             mm.ChangeSong(2);
         }
-        else if (dToD >= 53.3f && dToD < 99f)
+        else if (dToD >= 53.3f && dToD < 98f)
         {
             if (!area1_discovered)
             {
@@ -128,7 +127,7 @@ public class UIManager : MonoBehaviour
             UpdateSkybox(3);
             mm.ChangeSong(3);
         }
-        else if (dToD >= 99f )
+        else if (dToD >= 98f )
         {
             if (!area1_discovered)
             {
