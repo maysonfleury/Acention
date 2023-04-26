@@ -46,6 +46,8 @@ public class UIManager : MonoBehaviour
     bool gameWon;
     MusicManager mm;
 
+    private DiscordController discordController;
+
     private void Awake()
     {
         player = playerGO.GetComponent<RigidBodyMovement>();
@@ -53,6 +55,13 @@ public class UIManager : MonoBehaviour
         dash2 = locationBroadcast.gameObject.transform.GetChild(1).gameObject.GetComponent<Image>();
 
         mm = FindObjectOfType<MusicManager>();
+    }
+
+    private void Start()
+    {
+        discordController = FindObjectOfType<DiscordController>();
+        discordController.SetArea("Area 0");
+        discordController.SetStatus("60");
     }
 
     private void Update()
@@ -68,6 +77,11 @@ public class UIManager : MonoBehaviour
             {
                 timeRemaining -= Time.deltaTime;
                 timer.text = (Mathf.Floor(timeRemaining / 60f)).ToString("00") + ":" + Mathf.Floor(timeRemaining % 60f).ToString("00");
+
+                if (!gameOver && !gameWon)
+                {
+                    UpdateStatus(Mathf.Floor(timeRemaining / 60f));
+                }
             }
             else
             {
@@ -77,7 +91,7 @@ public class UIManager : MonoBehaviour
                     EndGame();
                     timer.gameObject.SetActive(false);
                 }
-            }          
+            }
         }
 
         if (player.grounded)
@@ -102,6 +116,7 @@ public class UIManager : MonoBehaviour
             UpdateLocation("The World Tree", area1_discovered);
             area1_discovered = true;
             UpdateSkybox(1);
+            discordController.SetArea("Area 1");
         }
         else if (dToD >= 32.4f && dToD < 53.3f)
         {
@@ -114,6 +129,7 @@ public class UIManager : MonoBehaviour
             area2_discovered = true;
             UpdateSkybox(2);
             mm.ChangeSong(2);
+            discordController.SetArea("Area 2");
         }
         else if (dToD >= 53.3f && dToD < 98f)
         {
@@ -126,6 +142,7 @@ public class UIManager : MonoBehaviour
             area3_discovered = true;
             UpdateSkybox(3);
             mm.ChangeSong(3);
+            discordController.SetArea("Area 3");
         }
         else if (dToD >= 98f )
         {
@@ -138,9 +155,35 @@ public class UIManager : MonoBehaviour
             area4_discovered = true;
             UpdateSkybox(4);
             mm.ChangeSong(4);
+            discordController.SetArea("Area 4");
             if (!gameWon && player.gameWon)
                 WinGame();
         }    
+    }
+
+    private float timeFlag = 60;
+    private void UpdateStatus(float timeRemain)
+    {
+        if (timeRemain < 5 && timeFlag > 5)
+        {
+            discordController.SetStatus("5");
+            timeFlag = 5;
+        }
+        else if (timeRemain < 10 && timeFlag > 15)
+        {
+            discordController.SetStatus("15");
+            timeFlag = 15;
+        }
+        else if (timeRemain < 30 && timeFlag > 30)
+        {
+            discordController.SetStatus("30");
+            timeFlag = 30;
+        }
+        else if (timeRemain < 45 && timeFlag > 45)
+        {
+            discordController.SetStatus("45");
+            timeFlag = 45;
+        }
     }
 
     void EndGame()
@@ -153,6 +196,7 @@ public class UIManager : MonoBehaviour
         locationText.gameObject.SetActive(false);
         timer.gameObject.SetActive(false);
         UpdateLocation("The Crystal Hungers", false);
+        discordController.SetStatus("loss");
         dash1.rectTransform.position += new Vector3(-45f, 0, 0);
         dash2.rectTransform.position += new Vector3(45f, 0, 0);
         am.Play("gameover_1");
@@ -170,6 +214,8 @@ public class UIManager : MonoBehaviour
         Cursor.visible = true;
         Time.timeScale = 0f;
         reticle.SetActive(false);
+
+        discordController.SetStatus("win");
 
         GrapplingHook grapple = FindObjectOfType<GrapplingHook>();
         player.isPaused = true;
