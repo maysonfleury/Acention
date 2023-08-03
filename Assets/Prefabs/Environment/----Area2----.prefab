@@ -14,7 +14,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &859568635
 Transform:
@@ -285,7 +285,7 @@ GameObject:
   - component: {fileID: 2451443444952119813}
   - component: {fileID: 1710701394170756406}
   - component: {fileID: 1710701394170756405}
-  - component: {fileID: 1838413962459004547}
+  - component: {fileID: 1306968835}
   m_Layer: 7
   m_Name: Hedron5
   m_TagString: Crystal
@@ -383,7 +383,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.4027451, y: 0.34564462, z: 0.47360396}
   m_Center: {x: 0.005237088, y: -0.023888469, z: -0.64160544}
---- !u!114 &1838413962459004547
+--- !u!114 &1306968835
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -392,9 +392,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1710701394170756404}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5a347bfda3abbbe4ab79e30555f69ee0, type: 3}
+  m_Script: {fileID: 11500000, guid: 7085f9c2e6ba059419c35dc76c257506, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _destroySound: {fileID: 8300000, guid: b2bc5e5cac862594581d48b9024a7431, type: 3}
+  isDestroyable: 0
+  doesRotate: 1
   _rotation: {x: 0, y: 0, z: -1}
   _speed: 75
 --- !u!1 &1710701395208268552
@@ -410,7 +413,7 @@ GameObject:
   - component: {fileID: 2451443446056217657}
   - component: {fileID: 1710701395208268554}
   - component: {fileID: 1710701395208268553}
-  - component: {fileID: 1838413963424688319}
+  - component: {fileID: 3151461134428071468}
   m_Layer: 7
   m_Name: Hedron5
   m_TagString: Crystal
@@ -508,7 +511,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.4027451, y: 0.34564462, z: 0.47360396}
   m_Center: {x: 0.005237088, y: -0.023888469, z: -0.64160544}
---- !u!114 &1838413963424688319
+--- !u!114 &3151461134428071468
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -517,9 +520,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1710701395208268552}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5a347bfda3abbbe4ab79e30555f69ee0, type: 3}
+  m_Script: {fileID: 11500000, guid: 7085f9c2e6ba059419c35dc76c257506, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _destroySound: {fileID: 8300000, guid: b2bc5e5cac862594581d48b9024a7431, type: 3}
+  isDestroyable: 0
+  doesRotate: 1
   _rotation: {x: 0, y: 0, z: 1}
   _speed: 50
 --- !u!1 &1838413961717680667
@@ -616,7 +622,7 @@ GameObject:
   - component: {fileID: 1838413961733838610}
   - component: {fileID: 1838413961733838611}
   - component: {fileID: 1838413961733838828}
-  - component: {fileID: 1838413961733838829}
+  - component: {fileID: 1469238162}
   m_Layer: 7
   m_Name: Hedron3 (5)
   m_TagString: Crystal
@@ -714,7 +720,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.36483893, y: 0.30003724, z: 0.41999796}
   m_Center: {x: -0.0011956887, y: -0.008717269, z: -0.6429101}
---- !u!114 &1838413961733838829
+--- !u!114 &1469238162
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -723,9 +729,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1838413961733838831}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5a347bfda3abbbe4ab79e30555f69ee0, type: 3}
+  m_Script: {fileID: 11500000, guid: 7085f9c2e6ba059419c35dc76c257506, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _destroySound: {fileID: 8300000, guid: b2bc5e5cac862594581d48b9024a7431, type: 3}
+  isDestroyable: 0
+  doesRotate: 1
   _rotation: {x: 0, y: 0, z: -1}
   _speed: 75
 --- !u!1 &1838413961832453624
@@ -856,7 +865,7 @@ GameObject:
   - component: {fileID: 1838413961928353864}
   - component: {fileID: 1838413961928353865}
   - component: {fileID: 1838413961928353866}
-  - component: {fileID: 1838413961928353867}
+  - component: {fileID: 142027783}
   m_Layer: 7
   m_Name: Hedron3 (1)
   m_TagString: Crystal
@@ -954,7 +963,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.36483893, y: 0.30003724, z: 0.41999796}
   m_Center: {x: -0.0011956887, y: -0.008717269, z: -0.6429101}
---- !u!114 &1838413961928353867
+--- !u!114 &142027783
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -963,9 +972,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1838413961928353861}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5a347bfda3abbbe4ab79e30555f69ee0, type: 3}
+  m_Script: {fileID: 11500000, guid: 7085f9c2e6ba059419c35dc76c257506, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _destroySound: {fileID: 8300000, guid: b2bc5e5cac862594581d48b9024a7431, type: 3}
+  isDestroyable: 0
+  doesRotate: 1
   _rotation: {x: 0, y: 0, z: -1}
   _speed: 75
 --- !u!1 &1838413961935626886
@@ -1224,7 +1236,7 @@ GameObject:
   - component: {fileID: 1838413961973733947}
   - component: {fileID: 1838413961973733940}
   - component: {fileID: 1838413961973733941}
-  - component: {fileID: 1838413961973733942}
+  - component: {fileID: 333289092}
   m_Layer: 7
   m_Name: Hedron1 (2)
   m_TagString: Crystal
@@ -1322,7 +1334,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.3214028, y: 0.38643292, z: 0.38188934}
   m_Center: {x: -0.008192316, y: -0.009054453, z: -0.60827446}
---- !u!114 &1838413961973733942
+--- !u!114 &333289092
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1331,9 +1343,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1838413961973733936}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5a347bfda3abbbe4ab79e30555f69ee0, type: 3}
+  m_Script: {fileID: 11500000, guid: 7085f9c2e6ba059419c35dc76c257506, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _destroySound: {fileID: 8300000, guid: b2bc5e5cac862594581d48b9024a7431, type: 3}
+  isDestroyable: 0
+  doesRotate: 1
   _rotation: {x: 0, y: 0, z: -1}
   _speed: 75
 --- !u!1 &1838413962016263989
@@ -1397,7 +1412,7 @@ GameObject:
   - component: {fileID: 1838413962110990440}
   - component: {fileID: 1838413962110990441}
   - component: {fileID: 1838413962110990442}
-  - component: {fileID: 1838413962110990443}
+  - component: {fileID: 305453267}
   m_Layer: 7
   m_Name: Hedron4 (1)
   m_TagString: Crystal
@@ -1495,7 +1510,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.44720113, y: 0.38626146, z: 0.425795}
   m_Center: {x: -0.007773366, y: -0.0011976023, z: -0.66548204}
---- !u!114 &1838413962110990443
+--- !u!114 &305453267
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1504,9 +1519,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1838413962110990437}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5a347bfda3abbbe4ab79e30555f69ee0, type: 3}
+  m_Script: {fileID: 11500000, guid: 7085f9c2e6ba059419c35dc76c257506, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _destroySound: {fileID: 8300000, guid: b2bc5e5cac862594581d48b9024a7431, type: 3}
+  isDestroyable: 0
+  doesRotate: 1
   _rotation: {x: 0, y: 0, z: -1}
   _speed: 75
 --- !u!1 &1838413962173730981
@@ -1522,7 +1540,7 @@ GameObject:
   - component: {fileID: 1838413962173730984}
   - component: {fileID: 1838413962173730985}
   - component: {fileID: 1838413962173730986}
-  - component: {fileID: 1838413962173730987}
+  - component: {fileID: 573090689}
   m_Layer: 7
   m_Name: Hedron6 (6)
   m_TagString: Crystal
@@ -1620,7 +1638,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.33367288, y: 0.33930644, z: 0.40344545}
   m_Center: {x: 0.0012362512, y: -0.008020341, z: -0.6766845}
---- !u!114 &1838413962173730987
+--- !u!114 &573090689
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1629,9 +1647,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1838413962173730981}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5a347bfda3abbbe4ab79e30555f69ee0, type: 3}
+  m_Script: {fileID: 11500000, guid: 7085f9c2e6ba059419c35dc76c257506, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _destroySound: {fileID: 8300000, guid: b2bc5e5cac862594581d48b9024a7431, type: 3}
+  isDestroyable: 0
+  doesRotate: 1
   _rotation: {x: 0, y: 0, z: 1}
   _speed: 50
 --- !u!1 &1838413962218513262
@@ -1837,7 +1858,7 @@ GameObject:
   - component: {fileID: 1838413962235506377}
   - component: {fileID: 1838413962235506378}
   - component: {fileID: 1838413962235506379}
-  - component: {fileID: 1838413962235506372}
+  - component: {fileID: 79041804}
   m_Layer: 7
   m_Name: Hedron6 (7)
   m_TagString: Crystal
@@ -1935,7 +1956,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.33367288, y: 0.33930644, z: 0.40344545}
   m_Center: {x: 0.0012362512, y: -0.008020341, z: -0.6766845}
---- !u!114 &1838413962235506372
+--- !u!114 &79041804
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1944,9 +1965,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1838413962235506374}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5a347bfda3abbbe4ab79e30555f69ee0, type: 3}
+  m_Script: {fileID: 11500000, guid: 7085f9c2e6ba059419c35dc76c257506, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _destroySound: {fileID: 8300000, guid: b2bc5e5cac862594581d48b9024a7431, type: 3}
+  isDestroyable: 0
+  doesRotate: 1
   _rotation: {x: 0, y: 0, z: 1}
   _speed: 50
 --- !u!1 &1838413962238961720
@@ -1962,7 +1986,7 @@ GameObject:
   - component: {fileID: 1838413962238961699}
   - component: {fileID: 1838413962238961724}
   - component: {fileID: 1838413962238961725}
-  - component: {fileID: 1838413962238961726}
+  - component: {fileID: 661945081}
   m_Layer: 7
   m_Name: Hedron1 (1)
   m_TagString: Crystal
@@ -2060,7 +2084,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.3214028, y: 0.38643292, z: 0.38188934}
   m_Center: {x: -0.008192316, y: -0.009054453, z: -0.60827446}
---- !u!114 &1838413962238961726
+--- !u!114 &661945081
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2069,9 +2093,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1838413962238961720}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5a347bfda3abbbe4ab79e30555f69ee0, type: 3}
+  m_Script: {fileID: 11500000, guid: 7085f9c2e6ba059419c35dc76c257506, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _destroySound: {fileID: 8300000, guid: b2bc5e5cac862594581d48b9024a7431, type: 3}
+  isDestroyable: 0
+  doesRotate: 1
   _rotation: {x: 0, y: 0, z: -1}
   _speed: 75
 --- !u!1 &1838413962245185866
@@ -2087,7 +2114,7 @@ GameObject:
   - component: {fileID: 1838413962245185869}
   - component: {fileID: 1838413962245185870}
   - component: {fileID: 1838413962245185871}
-  - component: {fileID: 1838413962245185864}
+  - component: {fileID: 5636154208934792914}
   m_Layer: 7
   m_Name: Hedron3 (4)
   m_TagString: Crystal
@@ -2185,7 +2212,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.36483893, y: 0.30003724, z: 0.41999796}
   m_Center: {x: -0.0011956887, y: -0.008717269, z: -0.6429101}
---- !u!114 &1838413962245185864
+--- !u!114 &5636154208934792914
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2194,9 +2221,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1838413962245185866}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5a347bfda3abbbe4ab79e30555f69ee0, type: 3}
+  m_Script: {fileID: 11500000, guid: 7085f9c2e6ba059419c35dc76c257506, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _destroySound: {fileID: 8300000, guid: b2bc5e5cac862594581d48b9024a7431, type: 3}
+  isDestroyable: 0
+  doesRotate: 1
   _rotation: {x: 0, y: 0, z: 1}
   _speed: 50
 --- !u!1 &1838413962252799038
@@ -2581,7 +2611,7 @@ GameObject:
   - component: {fileID: 1838413962339690285}
   - component: {fileID: 1838413962339690286}
   - component: {fileID: 1838413962339690287}
-  - component: {fileID: 1838413962339690280}
+  - component: {fileID: 5489587272058109632}
   m_Layer: 7
   m_Name: Hedron8 (2)
   m_TagString: Crystal
@@ -2679,7 +2709,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.3525285, y: 0.35384956, z: 0.44319725}
   m_Center: {x: 0.02004576, y: 0.001532512, z: -0.65680885}
---- !u!114 &1838413962339690280
+--- !u!114 &5489587272058109632
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2688,9 +2718,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1838413962339690282}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5a347bfda3abbbe4ab79e30555f69ee0, type: 3}
+  m_Script: {fileID: 11500000, guid: 7085f9c2e6ba059419c35dc76c257506, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _destroySound: {fileID: 8300000, guid: b2bc5e5cac862594581d48b9024a7431, type: 3}
+  isDestroyable: 0
+  doesRotate: 1
   _rotation: {x: 0, y: 0, z: 1}
   _speed: 50
 --- !u!1 &1838413962374824397
@@ -2964,7 +2997,7 @@ GameObject:
   - component: {fileID: 1838413962558758323}
   - component: {fileID: 1838413962558758284}
   - component: {fileID: 1838413962558758285}
-  - component: {fileID: 1838413962558758286}
+  - component: {fileID: 797651301}
   m_Layer: 7
   m_Name: Hedron6 (5)
   m_TagString: Crystal
@@ -3062,7 +3095,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.33367288, y: 0.33930644, z: 0.40344545}
   m_Center: {x: 0.0012362512, y: -0.008020341, z: -0.6766845}
---- !u!114 &1838413962558758286
+--- !u!114 &797651301
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -3071,9 +3104,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1838413962558758280}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5a347bfda3abbbe4ab79e30555f69ee0, type: 3}
+  m_Script: {fileID: 11500000, guid: 7085f9c2e6ba059419c35dc76c257506, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _destroySound: {fileID: 8300000, guid: b2bc5e5cac862594581d48b9024a7431, type: 3}
+  isDestroyable: 0
+  doesRotate: 1
   _rotation: {x: 0, y: 0, z: 1}
   _speed: 50
 --- !u!1 &1838413962603930300
@@ -3089,7 +3125,7 @@ GameObject:
   - component: {fileID: 1838413962603930279}
   - component: {fileID: 1838413962603930272}
   - component: {fileID: 1838413962603930273}
-  - component: {fileID: 1838413962603930274}
+  - component: {fileID: 613109334}
   m_Layer: 7
   m_Name: Hedron6 (2)
   m_TagString: Crystal
@@ -3187,7 +3223,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.33367288, y: 0.33930644, z: 0.40344545}
   m_Center: {x: 0.0012362512, y: -0.008020341, z: -0.6766845}
---- !u!114 &1838413962603930274
+--- !u!114 &613109334
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -3196,9 +3232,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1838413962603930300}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5a347bfda3abbbe4ab79e30555f69ee0, type: 3}
+  m_Script: {fileID: 11500000, guid: 7085f9c2e6ba059419c35dc76c257506, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _destroySound: {fileID: 8300000, guid: b2bc5e5cac862594581d48b9024a7431, type: 3}
+  isDestroyable: 0
+  doesRotate: 1
   _rotation: {x: 0, y: 0, z: -1}
   _speed: 75
 --- !u!1 &1838413962673446539
@@ -3310,7 +3349,7 @@ GameObject:
   - component: {fileID: 1838413962673471660}
   - component: {fileID: 1838413962673471661}
   - component: {fileID: 1838413962673471662}
-  - component: {fileID: 1838413962673471663}
+  - component: {fileID: 657680642}
   m_Layer: 7
   m_Name: Hedron8 (3)
   m_TagString: Crystal
@@ -3408,7 +3447,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.3525285, y: 0.35384956, z: 0.44319725}
   m_Center: {x: 0.02004576, y: 0.001532512, z: -0.65680885}
---- !u!114 &1838413962673471663
+--- !u!114 &657680642
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -3417,9 +3456,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1838413962673471657}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5a347bfda3abbbe4ab79e30555f69ee0, type: 3}
+  m_Script: {fileID: 11500000, guid: 7085f9c2e6ba059419c35dc76c257506, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _destroySound: {fileID: 8300000, guid: b2bc5e5cac862594581d48b9024a7431, type: 3}
+  isDestroyable: 0
+  doesRotate: 1
   _rotation: {x: 0, y: 0, z: -1}
   _speed: 75
 --- !u!1 &1838413962685971795
@@ -3435,7 +3477,7 @@ GameObject:
   - component: {fileID: 1838413962685971798}
   - component: {fileID: 1838413962685971799}
   - component: {fileID: 1838413962685971792}
-  - component: {fileID: 1838413962685971793}
+  - component: {fileID: 8572205784499569145}
   m_Layer: 7
   m_Name: Hedron1 (1)
   m_TagString: Crystal
@@ -3533,7 +3575,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.3214028, y: 0.38643292, z: 0.38188934}
   m_Center: {x: -0.008192316, y: -0.009054453, z: -0.60827446}
---- !u!114 &1838413962685971793
+--- !u!114 &8572205784499569145
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -3542,9 +3584,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1838413962685971795}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5a347bfda3abbbe4ab79e30555f69ee0, type: 3}
+  m_Script: {fileID: 11500000, guid: 7085f9c2e6ba059419c35dc76c257506, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _destroySound: {fileID: 8300000, guid: b2bc5e5cac862594581d48b9024a7431, type: 3}
+  isDestroyable: 0
+  doesRotate: 1
   _rotation: {x: 0, y: 0, z: 1}
   _speed: 50
 --- !u!1 &1838413962691594214
@@ -3737,7 +3782,7 @@ GameObject:
   - component: {fileID: 1838413962762792253}
   - component: {fileID: 1838413962762792254}
   - component: {fileID: 1838413962762792255}
-  - component: {fileID: 1838413962762792248}
+  - component: {fileID: 1518773315}
   m_Layer: 7
   m_Name: Hedron6 (1)
   m_TagString: Crystal
@@ -3835,7 +3880,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.33367288, y: 0.33930644, z: 0.40344545}
   m_Center: {x: 0.0012362512, y: -0.008020341, z: -0.6766845}
---- !u!114 &1838413962762792248
+--- !u!114 &1518773315
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -3844,9 +3889,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1838413962762792250}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5a347bfda3abbbe4ab79e30555f69ee0, type: 3}
+  m_Script: {fileID: 11500000, guid: 7085f9c2e6ba059419c35dc76c257506, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _destroySound: {fileID: 8300000, guid: b2bc5e5cac862594581d48b9024a7431, type: 3}
+  isDestroyable: 0
+  doesRotate: 1
   _rotation: {x: 0, y: 0, z: 1}
   _speed: 50
 --- !u!1 &1838413962775142508
@@ -4310,7 +4358,7 @@ GameObject:
   - component: {fileID: 1838413962821998048}
   - component: {fileID: 1838413962821998049}
   - component: {fileID: 1838413962821998050}
-  - component: {fileID: 1838413962821998051}
+  - component: {fileID: 1032643850}
   m_Layer: 7
   m_Name: Hedron8 (2)
   m_TagString: Crystal
@@ -4408,7 +4456,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.3525285, y: 0.35384956, z: 0.44319725}
   m_Center: {x: 0.02004576, y: 0.001532512, z: -0.65680885}
---- !u!114 &1838413962821998051
+--- !u!114 &1032643850
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -4417,9 +4465,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1838413962821998077}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5a347bfda3abbbe4ab79e30555f69ee0, type: 3}
+  m_Script: {fileID: 11500000, guid: 7085f9c2e6ba059419c35dc76c257506, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _destroySound: {fileID: 8300000, guid: b2bc5e5cac862594581d48b9024a7431, type: 3}
+  isDestroyable: 0
+  doesRotate: 1
   _rotation: {x: 0, y: 0, z: -1}
   _speed: 75
 --- !u!1 &1838413962884594396
@@ -4474,7 +4525,7 @@ GameObject:
   - component: {fileID: 1838413962918756232}
   - component: {fileID: 1838413962918756233}
   - component: {fileID: 1838413962918756234}
-  - component: {fileID: 1838413962918756235}
+  - component: {fileID: 1184908990}
   m_Layer: 7
   m_Name: Hedron6 (4)
   m_TagString: Crystal
@@ -4572,7 +4623,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.33367288, y: 0.33930644, z: 0.40344545}
   m_Center: {x: 0.0012362512, y: -0.008020341, z: -0.6766845}
---- !u!114 &1838413962918756235
+--- !u!114 &1184908990
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -4581,9 +4632,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1838413962918756229}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5a347bfda3abbbe4ab79e30555f69ee0, type: 3}
+  m_Script: {fileID: 11500000, guid: 7085f9c2e6ba059419c35dc76c257506, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _destroySound: {fileID: 8300000, guid: b2bc5e5cac862594581d48b9024a7431, type: 3}
+  isDestroyable: 0
+  doesRotate: 1
   _rotation: {x: 0, y: 0, z: 1}
   _speed: 50
 --- !u!1 &1838413962945455605
@@ -4728,7 +4782,7 @@ GameObject:
   - component: {fileID: 1838413963039664352}
   - component: {fileID: 1838413963039664353}
   - component: {fileID: 1838413963039664354}
-  - component: {fileID: 1838413963039664355}
+  - component: {fileID: 402567196}
   m_Layer: 7
   m_Name: Hedron6 (3)
   m_TagString: Crystal
@@ -4826,7 +4880,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.33367288, y: 0.33930644, z: 0.40344545}
   m_Center: {x: 0.0012362512, y: -0.008020341, z: -0.6766845}
---- !u!114 &1838413963039664355
+--- !u!114 &402567196
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -4835,9 +4889,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1838413963039664381}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5a347bfda3abbbe4ab79e30555f69ee0, type: 3}
+  m_Script: {fileID: 11500000, guid: 7085f9c2e6ba059419c35dc76c257506, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _destroySound: {fileID: 8300000, guid: b2bc5e5cac862594581d48b9024a7431, type: 3}
+  isDestroyable: 0
+  doesRotate: 1
   _rotation: {x: 0, y: 0, z: 1}
   _speed: 50
 --- !u!1 &1838413963053707679
@@ -4981,7 +5038,7 @@ GameObject:
   - component: {fileID: 1838413963073587165}
   - component: {fileID: 1838413963073587166}
   - component: {fileID: 1838413963073587167}
-  - component: {fileID: 1838413963073587160}
+  - component: {fileID: 392191177}
   m_Layer: 7
   m_Name: Hedron2 (2)
   m_TagString: Crystal
@@ -5066,7 +5123,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.6540812, y: 0.6536619, z: 0.7316192}
   m_Center: {x: 0.0006166398, y: -0.00000882149, z: -0.36581114}
---- !u!114 &1838413963073587160
+--- !u!114 &392191177
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -5075,9 +5132,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1838413963073587162}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5a347bfda3abbbe4ab79e30555f69ee0, type: 3}
+  m_Script: {fileID: 11500000, guid: 7085f9c2e6ba059419c35dc76c257506, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _destroySound: {fileID: 8300000, guid: b2bc5e5cac862594581d48b9024a7431, type: 3}
+  isDestroyable: 0
+  doesRotate: 1
   _rotation: {x: 0, y: 0, z: -1}
   _speed: 75
 --- !u!1 &1838413963106151959
@@ -5270,7 +5330,7 @@ GameObject:
   - component: {fileID: 1838413963174798851}
   - component: {fileID: 1838413963174798876}
   - component: {fileID: 1838413963174798877}
-  - component: {fileID: 1838413963174798878}
+  - component: {fileID: 1029233430}
   m_Layer: 7
   m_Name: Hedron3 (4)
   m_TagString: Crystal
@@ -5368,7 +5428,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.36483893, y: 0.30003724, z: 0.41999796}
   m_Center: {x: -0.0011956887, y: -0.008717269, z: -0.6429101}
---- !u!114 &1838413963174798878
+--- !u!114 &1029233430
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -5377,9 +5437,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1838413963174798872}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5a347bfda3abbbe4ab79e30555f69ee0, type: 3}
+  m_Script: {fileID: 11500000, guid: 7085f9c2e6ba059419c35dc76c257506, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _destroySound: {fileID: 8300000, guid: b2bc5e5cac862594581d48b9024a7431, type: 3}
+  isDestroyable: 0
+  doesRotate: 1
   _rotation: {x: 0, y: 0, z: -1}
   _speed: 75
 --- !u!1 &1838413963176305187
@@ -5732,7 +5795,7 @@ GameObject:
   - component: {fileID: 1838413963217089388}
   - component: {fileID: 1838413963217089389}
   - component: {fileID: 1838413963217089390}
-  - component: {fileID: 1838413963217089391}
+  - component: {fileID: 5172049419059165584}
   m_Layer: 7
   m_Name: Hedron2 (2)
   m_TagString: Crystal
@@ -5817,7 +5880,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.6540812, y: 0.6536619, z: 0.7316192}
   m_Center: {x: 0.0006166398, y: -0.00000882149, z: -0.36581114}
---- !u!114 &1838413963217089391
+--- !u!114 &5172049419059165584
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -5826,9 +5889,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1838413963217089385}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5a347bfda3abbbe4ab79e30555f69ee0, type: 3}
+  m_Script: {fileID: 11500000, guid: 7085f9c2e6ba059419c35dc76c257506, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _destroySound: {fileID: 8300000, guid: b2bc5e5cac862594581d48b9024a7431, type: 3}
+  isDestroyable: 0
+  doesRotate: 1
   _rotation: {x: 0, y: 0, z: 1}
   _speed: 50
 --- !u!1 &1838413963217465199
@@ -5939,7 +6005,7 @@ GameObject:
   - component: {fileID: 1838413963308080828}
   - component: {fileID: 1838413963308080829}
   - component: {fileID: 1838413963308080830}
-  - component: {fileID: 1838413963308080831}
+  - component: {fileID: 1553313980}
   m_Layer: 7
   m_Name: Hedron6 (1)
   m_TagString: Crystal
@@ -6037,7 +6103,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.33367288, y: 0.33930644, z: 0.40344545}
   m_Center: {x: 0.0012362512, y: -0.008020341, z: -0.6766845}
---- !u!114 &1838413963308080831
+--- !u!114 &1553313980
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -6046,9 +6112,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1838413963308080825}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5a347bfda3abbbe4ab79e30555f69ee0, type: 3}
+  m_Script: {fileID: 11500000, guid: 7085f9c2e6ba059419c35dc76c257506, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _destroySound: {fileID: 8300000, guid: b2bc5e5cac862594581d48b9024a7431, type: 3}
+  isDestroyable: 0
+  doesRotate: 1
   _rotation: {x: 0, y: 0, z: -1}
   _speed: 75
 --- !u!1 &1838413963355523922
@@ -6145,7 +6214,7 @@ GameObject:
   - component: {fileID: 1838413963360286254}
   - component: {fileID: 1838413963360286255}
   - component: {fileID: 1838413963360286248}
-  - component: {fileID: 1838413963360286249}
+  - component: {fileID: 2448433245742602538}
   m_Layer: 7
   m_Name: Hedron3 (1)
   m_TagString: Crystal
@@ -6243,7 +6312,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.36483893, y: 0.30003724, z: 0.41999796}
   m_Center: {x: -0.0011956887, y: -0.008717269, z: -0.6429101}
---- !u!114 &1838413963360286249
+--- !u!114 &2448433245742602538
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -6252,9 +6321,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1838413963360286251}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5a347bfda3abbbe4ab79e30555f69ee0, type: 3}
+  m_Script: {fileID: 11500000, guid: 7085f9c2e6ba059419c35dc76c257506, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _destroySound: {fileID: 8300000, guid: b2bc5e5cac862594581d48b9024a7431, type: 3}
+  isDestroyable: 0
+  doesRotate: 1
   _rotation: {x: 0, y: 0, z: 1}
   _speed: 50
 --- !u!1 &1838413963436463055
@@ -6555,7 +6627,7 @@ GameObject:
   - component: {fileID: 1838413963495900245}
   - component: {fileID: 1838413963495900246}
   - component: {fileID: 1838413963495900247}
-  - component: {fileID: 1838413963495900240}
+  - component: {fileID: 1937971853}
   m_Layer: 7
   m_Name: Hedron6 (2)
   m_TagString: Crystal
@@ -6653,7 +6725,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.33367288, y: 0.33930644, z: 0.40344545}
   m_Center: {x: 0.0012362512, y: -0.008020341, z: -0.6766845}
---- !u!114 &1838413963495900240
+--- !u!114 &1937971853
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -6662,9 +6734,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1838413963495900242}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5a347bfda3abbbe4ab79e30555f69ee0, type: 3}
+  m_Script: {fileID: 11500000, guid: 7085f9c2e6ba059419c35dc76c257506, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _destroySound: {fileID: 8300000, guid: b2bc5e5cac862594581d48b9024a7431, type: 3}
+  isDestroyable: 0
+  doesRotate: 1
   _rotation: {x: 0, y: 0, z: 1}
   _speed: 50
 --- !u!1 &1838413963652515382
@@ -6680,7 +6755,7 @@ GameObject:
   - component: {fileID: 1838413963652515385}
   - component: {fileID: 1838413963652515386}
   - component: {fileID: 1838413963652515387}
-  - component: {fileID: 1838413963652515380}
+  - component: {fileID: 963369651}
   m_Layer: 7
   m_Name: Hedron6 (8)
   m_TagString: Crystal
@@ -6778,7 +6853,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.33367288, y: 0.33930644, z: 0.40344545}
   m_Center: {x: 0.0012362512, y: -0.008020341, z: -0.6766845}
---- !u!114 &1838413963652515380
+--- !u!114 &963369651
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -6787,9 +6862,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1838413963652515382}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5a347bfda3abbbe4ab79e30555f69ee0, type: 3}
+  m_Script: {fileID: 11500000, guid: 7085f9c2e6ba059419c35dc76c257506, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _destroySound: {fileID: 8300000, guid: b2bc5e5cac862594581d48b9024a7431, type: 3}
+  isDestroyable: 0
+  doesRotate: 1
   _rotation: {x: 0, y: 0, z: 1}
   _speed: 50
 --- !u!1 &1838413963652585278
@@ -6805,7 +6883,7 @@ GameObject:
   - component: {fileID: 1838413963652585249}
   - component: {fileID: 1838413963652585250}
   - component: {fileID: 1838413963652585251}
-  - component: {fileID: 1838413963652585276}
+  - component: {fileID: 359699022}
   m_Layer: 7
   m_Name: Hedron5 (1)
   m_TagString: Crystal
@@ -6903,7 +6981,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.4027451, y: 0.34564462, z: 0.47360396}
   m_Center: {x: 0.005237088, y: -0.023888469, z: -0.64160544}
---- !u!114 &1838413963652585276
+--- !u!114 &359699022
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -6912,9 +6990,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1838413963652585278}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5a347bfda3abbbe4ab79e30555f69ee0, type: 3}
+  m_Script: {fileID: 11500000, guid: 7085f9c2e6ba059419c35dc76c257506, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _destroySound: {fileID: 8300000, guid: b2bc5e5cac862594581d48b9024a7431, type: 3}
+  isDestroyable: 0
+  doesRotate: 1
   _rotation: {x: 0, y: 0, z: -1}
   _speed: 75
 --- !u!1 &1838413963688614296
@@ -7803,7 +7884,7 @@ GameObject:
   - component: {fileID: 2682836401708927655}
   - component: {fileID: 2503649882372978880}
   - component: {fileID: 2503649882372978887}
-  - component: {fileID: 1838413962304532182}
+  - component: {fileID: 1660998094}
   m_Layer: 7
   m_Name: Hedron6
   m_TagString: Crystal
@@ -7901,7 +7982,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.33367288, y: 0.33930644, z: 0.40344545}
   m_Center: {x: 0.0012362512, y: -0.008020341, z: -0.6766845}
---- !u!114 &1838413962304532182
+--- !u!114 &1660998094
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -7910,9 +7991,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 2503649882372978886}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5a347bfda3abbbe4ab79e30555f69ee0, type: 3}
+  m_Script: {fileID: 11500000, guid: 7085f9c2e6ba059419c35dc76c257506, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _destroySound: {fileID: 8300000, guid: b2bc5e5cac862594581d48b9024a7431, type: 3}
+  isDestroyable: 0
+  doesRotate: 1
   _rotation: {x: 0, y: 0, z: -1}
   _speed: 75
 --- !u!1 &2503649883546545914
@@ -7928,7 +8012,7 @@ GameObject:
   - component: {fileID: 2682836402813426843}
   - component: {fileID: 2503649883546545916}
   - component: {fileID: 2503649883546545915}
-  - component: {fileID: 1838413963343231210}
+  - component: {fileID: 8258611032776243817}
   m_Layer: 7
   m_Name: Hedron6
   m_TagString: Crystal
@@ -8026,7 +8110,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.33367288, y: 0.33930644, z: 0.40344545}
   m_Center: {x: 0.0012362512, y: -0.008020341, z: -0.6766845}
---- !u!114 &1838413963343231210
+--- !u!114 &8258611032776243817
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8035,9 +8119,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 2503649883546545914}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5a347bfda3abbbe4ab79e30555f69ee0, type: 3}
+  m_Script: {fileID: 11500000, guid: 7085f9c2e6ba059419c35dc76c257506, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _destroySound: {fileID: 8300000, guid: b2bc5e5cac862594581d48b9024a7431, type: 3}
+  isDestroyable: 0
+  doesRotate: 1
   _rotation: {x: 0, y: 0, z: 1}
   _speed: 50
 --- !u!1 &2962058113615834625
@@ -8672,7 +8759,7 @@ GameObject:
   - component: {fileID: 2477017101305280539}
   - component: {fileID: 3385540308477936077}
   - component: {fileID: 3385540308477936076}
-  - component: {fileID: 1838413961946065300}
+  - component: {fileID: 1320923579}
   m_Layer: 7
   m_Name: Hedron3
   m_TagString: Crystal
@@ -8770,7 +8857,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.36483893, y: 0.30003724, z: 0.41999796}
   m_Center: {x: -0.0011956887, y: -0.008717269, z: -0.6429101}
---- !u!114 &1838413961946065300
+--- !u!114 &1320923579
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8779,9 +8866,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 3385540308477936067}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5a347bfda3abbbe4ab79e30555f69ee0, type: 3}
+  m_Script: {fileID: 11500000, guid: 7085f9c2e6ba059419c35dc76c257506, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _destroySound: {fileID: 8300000, guid: b2bc5e5cac862594581d48b9024a7431, type: 3}
+  isDestroyable: 0
+  doesRotate: 1
   _rotation: {x: 0, y: 0, z: -1}
   _speed: 75
 --- !u!1 &3385540309590956031
@@ -8797,7 +8887,7 @@ GameObject:
   - component: {fileID: 2477017102476193319}
   - component: {fileID: 3385540309590956017}
   - component: {fileID: 3385540309590956016}
-  - component: {fileID: 1838413962914217896}
+  - component: {fileID: 6553886790637114877}
   m_Layer: 7
   m_Name: Hedron3
   m_TagString: Crystal
@@ -8895,7 +8985,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.36483893, y: 0.30003724, z: 0.41999796}
   m_Center: {x: -0.0011956887, y: -0.008717269, z: -0.6429101}
---- !u!114 &1838413962914217896
+--- !u!114 &6553886790637114877
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8904,9 +8994,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 3385540309590956031}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5a347bfda3abbbe4ab79e30555f69ee0, type: 3}
+  m_Script: {fileID: 11500000, guid: 7085f9c2e6ba059419c35dc76c257506, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _destroySound: {fileID: 8300000, guid: b2bc5e5cac862594581d48b9024a7431, type: 3}
+  isDestroyable: 0
+  doesRotate: 1
   _rotation: {x: 0, y: 0, z: 1}
   _speed: 50
 --- !u!1 &4552793154186419616
@@ -8922,7 +9015,7 @@ GameObject:
   - component: {fileID: 4552793154186419628}
   - component: {fileID: 4552793154186419619}
   - component: {fileID: 4552793154186419618}
-  - component: {fileID: 1838413961705496220}
+  - component: {fileID: 1957592911}
   m_Layer: 7
   m_Name: Hedron3 (2)
   m_TagString: Crystal
@@ -9020,7 +9113,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.36483893, y: 0.30003724, z: 0.41999796}
   m_Center: {x: -0.0011956887, y: -0.008717269, z: -0.6429101}
---- !u!114 &1838413961705496220
+--- !u!114 &1957592911
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -9029,9 +9122,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 4552793154186419616}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5a347bfda3abbbe4ab79e30555f69ee0, type: 3}
+  m_Script: {fileID: 11500000, guid: 7085f9c2e6ba059419c35dc76c257506, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _destroySound: {fileID: 8300000, guid: b2bc5e5cac862594581d48b9024a7431, type: 3}
+  isDestroyable: 0
+  doesRotate: 1
   _rotation: {x: 0, y: 0, z: -1}
   _speed: 75
 --- !u!1 &4552793154220693766
@@ -9128,7 +9224,7 @@ GameObject:
   - component: {fileID: 4552793154270905102}
   - component: {fileID: 4552793154270905101}
   - component: {fileID: 4552793154270905100}
-  - component: {fileID: 1838413962172504828}
+  - component: {fileID: 875237066}
   m_Layer: 7
   m_Name: Hedron3 (3)
   m_TagString: Crystal
@@ -9226,7 +9322,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.36483893, y: 0.30003724, z: 0.41999796}
   m_Center: {x: -0.0011956887, y: -0.008717269, z: -0.6429101}
---- !u!114 &1838413962172504828
+--- !u!114 &875237066
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -9235,9 +9331,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 4552793154270905090}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5a347bfda3abbbe4ab79e30555f69ee0, type: 3}
+  m_Script: {fileID: 11500000, guid: 7085f9c2e6ba059419c35dc76c257506, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _destroySound: {fileID: 8300000, guid: b2bc5e5cac862594581d48b9024a7431, type: 3}
+  isDestroyable: 0
+  doesRotate: 1
   _rotation: {x: 0, y: 0, z: -1}
   _speed: 75
 --- !u!1 &4552793154382469301
@@ -9334,7 +9433,7 @@ GameObject:
   - component: {fileID: 4552793154382497512}
   - component: {fileID: 4552793154382497527}
   - component: {fileID: 4552793154382497526}
-  - component: {fileID: 1838413962347758232}
+  - component: {fileID: 4011595196024464844}
   m_Layer: 7
   m_Name: Hedron8 (1)
   m_TagString: Crystal
@@ -9432,7 +9531,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.3525285, y: 0.35384956, z: 0.44319725}
   m_Center: {x: 0.02004576, y: 0.001532512, z: -0.65680885}
---- !u!114 &1838413962347758232
+--- !u!114 &4011595196024464844
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -9441,9 +9540,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 4552793154382497524}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5a347bfda3abbbe4ab79e30555f69ee0, type: 3}
+  m_Script: {fileID: 11500000, guid: 7085f9c2e6ba059419c35dc76c257506, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _destroySound: {fileID: 8300000, guid: b2bc5e5cac862594581d48b9024a7431, type: 3}
+  isDestroyable: 0
+  doesRotate: 1
   _rotation: {x: 0, y: 0, z: 1}
   _speed: 50
 --- !u!1 &4552793154552089335
@@ -9458,7 +9560,7 @@ GameObject:
   - component: {fileID: 4552793154552089323}
   - component: {fileID: 4552793154552089322}
   - component: {fileID: 4552793154552089321}
-  - component: {fileID: 1838413963637889409}
+  - component: {fileID: 7118859187886517233}
   m_Layer: 7
   m_Name: Hedron2 (1)
   m_TagString: Crystal
@@ -9543,7 +9645,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.6540812, y: 0.6536619, z: 0.7316192}
   m_Center: {x: 0.0006166398, y: -0.00000882149, z: -0.36581114}
---- !u!114 &1838413963637889409
+--- !u!114 &7118859187886517233
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -9552,9 +9654,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 4552793154552089335}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5a347bfda3abbbe4ab79e30555f69ee0, type: 3}
+  m_Script: {fileID: 11500000, guid: 7085f9c2e6ba059419c35dc76c257506, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _destroySound: {fileID: 8300000, guid: b2bc5e5cac862594581d48b9024a7431, type: 3}
+  isDestroyable: 0
+  doesRotate: 1
   _rotation: {x: 0, y: 0, z: 1}
   _speed: 50
 --- !u!1 &4552793154622712039
@@ -9570,7 +9675,7 @@ GameObject:
   - component: {fileID: 4552793154622711835}
   - component: {fileID: 4552793154622711834}
   - component: {fileID: 4552793154622711833}
-  - component: {fileID: 1838413962542479844}
+  - component: {fileID: 2799601019026329972}
   m_Layer: 7
   m_Name: Hedron5 (2)
   m_TagString: Crystal
@@ -9668,7 +9773,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.4027451, y: 0.34564462, z: 0.47360396}
   m_Center: {x: 0.005237088, y: -0.023888469, z: -0.64160544}
---- !u!114 &1838413962542479844
+--- !u!114 &2799601019026329972
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -9677,9 +9782,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 4552793154622712039}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5a347bfda3abbbe4ab79e30555f69ee0, type: 3}
+  m_Script: {fileID: 11500000, guid: 7085f9c2e6ba059419c35dc76c257506, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _destroySound: {fileID: 8300000, guid: b2bc5e5cac862594581d48b9024a7431, type: 3}
+  isDestroyable: 0
+  doesRotate: 1
   _rotation: {x: 0, y: 0, z: 1}
   _speed: 50
 --- !u!1 &4552793154676788087
@@ -10019,7 +10127,7 @@ GameObject:
   - component: {fileID: 4552793155298904976}
   - component: {fileID: 4552793155298904991}
   - component: {fileID: 4552793155298904990}
-  - component: {fileID: 1838413962885220512}
+  - component: {fileID: 5695797973486841712}
   m_Layer: 7
   m_Name: Hedron3 (2)
   m_TagString: Crystal
@@ -10117,7 +10225,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.36483893, y: 0.30003724, z: 0.41999796}
   m_Center: {x: -0.0011956887, y: -0.008717269, z: -0.6429101}
---- !u!114 &1838413962885220512
+--- !u!114 &5695797973486841712
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -10126,9 +10234,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 4552793155298904988}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5a347bfda3abbbe4ab79e30555f69ee0, type: 3}
+  m_Script: {fileID: 11500000, guid: 7085f9c2e6ba059419c35dc76c257506, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _destroySound: {fileID: 8300000, guid: b2bc5e5cac862594581d48b9024a7431, type: 3}
+  isDestroyable: 0
+  doesRotate: 1
   _rotation: {x: 0, y: 0, z: 1}
   _speed: 50
 --- !u!1 &4552793155354447497
@@ -10225,7 +10336,7 @@ GameObject:
   - component: {fileID: 4552793155354480852}
   - component: {fileID: 4552793155354480843}
   - component: {fileID: 4552793155354480842}
-  - component: {fileID: 1838413963317744804}
+  - component: {fileID: 1771527282}
   m_Layer: 7
   m_Name: Hedron8 (1)
   m_TagString: Crystal
@@ -10323,7 +10434,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.3525285, y: 0.35384956, z: 0.44319725}
   m_Center: {x: 0.02004576, y: 0.001532512, z: -0.65680885}
---- !u!114 &1838413963317744804
+--- !u!114 &1771527282
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -10332,9 +10443,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 4552793155354480840}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5a347bfda3abbbe4ab79e30555f69ee0, type: 3}
+  m_Script: {fileID: 11500000, guid: 7085f9c2e6ba059419c35dc76c257506, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _destroySound: {fileID: 8300000, guid: b2bc5e5cac862594581d48b9024a7431, type: 3}
+  isDestroyable: 0
+  doesRotate: 1
   _rotation: {x: 0, y: 0, z: -1}
   _speed: 75
 --- !u!1 &4552793155448247614
@@ -10350,7 +10464,7 @@ GameObject:
   - component: {fileID: 4552793155448247602}
   - component: {fileID: 4552793155448247601}
   - component: {fileID: 4552793155448247600}
-  - component: {fileID: 1838413963207789760}
+  - component: {fileID: 3322645723533163314}
   m_Layer: 7
   m_Name: Hedron3 (3)
   m_TagString: Crystal
@@ -10448,7 +10562,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.36483893, y: 0.30003724, z: 0.41999796}
   m_Center: {x: -0.0011956887, y: -0.008717269, z: -0.6429101}
---- !u!114 &1838413963207789760
+--- !u!114 &3322645723533163314
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -10457,9 +10571,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 4552793155448247614}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5a347bfda3abbbe4ab79e30555f69ee0, type: 3}
+  m_Script: {fileID: 11500000, guid: 7085f9c2e6ba059419c35dc76c257506, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _destroySound: {fileID: 8300000, guid: b2bc5e5cac862594581d48b9024a7431, type: 3}
+  isDestroyable: 0
+  doesRotate: 1
   _rotation: {x: 0, y: 0, z: 1}
   _speed: 50
 --- !u!1 &4552793155667934939
@@ -10475,7 +10592,7 @@ GameObject:
   - component: {fileID: 4552793155667934759}
   - component: {fileID: 4552793155667934758}
   - component: {fileID: 4552793155667934757}
-  - component: {fileID: 1838413963642089432}
+  - component: {fileID: 1688109335}
   m_Layer: 7
   m_Name: Hedron5 (2)
   m_TagString: Crystal
@@ -10573,7 +10690,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.4027451, y: 0.34564462, z: 0.47360396}
   m_Center: {x: 0.005237088, y: -0.023888469, z: -0.64160544}
---- !u!114 &1838413963642089432
+--- !u!114 &1688109335
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -10582,9 +10699,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 4552793155667934939}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5a347bfda3abbbe4ab79e30555f69ee0, type: 3}
+  m_Script: {fileID: 11500000, guid: 7085f9c2e6ba059419c35dc76c257506, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _destroySound: {fileID: 8300000, guid: b2bc5e5cac862594581d48b9024a7431, type: 3}
+  isDestroyable: 0
+  doesRotate: 1
   _rotation: {x: 0, y: 0, z: -1}
   _speed: 75
 --- !u!1 &4552793155721698507
@@ -10599,7 +10719,7 @@ GameObject:
   - component: {fileID: 4552793155721698519}
   - component: {fileID: 4552793155721698518}
   - component: {fileID: 4552793155721698517}
-  - component: {fileID: 1838413962529886141}
+  - component: {fileID: 950076893}
   m_Layer: 7
   m_Name: Hedron2 (1)
   m_TagString: Crystal
@@ -10684,7 +10804,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.6540812, y: 0.6536619, z: 0.7316192}
   m_Center: {x: 0.0006166398, y: -0.00000882149, z: -0.36581114}
---- !u!114 &1838413962529886141
+--- !u!114 &950076893
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -10693,9 +10813,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 4552793155721698507}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5a347bfda3abbbe4ab79e30555f69ee0, type: 3}
+  m_Script: {fileID: 11500000, guid: 7085f9c2e6ba059419c35dc76c257506, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _destroySound: {fileID: 8300000, guid: b2bc5e5cac862594581d48b9024a7431, type: 3}
+  isDestroyable: 0
+  doesRotate: 1
   _rotation: {x: 0, y: 0, z: -1}
   _speed: 75
 --- !u!1 &4552793155847609675
@@ -10953,7 +11076,7 @@ GameObject:
   - component: {fileID: 7978634169259706228}
   - component: {fileID: 138142898129479656}
   - component: {fileID: 4840099047578418853}
-  - component: {fileID: 1838413962468863675}
+  - component: {fileID: 385484319}
   m_Layer: 7
   m_Name: Hedron2
   m_TagString: Crystal
@@ -11038,7 +11161,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.6540812, y: 0.6536619, z: 0.7316192}
   m_Center: {x: 0.0006166398, y: -0.00000882149, z: -0.36581114}
---- !u!114 &1838413962468863675
+--- !u!114 &385484319
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -11047,9 +11170,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 4840099047578418852}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5a347bfda3abbbe4ab79e30555f69ee0, type: 3}
+  m_Script: {fileID: 11500000, guid: 7085f9c2e6ba059419c35dc76c257506, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _destroySound: {fileID: 8300000, guid: b2bc5e5cac862594581d48b9024a7431, type: 3}
+  isDestroyable: 0
+  doesRotate: 1
   _rotation: {x: 0, y: 0, z: -1}
   _speed: 75
 --- !u!1 &4840099048757749912
@@ -11064,7 +11190,7 @@ GameObject:
   - component: {fileID: 7978634170374263112}
   - component: {fileID: 138142897088721364}
   - component: {fileID: 4840099048757749913}
-  - component: {fileID: 1838413963447269511}
+  - component: {fileID: 8168223796601783896}
   m_Layer: 7
   m_Name: Hedron2
   m_TagString: Crystal
@@ -11149,7 +11275,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.6540812, y: 0.6536619, z: 0.7316192}
   m_Center: {x: 0.0006166398, y: -0.00000882149, z: -0.36581114}
---- !u!114 &1838413963447269511
+--- !u!114 &8168223796601783896
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -11158,9 +11284,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 4840099048757749912}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5a347bfda3abbbe4ab79e30555f69ee0, type: 3}
+  m_Script: {fileID: 11500000, guid: 7085f9c2e6ba059419c35dc76c257506, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _destroySound: {fileID: 8300000, guid: b2bc5e5cac862594581d48b9024a7431, type: 3}
+  isDestroyable: 0
+  doesRotate: 1
   _rotation: {x: 0, y: 0, z: 1}
   _speed: 50
 --- !u!1 &4973558653620704553
@@ -11499,7 +11628,7 @@ GameObject:
   - component: {fileID: 1972217994939558374}
   - component: {fileID: 8853825316449452104}
   - component: {fileID: 6674632671915563232}
-  - component: {fileID: 1838413963030452421}
+  - component: {fileID: 760792316}
   m_Layer: 7
   m_Name: Hedron7
   m_TagString: Crystal
@@ -11584,7 +11713,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.6564115, y: 0.65233904, z: 0.7987108}
   m_Center: {x: -0.0013684928, y: -0.0015508235, z: -0.39935535}
---- !u!114 &1838413963030452421
+--- !u!114 &760792316
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -11593,9 +11722,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 6674632671915563239}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5a347bfda3abbbe4ab79e30555f69ee0, type: 3}
+  m_Script: {fileID: 11500000, guid: 7085f9c2e6ba059419c35dc76c257506, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _destroySound: {fileID: 8300000, guid: b2bc5e5cac862594581d48b9024a7431, type: 3}
+  isDestroyable: 0
+  doesRotate: 1
   _rotation: {x: 0, y: 0, z: -1}
   _speed: 75
 --- !u!1 &6674632672889343707
@@ -11610,7 +11742,7 @@ GameObject:
   - component: {fileID: 1972217996121620442}
   - component: {fileID: 8853825317553559156}
   - component: {fileID: 6674632672889343708}
-  - component: {fileID: 1838413962064629497}
+  - component: {fileID: 8269942008157834810}
   m_Layer: 7
   m_Name: Hedron7
   m_TagString: Crystal
@@ -11695,7 +11827,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.6564115, y: 0.65233904, z: 0.7987108}
   m_Center: {x: -0.0013684928, y: -0.0015508235, z: -0.39935535}
---- !u!114 &1838413962064629497
+--- !u!114 &8269942008157834810
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -11704,9 +11836,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 6674632672889343707}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5a347bfda3abbbe4ab79e30555f69ee0, type: 3}
+  m_Script: {fileID: 11500000, guid: 7085f9c2e6ba059419c35dc76c257506, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _destroySound: {fileID: 8300000, guid: b2bc5e5cac862594581d48b9024a7431, type: 3}
+  isDestroyable: 0
+  doesRotate: 1
   _rotation: {x: 0, y: 0, z: 1}
   _speed: 50
 --- !u!1 &8338142259527000713
@@ -11919,7 +12054,7 @@ GameObject:
   - component: {fileID: 8195484274725820069}
   - component: {fileID: 8738237620257917914}
   - component: {fileID: 8738237620257917913}
-  - component: {fileID: 1838413962569481081}
+  - component: {fileID: 1672081772}
   m_Layer: 7
   m_Name: Hedron4
   m_TagString: Crystal
@@ -12017,7 +12152,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.44720113, y: 0.38626146, z: 0.425795}
   m_Center: {x: -0.007773366, y: -0.0011976023, z: -0.66548204}
---- !u!114 &1838413962569481081
+--- !u!114 &1672081772
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -12026,9 +12161,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 8738237620257917912}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5a347bfda3abbbe4ab79e30555f69ee0, type: 3}
+  m_Script: {fileID: 11500000, guid: 7085f9c2e6ba059419c35dc76c257506, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _destroySound: {fileID: 8300000, guid: b2bc5e5cac862594581d48b9024a7431, type: 3}
+  isDestroyable: 0
+  doesRotate: 1
   _rotation: {x: 0, y: 0, z: -1}
   _speed: 75
 --- !u!1 &8738237621225577956
@@ -12044,7 +12182,7 @@ GameObject:
   - component: {fileID: 8195484275762675865}
   - component: {fileID: 8738237621225577958}
   - component: {fileID: 8738237621225577957}
-  - component: {fileID: 1838413963615087941}
+  - component: {fileID: 4992477775032588469}
   m_Layer: 7
   m_Name: Hedron4
   m_TagString: Crystal
@@ -12142,7 +12280,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.44720113, y: 0.38626146, z: 0.425795}
   m_Center: {x: -0.007773366, y: -0.0011976023, z: -0.66548204}
---- !u!114 &1838413963615087941
+--- !u!114 &4992477775032588469
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -12151,9 +12289,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 8738237621225577956}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5a347bfda3abbbe4ab79e30555f69ee0, type: 3}
+  m_Script: {fileID: 11500000, guid: 7085f9c2e6ba059419c35dc76c257506, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _destroySound: {fileID: 8300000, guid: b2bc5e5cac862594581d48b9024a7431, type: 3}
+  isDestroyable: 0
+  doesRotate: 1
   _rotation: {x: 0, y: 0, z: 1}
   _speed: 50
 --- !u!1 &8832217812275285960
@@ -12169,7 +12310,7 @@ GameObject:
   - component: {fileID: 1020594212202989988}
   - component: {fileID: 8832217812275285962}
   - component: {fileID: 8832217812275285961}
-  - component: {fileID: 1838413963128859047}
+  - component: {fileID: 8093543978654489484}
   m_Layer: 7
   m_Name: Hedron8
   m_TagString: Crystal
@@ -12267,7 +12408,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.3525285, y: 0.35384956, z: 0.44319725}
   m_Center: {x: 0.02004576, y: 0.001532512, z: -0.65680885}
---- !u!114 &1838413963128859047
+--- !u!114 &8093543978654489484
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -12276,9 +12417,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 8832217812275285960}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5a347bfda3abbbe4ab79e30555f69ee0, type: 3}
+  m_Script: {fileID: 11500000, guid: 7085f9c2e6ba059419c35dc76c257506, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _destroySound: {fileID: 8300000, guid: b2bc5e5cac862594581d48b9024a7431, type: 3}
+  isDestroyable: 0
+  doesRotate: 1
   _rotation: {x: 0, y: 0, z: 1}
   _speed: 50
 --- !u!1 &8832217813255756276
@@ -12294,7 +12438,7 @@ GameObject:
   - component: {fileID: 1020594211031523224}
   - component: {fileID: 8832217813255756278}
   - component: {fileID: 8832217813255756277}
-  - component: {fileID: 1838413961949527963}
+  - component: {fileID: 471837023}
   m_Layer: 7
   m_Name: Hedron8
   m_TagString: Crystal
@@ -12392,7 +12536,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.3525285, y: 0.35384956, z: 0.44319725}
   m_Center: {x: 0.02004576, y: 0.001532512, z: -0.65680885}
---- !u!114 &1838413961949527963
+--- !u!114 &471837023
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -12401,9 +12545,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 8832217813255756276}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5a347bfda3abbbe4ab79e30555f69ee0, type: 3}
+  m_Script: {fileID: 11500000, guid: 7085f9c2e6ba059419c35dc76c257506, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _destroySound: {fileID: 8300000, guid: b2bc5e5cac862594581d48b9024a7431, type: 3}
+  isDestroyable: 0
+  doesRotate: 1
   _rotation: {x: 0, y: 0, z: -1}
   _speed: 75
 --- !u!1 &9120583806221497500
@@ -12419,7 +12566,7 @@ GameObject:
   - component: {fileID: 3386349479050619749}
   - component: {fileID: 9120583806221497502}
   - component: {fileID: 9120583806221497501}
-  - component: {fileID: 1838413962719149080}
+  - component: {fileID: 5693353779508299999}
   m_Layer: 7
   m_Name: Hedron1
   m_TagString: Crystal
@@ -12517,7 +12664,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.3214028, y: 0.38643292, z: 0.38188934}
   m_Center: {x: -0.008192316, y: -0.009054453, z: -0.60827446}
---- !u!114 &1838413962719149080
+--- !u!114 &5693353779508299999
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -12526,9 +12673,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 9120583806221497500}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5a347bfda3abbbe4ab79e30555f69ee0, type: 3}
+  m_Script: {fileID: 11500000, guid: 7085f9c2e6ba059419c35dc76c257506, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _destroySound: {fileID: 8300000, guid: b2bc5e5cac862594581d48b9024a7431, type: 3}
+  isDestroyable: 0
+  doesRotate: 1
   _rotation: {x: 0, y: 0, z: 1}
   _speed: 50
 --- !u!1 &9120583807336211104
@@ -12544,7 +12694,7 @@ GameObject:
   - component: {fileID: 3386349478080642393}
   - component: {fileID: 9120583807336211106}
   - component: {fileID: 9120583807336211105}
-  - component: {fileID: 1838413963751680548}
+  - component: {fileID: 1878247940}
   m_Layer: 7
   m_Name: Hedron1
   m_TagString: Crystal
@@ -12642,7 +12792,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.3214028, y: 0.38643292, z: 0.38188934}
   m_Center: {x: -0.008192316, y: -0.009054453, z: -0.60827446}
---- !u!114 &1838413963751680548
+--- !u!114 &1878247940
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -12651,9 +12801,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 9120583807336211104}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5a347bfda3abbbe4ab79e30555f69ee0, type: 3}
+  m_Script: {fileID: 11500000, guid: 7085f9c2e6ba059419c35dc76c257506, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _destroySound: {fileID: 8300000, guid: b2bc5e5cac862594581d48b9024a7431, type: 3}
+  isDestroyable: 0
+  doesRotate: 1
   _rotation: {x: 0, y: 0, z: -1}
   _speed: 75
 --- !u!1001 &301915172
@@ -12663,6 +12816,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 859568635}
     m_Modifications:
+    - target: {fileID: 5128727064002896039, guid: ebb1b9ab219bcd64a9246c9b560be2b9, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     - target: {fileID: 6620324351746826104, guid: ebb1b9ab219bcd64a9246c9b560be2b9, type: 3}
       propertyPath: m_RootOrder
       value: 12
@@ -12719,6 +12876,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: GrappleStump 2 (13)
       objectReference: {fileID: 0}
+    - target: {fileID: 7754020081251177874, guid: ebb1b9ab219bcd64a9246c9b560be2b9, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ebb1b9ab219bcd64a9246c9b560be2b9, type: 3}
 --- !u!4 &6620324351990432604 stripped
@@ -12733,6 +12894,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 859568635}
     m_Modifications:
+    - target: {fileID: 5128727064002896039, guid: ebb1b9ab219bcd64a9246c9b560be2b9, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     - target: {fileID: 6620324351746826104, guid: ebb1b9ab219bcd64a9246c9b560be2b9, type: 3}
       propertyPath: m_RootOrder
       value: 14
@@ -12789,6 +12954,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: GrappleStump 2 (15)
       objectReference: {fileID: 0}
+    - target: {fileID: 7754020081251177874, guid: ebb1b9ab219bcd64a9246c9b560be2b9, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ebb1b9ab219bcd64a9246c9b560be2b9, type: 3}
 --- !u!4 &6620324351983919527 stripped
@@ -12803,6 +12972,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 859568635}
     m_Modifications:
+    - target: {fileID: 5128727064002896039, guid: ebb1b9ab219bcd64a9246c9b560be2b9, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     - target: {fileID: 6620324351746826104, guid: ebb1b9ab219bcd64a9246c9b560be2b9, type: 3}
       propertyPath: m_RootOrder
       value: 11
@@ -12859,6 +13032,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: GrappleStump 2 (12)
       objectReference: {fileID: 0}
+    - target: {fileID: 7754020081251177874, guid: ebb1b9ab219bcd64a9246c9b560be2b9, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ebb1b9ab219bcd64a9246c9b560be2b9, type: 3}
 --- !u!4 &6620324352407984225 stripped
@@ -12873,6 +13050,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 859568635}
     m_Modifications:
+    - target: {fileID: 5128727064002896039, guid: ebb1b9ab219bcd64a9246c9b560be2b9, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     - target: {fileID: 6620324351746826104, guid: ebb1b9ab219bcd64a9246c9b560be2b9, type: 3}
       propertyPath: m_RootOrder
       value: 7
@@ -12929,6 +13110,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: GrappleStump 2 (8)
       objectReference: {fileID: 0}
+    - target: {fileID: 7754020081251177874, guid: ebb1b9ab219bcd64a9246c9b560be2b9, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ebb1b9ab219bcd64a9246c9b560be2b9, type: 3}
 --- !u!4 &6620324352377598080 stripped
@@ -12943,6 +13128,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 859568635}
     m_Modifications:
+    - target: {fileID: 5128727064002896039, guid: ebb1b9ab219bcd64a9246c9b560be2b9, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     - target: {fileID: 6620324351746826104, guid: ebb1b9ab219bcd64a9246c9b560be2b9, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -12999,6 +13188,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: GrappleStump 2 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 7754020081251177874, guid: ebb1b9ab219bcd64a9246c9b560be2b9, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ebb1b9ab219bcd64a9246c9b560be2b9, type: 3}
 --- !u!4 &6620324352370726896 stripped
@@ -13013,6 +13206,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 859568635}
     m_Modifications:
+    - target: {fileID: 5128727064002896039, guid: ebb1b9ab219bcd64a9246c9b560be2b9, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     - target: {fileID: 6620324351746826104, guid: ebb1b9ab219bcd64a9246c9b560be2b9, type: 3}
       propertyPath: m_RootOrder
       value: 15
@@ -13069,6 +13266,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: GrappleStump 2 (16)
       objectReference: {fileID: 0}
+    - target: {fileID: 7754020081251177874, guid: ebb1b9ab219bcd64a9246c9b560be2b9, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ebb1b9ab219bcd64a9246c9b560be2b9, type: 3}
 --- !u!4 &6620324352539507953 stripped
@@ -13083,6 +13284,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 859568635}
     m_Modifications:
+    - target: {fileID: 5128727064002896039, guid: ebb1b9ab219bcd64a9246c9b560be2b9, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     - target: {fileID: 6620324351746826104, guid: ebb1b9ab219bcd64a9246c9b560be2b9, type: 3}
       propertyPath: m_RootOrder
       value: 8
@@ -13139,6 +13344,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: GrappleStump 2 (9)
       objectReference: {fileID: 0}
+    - target: {fileID: 7754020081251177874, guid: ebb1b9ab219bcd64a9246c9b560be2b9, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ebb1b9ab219bcd64a9246c9b560be2b9, type: 3}
 --- !u!4 &6620324352667057448 stripped
@@ -13153,6 +13362,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 859568635}
     m_Modifications:
+    - target: {fileID: 5128727064002896039, guid: ebb1b9ab219bcd64a9246c9b560be2b9, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     - target: {fileID: 6620324351746826104, guid: ebb1b9ab219bcd64a9246c9b560be2b9, type: 3}
       propertyPath: m_RootOrder
       value: 9
@@ -13209,6 +13422,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: GrappleStump 2 (10)
       objectReference: {fileID: 0}
+    - target: {fileID: 7754020081251177874, guid: ebb1b9ab219bcd64a9246c9b560be2b9, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ebb1b9ab219bcd64a9246c9b560be2b9, type: 3}
 --- !u!4 &6620324352807421848 stripped
@@ -13223,6 +13440,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 859568635}
     m_Modifications:
+    - target: {fileID: 5128727064002896039, guid: ebb1b9ab219bcd64a9246c9b560be2b9, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     - target: {fileID: 6620324351746826104, guid: ebb1b9ab219bcd64a9246c9b560be2b9, type: 3}
       propertyPath: m_RootOrder
       value: 10
@@ -13279,6 +13500,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: GrappleStump 2 (11)
       objectReference: {fileID: 0}
+    - target: {fileID: 7754020081251177874, guid: ebb1b9ab219bcd64a9246c9b560be2b9, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ebb1b9ab219bcd64a9246c9b560be2b9, type: 3}
 --- !u!4 &6620324353202549402 stripped
@@ -13293,6 +13518,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 859568635}
     m_Modifications:
+    - target: {fileID: 5128727064002896039, guid: ebb1b9ab219bcd64a9246c9b560be2b9, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     - target: {fileID: 6620324351746826104, guid: ebb1b9ab219bcd64a9246c9b560be2b9, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -13349,6 +13578,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: GrappleStump 2 (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 7754020081251177874, guid: ebb1b9ab219bcd64a9246c9b560be2b9, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ebb1b9ab219bcd64a9246c9b560be2b9, type: 3}
 --- !u!4 &6620324353268962990 stripped
@@ -13363,6 +13596,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 859568635}
     m_Modifications:
+    - target: {fileID: 5128727064002896039, guid: ebb1b9ab219bcd64a9246c9b560be2b9, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     - target: {fileID: 6620324351746826104, guid: ebb1b9ab219bcd64a9246c9b560be2b9, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -13419,6 +13656,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: GrappleStump 2 (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 7754020081251177874, guid: ebb1b9ab219bcd64a9246c9b560be2b9, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ebb1b9ab219bcd64a9246c9b560be2b9, type: 3}
 --- !u!4 &6620324353489931184 stripped
@@ -13433,6 +13674,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 859568635}
     m_Modifications:
+    - target: {fileID: 5128727064002896039, guid: ebb1b9ab219bcd64a9246c9b560be2b9, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     - target: {fileID: 6620324351746826104, guid: ebb1b9ab219bcd64a9246c9b560be2b9, type: 3}
       propertyPath: m_RootOrder
       value: 4
@@ -13489,6 +13734,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: GrappleStump 2 (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 7754020081251177874, guid: ebb1b9ab219bcd64a9246c9b560be2b9, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ebb1b9ab219bcd64a9246c9b560be2b9, type: 3}
 --- !u!4 &6620324353483532619 stripped
@@ -13503,6 +13752,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 859568635}
     m_Modifications:
+    - target: {fileID: 5128727064002896039, guid: ebb1b9ab219bcd64a9246c9b560be2b9, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     - target: {fileID: 6620324351746826104, guid: ebb1b9ab219bcd64a9246c9b560be2b9, type: 3}
       propertyPath: m_RootOrder
       value: 6
@@ -13559,6 +13812,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: GrappleStump 2 (7)
       objectReference: {fileID: 0}
+    - target: {fileID: 7754020081251177874, guid: ebb1b9ab219bcd64a9246c9b560be2b9, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ebb1b9ab219bcd64a9246c9b560be2b9, type: 3}
 --- !u!4 &6620324353611265671 stripped
@@ -13573,6 +13830,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 859568635}
     m_Modifications:
+    - target: {fileID: 5128727064002896039, guid: ebb1b9ab219bcd64a9246c9b560be2b9, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     - target: {fileID: 6620324351746826104, guid: ebb1b9ab219bcd64a9246c9b560be2b9, type: 3}
       propertyPath: m_RootOrder
       value: 13
@@ -13629,6 +13890,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: GrappleStump 2 (14)
       objectReference: {fileID: 0}
+    - target: {fileID: 7754020081251177874, guid: ebb1b9ab219bcd64a9246c9b560be2b9, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ebb1b9ab219bcd64a9246c9b560be2b9, type: 3}
 --- !u!4 &6620324353745795795 stripped
@@ -13643,6 +13908,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 859568635}
     m_Modifications:
+    - target: {fileID: 5128727064002896039, guid: ebb1b9ab219bcd64a9246c9b560be2b9, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     - target: {fileID: 6620324351746826104, guid: ebb1b9ab219bcd64a9246c9b560be2b9, type: 3}
       propertyPath: m_RootOrder
       value: 5
@@ -13699,6 +13968,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: GrappleStump 2 (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 7754020081251177874, guid: ebb1b9ab219bcd64a9246c9b560be2b9, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ebb1b9ab219bcd64a9246c9b560be2b9, type: 3}
 --- !u!4 &6620324353815631985 stripped
@@ -13713,6 +13986,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 859568635}
     m_Modifications:
+    - target: {fileID: 5128727064002896039, guid: ebb1b9ab219bcd64a9246c9b560be2b9, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     - target: {fileID: 6620324351746826104, guid: ebb1b9ab219bcd64a9246c9b560be2b9, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -13768,6 +14045,10 @@ PrefabInstance:
     - target: {fileID: 7754020081251177874, guid: ebb1b9ab219bcd64a9246c9b560be2b9, type: 3}
       propertyPath: m_Name
       value: GrappleStump 2 (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7754020081251177874, guid: ebb1b9ab219bcd64a9246c9b560be2b9, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ebb1b9ab219bcd64a9246c9b560be2b9, type: 3}

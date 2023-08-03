@@ -15,6 +15,10 @@ public class DiscordController : MonoBehaviour
 
     void Start()
     {
+        #if UNITY_EDITOR
+            Destroy(this);
+        #endif
+
         discord = new Discord.Discord(1100506911234854952, (System.UInt64)Discord.CreateFlags.NoRequireDiscord);
         var activityManager = discord.GetActivityManager();
         _startTime = System.DateTimeOffset.Now.ToUnixTimeMilliseconds();
@@ -127,7 +131,7 @@ public class DiscordController : MonoBehaviour
         }
         catch
         {
-            Destroy(gameObject);
+            Destroy(this);
         }
     }
 }

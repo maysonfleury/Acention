@@ -202,7 +202,7 @@ public class RigidBodyMovement : MonoBehaviour
     private void Movement() {
         if(gameOver.isGameOver)
         {
-            // Mommy
+            // Mommy I'm scared
         }
         else
         {

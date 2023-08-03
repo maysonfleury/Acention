@@ -10,6 +10,8 @@ public class GrapplingHook : MonoBehaviour
     private Vector3 currentGrapplePosition;
     private bool _canShoot;
     private bool _isHedroned;
+    private bool _isDestructing;
+    private GameObject _grappledObject;
     private Transform objectWorldPos;
 
     public RigidBodyMovement rbMove;
@@ -179,11 +181,21 @@ public class GrapplingHook : MonoBehaviour
                     Debug.Log("Lief Debugson");
                 }
 
-                // If we hit a moving object
-                if(closestHit.collider.gameObject.GetComponent<HedronRotator>() != null)
+                // If we hit a Hedron
+                if(closestHit.collider.gameObject.GetComponent<Hedron>() != null)
                 {
-                    _isHedroned = true;
-                    objectWorldPos = closestHit.transform;
+                    var hedron = closestHit.collider.gameObject.GetComponent<Hedron>();
+                    
+                    if(hedron.isDestroyable)
+                    {
+                        _isDestructing = true;
+                        _grappledObject = closestHit.collider.gameObject;
+                    }
+                    if(hedron.doesRotate)
+                    {
+                        _isHedroned = true;
+                        objectWorldPos = closestHit.transform;
+                    }
                 }
 
                 // Initialize Spring Component
@@ -224,7 +236,12 @@ public class GrapplingHook : MonoBehaviour
 
     private void StopGrapple()
     {
+        if(_isDestructing)
+        {
+            _grappledObject.GetComponent<Hedron>().DestroyHedron();
+        }
         _isHedroned = false;
+        _isDestructing = false;
         hookPrefab.SetActive(true);
         grappleAnimator.SetTrigger("Idle");
         Destroy(springJoint);
