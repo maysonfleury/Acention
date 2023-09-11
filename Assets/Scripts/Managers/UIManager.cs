@@ -12,10 +12,12 @@ public class UIManager : MonoBehaviour
     [SerializeField] Transform destination;
 
     float dToD; // distance to destination
+    Vector2 veloMag; // player's velocity
 
     [SerializeField] GameObject victoryScreen;
     [SerializeField] GameObject reticle;
 
+    [SerializeField] TextMeshProUGUI speedText;
     [SerializeField] TextMeshProUGUI progressPercentage;
     [SerializeField] TextMeshProUGUI locationText;
     [SerializeField] TextMeshProUGUI locationBroadcast;
@@ -73,6 +75,7 @@ public class UIManager : MonoBehaviour
             timer.gameObject.SetActive(true);
             locationText.gameObject.SetActive(true);
             progressPercentage.gameObject.SetActive(true);
+            speedText.gameObject.SetActive(true);
             if (timeRemaining > 0)
             {
                 timeRemaining -= Time.deltaTime;
@@ -94,15 +97,19 @@ public class UIManager : MonoBehaviour
             }
         }
 
-        if (player.grounded)
-        {
-            dToD = (playerGO.transform.position.y / destination.position.y * 100)-0.88f;
-            if (dToD < 0f)
-                dToD = 0;
-            if (dToD > 100f)
-                dToD = 100f;
-            progressPercentage.text = dToD.ToString("F2") + "%";
-        }
+        // Shows the player's velocity
+        veloMag = player.FindVelRelativeToLook();
+        float velocity = Mathf.Abs(veloMag.x) + Mathf.Abs(veloMag.y);
+        speedText.text = ((int)velocity).ToString() + " m/s";
+
+        // Gets the player's distance to the EndGame location in percentage
+        dToD = (playerGO.transform.position.y / destination.position.y * 100)-0.88f;
+        if (dToD < 0f)
+            dToD = 0;
+        if (dToD > 100f)
+            dToD = 100f;
+        progressPercentage.text = dToD.ToString("F2") + "%";
+
         if (dToD < 32.4f && player.gameStart == true)
         {
             if (!area1_discovered)
@@ -193,6 +200,7 @@ public class UIManager : MonoBehaviour
         CrystalEffects crystal = FindObjectOfType<CrystalEffects>();
         gameOver = true;
         progressPercentage.gameObject.SetActive(false);
+        speedText.gameObject.SetActive(false);
         locationText.gameObject.SetActive(false);
         timer.gameObject.SetActive(false);
         UpdateLocation("The Crystal Hungers", false);
