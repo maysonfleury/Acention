@@ -10000,6 +10000,7 @@ GameObject:
   - component: {fileID: 342311682098144623}
   - component: {fileID: 342311682098144622}
   - component: {fileID: 342311682098144617}
+  - component: {fileID: 337757741}
   m_Layer: 0
   m_Name: Body
   m_TagString: Player
@@ -10084,6 +10085,20 @@ CapsuleCollider:
   m_Height: 1.9999999
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!136 &337757741
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 342311682098144619}
+  m_Material: {fileID: 13400000, guid: 69018639180747e4cacb50c89648bb45, type: 2}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.55
+  m_Height: 1.8
+  m_Direction: 1
+  m_Center: {x: 0, y: 0.05, z: 0}
 --- !u!1 &342311682126213651
 GameObject:
   m_ObjectHideFlags: 0
@@ -10711,7 +10726,7 @@ MonoBehaviour:
   stepRayUpper: {fileID: 214414385}
   stepRayLower: {fileID: 299018508}
   sensMultiplier: 1
-  moveSpeed: 1850
+  moveSpeed: 2250
   maxSpeed: 17
   grounded: 0
   sliding: 0
@@ -13701,13 +13716,13 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 69c706c5f7694914f974ad6a8e8ee3b8, type: 3}
---- !u!4 &847203719442656002 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 8340241066303642224, guid: 69c706c5f7694914f974ad6a8e8ee3b8, type: 3}
-  m_PrefabInstance: {fileID: 8682837023828193650}
-  m_PrefabAsset: {fileID: 0}
 --- !u!198 &847203719428501056 stripped
 ParticleSystem:
   m_CorrespondingSourceObject: {fileID: 8340241066318847794, guid: 69c706c5f7694914f974ad6a8e8ee3b8, type: 3}
+  m_PrefabInstance: {fileID: 8682837023828193650}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &847203719442656002 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8340241066303642224, guid: 69c706c5f7694914f974ad6a8e8ee3b8, type: 3}
   m_PrefabInstance: {fileID: 8682837023828193650}
   m_PrefabAsset: {fileID: 0}

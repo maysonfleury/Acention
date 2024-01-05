@@ -14,7 +14,6 @@ public class PauseMenu : MonoBehaviour
     [SerializeField] GameObject pauseMenu;
     [SerializeField] GameObject controlMenu;
     [SerializeField] GameObject settingsMenu;
-    [SerializeField] GameObject anykeyButton;
     [SerializeField] GameObject returnButton;
 
     [SerializeField] GameObject masterSlider;
@@ -30,18 +29,12 @@ public class PauseMenu : MonoBehaviour
     SettingsManager settings;
 
     public AudioMixer audioMixer;
-    private bool tempControls;
 
     void Awake()
     {
         grapple = FindObjectOfType<GrapplingHook>();
         player = FindObjectOfType<RigidBodyMovement>();
         ui = FindObjectOfType<UIManager>();
-
-        tempControls = true;
-        controlMenu.SetActive(true);
-        anykeyButton.SetActive(true);
-        returnButton.SetActive(false);
 	}
 
     private void Start()
@@ -52,6 +45,7 @@ public class PauseMenu : MonoBehaviour
     private void MenuOn ()
     {
         Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
 
         player.isPaused = true;
         grapple.isPaused = true;
@@ -71,6 +65,7 @@ public class PauseMenu : MonoBehaviour
     public void MenuOff ()
     {
         Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
 
         player.isPaused = false;
         grapple.isPaused = false;
@@ -200,17 +195,7 @@ public class PauseMenu : MonoBehaviour
 		if(Input.GetKeyDown(KeyCode.Escape))
 		{
             OnMenuStatusChange();
-            Cursor.visible = m_Paused; //force the cursor visible if anythign had hidden it
 		}
-        if(tempControls)
-        {
-            if (Input.anyKey)
-            {
-                controlMenu.SetActive(false);
-                tempControls = false;
-                anykeyButton.SetActive(false);
-            }
-        }
 	}
 
 }

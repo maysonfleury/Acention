@@ -18,18 +18,13 @@ public class DashRings : MonoBehaviour
 
     public void Lock()
     {
-        Debug.Log("Locking Dash Rings");
+        //Debug.Log("Locking Dash Rings");
         lockedRings.SetActive(true);
     }
 
-    public void Unlock(float duration)
+    public void Unlock()
     {
-        Invoke(nameof(UnlockNow), duration);
-    }
-
-    private void UnlockNow()
-    {
-        Debug.Log("Unlocking Dash Rings");
+        //Debug.Log("Unlocking Dash Rings");
         lockedRings.SetActive(false);
     }
 

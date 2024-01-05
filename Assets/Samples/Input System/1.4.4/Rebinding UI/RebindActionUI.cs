@@ -255,11 +255,13 @@ namespace UnityEngine.InputSystem.Samples.RebindUI
         private void PerformInteractiveRebind(InputAction action, int bindingIndex, bool allCompositeParts = false)
         {
             m_RebindOperation?.Cancel(); // Will null out m_RebindOperation.
+            m_Action.action.Disable();
 
             void CleanUp()
             {
                 m_RebindOperation?.Dispose();
                 m_RebindOperation = null;
+                m_Action.action.Enable();
             }
 
             // Configure the rebind.

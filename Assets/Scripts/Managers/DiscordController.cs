@@ -60,22 +60,25 @@ public class DiscordController : MonoBehaviour
                 break;
         }
 
-        var activityManager = discord.GetActivityManager();
-        var activity = new Discord.Activity {
-            Name = "Acention",
-            Details = _area,
-            State = _state,
-            Assets = {LargeImage = "acentionlogo"},
-            Timestamps = {Start = _startTime},
-        };
-        activityManager.UpdateActivity(activity, (res) => {
-            if(res == Discord.Result.Ok)
-            {
-                Debug.Log("Discord status set!");
-            } else {
-                Debug.LogError("Discord status failed to set!");
-            }
-        });
+        if(discord != null)
+        {
+            var activityManager = discord.GetActivityManager();
+            var activity = new Discord.Activity {
+                Name = "Acention",
+                Details = _area,
+                State = _state,
+                Assets = {LargeImage = "acentionlogo"},
+                Timestamps = {Start = _startTime},
+            };
+            activityManager.UpdateActivity(activity, (res) => {
+                if(res == Discord.Result.Ok)
+                {
+                    Debug.Log("Discord status set!");
+                } else {
+                    Debug.LogError("Discord status failed to set!");
+                }
+            });
+        }
     }
 
     public void SetStatus(string status)
@@ -105,22 +108,25 @@ public class DiscordController : MonoBehaviour
                 break;
         }
 
-        var activityManager = discord.GetActivityManager();
-        var activity = new Discord.Activity {
-            Name = "Acention",
-            Details = _area,
-            State = _state,
-            Assets = {LargeImage = "acentionlogo"},
-            Timestamps = {Start = _startTime},
-        };
-        activityManager.UpdateActivity(activity, (res) => {
-            if(res == Discord.Result.Ok)
-            {
-                Debug.Log("Discord status set!");
-            } else {
-                Debug.LogError("Discord status failed to set!");
-            }
-        });
+        if(discord != null)
+        {
+            var activityManager = discord.GetActivityManager();
+            var activity = new Discord.Activity {
+                Name = "Acention",
+                Details = _area,
+                State = _state,
+                Assets = {LargeImage = "acentionlogo"},
+                Timestamps = {Start = _startTime},
+            };
+            activityManager.UpdateActivity(activity, (res) => {
+                if(res == Discord.Result.Ok)
+                {
+                    Debug.Log("Discord status set!");
+                } else {
+                    Debug.LogError("Discord status failed to set!");
+                }
+            });
+        }
     }
 
     void Update()

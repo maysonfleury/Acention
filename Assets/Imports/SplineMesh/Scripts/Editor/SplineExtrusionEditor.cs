@@ -11,6 +11,7 @@ namespace SplineMesh {
         private SerializedProperty textureScale;
         private SerializedProperty sampleSpacing;
         private SerializedProperty material;
+        private SerializedProperty physicMaterial;
         private SerializedProperty vertices;
 
         private SplineExtrusion se;
@@ -21,6 +22,7 @@ namespace SplineMesh {
             textureScale = serializedObject.FindProperty("textureScale");
             sampleSpacing = serializedObject.FindProperty("sampleSpacing");
             material = serializedObject.FindProperty("material");
+            physicMaterial = serializedObject.FindProperty("physicMaterial");
             vertices = serializedObject.FindProperty("shapeVertices");
         }
 
@@ -147,6 +149,7 @@ namespace SplineMesh {
             EditorGUILayout.PropertyField(textureScale, true);
             EditorGUILayout.PropertyField(sampleSpacing, true);
             EditorGUILayout.PropertyField(material, true);
+            EditorGUILayout.PropertyField(physicMaterial, true);
 
             EditorGUILayout.PropertyField(vertices);
             EditorGUI.indentLevel += 1;

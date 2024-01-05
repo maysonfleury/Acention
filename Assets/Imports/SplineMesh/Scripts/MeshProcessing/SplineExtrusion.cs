@@ -30,6 +30,7 @@ namespace SplineMesh {
 
         public List<ExtrusionSegment.Vertex> shapeVertices = new List<ExtrusionSegment.Vertex>();
         public Material material;
+        public PhysicMaterial physicMaterial;
         public float textureScale = 1;
         public float sampleSpacing = 0.1f;
 
@@ -78,6 +79,8 @@ namespace SplineMesh {
                     typeof(ExtrusionSegment),
                     typeof(MeshCollider));
                 go.GetComponent<MeshRenderer>().material = material;
+                go.GetComponent<MeshCollider>().material = physicMaterial;
+                go.layer = gameObject.layer;
                 ExtrusionSegment seg = go.GetComponent<ExtrusionSegment>();
                 seg.ShapeVertices = shapeVertices;
                 seg.TextureScale = textureScale;
