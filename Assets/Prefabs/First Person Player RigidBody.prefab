@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 214414385}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: StepRayUpper
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -39,7 +39,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 299018508}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: StepRayLower
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -71,7 +71,7 @@ GameObject:
   - component: {fileID: 739447402}
   - component: {fileID: 739447404}
   - component: {fileID: 739447403}
-  m_Layer: 5
+  m_Layer: 3
   m_Name: SpeedlineSlow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4875,7 +4875,7 @@ GameObject:
   - component: {fileID: 2007219565}
   - component: {fileID: 2007219567}
   - component: {fileID: 2007219566}
-  m_Layer: 5
+  m_Layer: 3
   m_Name: SpeedlineFast
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9679,7 +9679,7 @@ GameObject:
   - component: {fileID: 5675063932076924674}
   - component: {fileID: 4300172142571350534}
   - component: {fileID: 538874003378930543}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Back3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9761,7 +9761,7 @@ GameObject:
   - component: {fileID: 2118339887927283579}
   - component: {fileID: 5185654506930138906}
   - component: {fileID: 510595148}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: ROPE
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9833,7 +9833,7 @@ MeshRenderer:
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!95 &510595148
 Animator:
-  serializedVersion: 3
+  serializedVersion: 5
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -9846,10 +9846,12 @@ Animator:
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &342311681357748137
 GameObject:
   m_ObjectHideFlags: 0
@@ -9859,7 +9861,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 342311681357748142}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: GunTip
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9890,6 +9892,7 @@ GameObject:
   m_Component:
   - component: {fileID: 342311681363546934}
   - component: {fileID: 342311681363546935}
+  - component: {fileID: 9157154432395108452}
   m_Layer: 0
   m_Name: GrapplePosition
   m_TagString: Untagged
@@ -9924,7 +9927,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f68bfb2e6a0d04a4aa1721cd9f4aff45, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  grapple: {fileID: 342311682150972133}
+--- !u!114 &9157154432395108452
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 342311681363546929}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: efeb5652fa0fe7e4ea8fa0ee8870b5be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _enableHookBob: 1
+  _Amplitude: 0.025
+  _frequency: 10
+  _Gun: {fileID: 342311682150972132}
 --- !u!1 &342311681412304290
 GameObject:
   m_ObjectHideFlags: 0
@@ -9934,7 +9952,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 342311681412304291}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Head
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -9964,7 +9982,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 342311681958589241}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Orientation
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -10001,7 +10019,7 @@ GameObject:
   - component: {fileID: 342311682098144622}
   - component: {fileID: 342311682098144617}
   - component: {fileID: 337757741}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Body
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -10111,7 +10129,7 @@ GameObject:
   - component: {fileID: 342311682126213655}
   - component: {fileID: 342311682126213654}
   - component: {fileID: 342311682126213649}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Glasses
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10203,9 +10221,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 342311682150972132}
-  - component: {fileID: 342311682150972154}
   - component: {fileID: 342311682150972133}
   - component: {fileID: 508518608}
+  - component: {fileID: 342311682150972154}
   m_Layer: 0
   m_Name: GrappleGun
   m_TagString: Untagged
@@ -10230,6 +10248,117 @@ Transform:
   m_Father: {fileID: 342311681363546934}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &342311682150972133
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 342311682150972135}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 245584c5dc18b204ead71a31133f84eb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rbMove: {fileID: 342311683032374145}
+  gunTip: {fileID: 342311681357748142}
+  cam: {fileID: 342311682988872372}
+  player: {fileID: 342311683032374150}
+  whatIsGrappleable:
+    serializedVersion: 2
+    m_Bits: 705
+  whatIsNotGrappleable:
+    serializedVersion: 2
+    m_Bits: 3390
+  whatToIgnore:
+    serializedVersion: 2
+    m_Bits: 1070
+  particleShot: {fileID: 847203719428501056}
+  hookPrefab: {fileID: 2686209462645092893}
+  crosshair: {fileID: 0}
+  crossLeft: {fileID: 0}
+  crossRight: {fileID: 0}
+  crossUp: {fileID: 0}
+  crossDown: {fileID: 0}
+  crosshairDistanceCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0.45
+      value: 0
+      inSlope: 45.454544
+      outSlope: 45.454544
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 25
+      inSlope: 45.454544
+      outSlope: 45.454544
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  maxGrappleDistance: 45
+  shotsLeft: 1
+  isPaused: 0
+  grappleAnimator: {fileID: 510595148}
+--- !u!114 &508518608
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 342311682150972135}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 28f61c72596f1844c8b278a0cb4e502c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  quality: 500
+  damper: 14
+  strength: 800
+  velocity: 15
+  waveCount: 3
+  waveHeight: 1
+  effectCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 3.5481923
+      outSlope: 3.5481923
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.057637453
+    - serializedVersion: 3
+      time: 0.10325038
+      value: 0.47215703
+      inSlope: 2.5708385
+      outSlope: 2.5708385
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: -0.5265205
+      outSlope: -0.5265205
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!120 &342311682150972154
 LineRenderer:
   m_ObjectHideFlags: 0
@@ -10249,7 +10378,7 @@ LineRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 8886c484abeb1e943beafaa84e50b1c6, type: 2}
+  - {fileID: 2100000, guid: fee7f4f28562c494895624c60ed92148, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -10326,87 +10455,6 @@ LineRenderer:
     generateLightingData: 0
   m_UseWorldSpace: 1
   m_Loop: 0
---- !u!114 &342311682150972133
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 342311682150972135}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 245584c5dc18b204ead71a31133f84eb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rbMove: {fileID: 342311683032374145}
-  gunTip: {fileID: 342311681357748142}
-  cam: {fileID: 342311682988872372}
-  player: {fileID: 342311683032374150}
-  whatIsGrappleable:
-    serializedVersion: 2
-    m_Bits: 128
-  whatIsNotGrappleable:
-    serializedVersion: 2
-    m_Bits: 3959
-  particleShot: {fileID: 847203719428501056}
-  hookPrefab: {fileID: 2686209462645092893}
-  crosshair: {fileID: 0}
-  maxGrappleDistance: 30
-  shotsLeft: 1
-  isPaused: 0
-  grappleAnimator: {fileID: 510595148}
---- !u!114 &508518608
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 342311682150972135}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 28f61c72596f1844c8b278a0cb4e502c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  grappleHook: {fileID: 342311682150972133}
-  quality: 500
-  damper: 14
-  strength: 800
-  velocity: 15
-  waveCount: 3
-  waveHeight: 1
-  effectCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 3.5481923
-      outSlope: 3.5481923
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0.057637453
-    - serializedVersion: 3
-      time: 0.10325038
-      value: 0.47215703
-      inSlope: 2.5708385
-      outSlope: 2.5708385
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 1
-      value: 0
-      inSlope: -0.5265205
-      outSlope: -0.5265205
-      tangentMode: 34
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
 --- !u!1 &342311682158402458
 GameObject:
   m_ObjectHideFlags: 0
@@ -10416,7 +10464,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 342311682158402459}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: GroundCheck
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -10729,6 +10777,7 @@ MonoBehaviour:
   moveSpeed: 2250
   maxSpeed: 17
   grounded: 0
+  sloped: 0
   sliding: 0
   bouncing: 0
   inWindArea: 0
@@ -10744,14 +10793,14 @@ MonoBehaviour:
   whatIsWindArea:
     serializedVersion: 2
     m_Bits: 1024
-  counterMovement: 0.18
-  maxSlopeAngle: 35
+  counterMovement: 0.25
+  maxSlopeAngle: 40
   slideForce: 400
   slideCounterMovement: 0.225
   jumpForce: 550
-  gravity: 385
-  airStrafeForward: 0.55
-  airStrafeSideways: 0.55
+  gravity: 400
+  airStrafeForward: 0.85
+  airStrafeSideways: 0.75
   jumpCooldown: 0.25
   dashForce: 30
   dashCooldown: 5
@@ -10826,7 +10875,7 @@ GameObject:
   - component: {fileID: 3246746290162179867}
   - component: {fileID: 254484325894004303}
   - component: {fileID: 8837431376288977200}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: RopeInside
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10907,7 +10956,7 @@ GameObject:
   - component: {fileID: 3165573765667313521}
   - component: {fileID: 261564638106532896}
   - component: {fileID: 5193461968089682247}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Ring
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10986,7 +11035,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7246207343206849527}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: StaticParts
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11023,7 +11072,7 @@ GameObject:
   - component: {fileID: 582322912452598482}
   - component: {fileID: 1238035073507820064}
   - component: {fileID: 3012355389940682469}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Top2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11104,7 +11153,7 @@ GameObject:
   - component: {fileID: 5052896132765407345}
   - component: {fileID: 6431566769572328119}
   - component: {fileID: 1495235387087149200}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Back1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11185,7 +11234,7 @@ GameObject:
   - component: {fileID: 8419489073565597557}
   - component: {fileID: 4991764014566162564}
   - component: {fileID: 5684240652083849023}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Top2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11266,7 +11315,7 @@ GameObject:
   - component: {fileID: 5292895491454167965}
   - component: {fileID: 6943632190329688287}
   - component: {fileID: 1095954775928951877}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Ring001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11347,7 +11396,7 @@ GameObject:
   - component: {fileID: 9023462428006789552}
   - component: {fileID: 6901742666883308160}
   - component: {fileID: 4975484719339188701}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Top3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11426,7 +11475,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8161631764429149076}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Locked
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11464,7 +11513,7 @@ GameObject:
   - component: {fileID: 3107601604227481585}
   - component: {fileID: 6351909619304843184}
   - component: {fileID: 2581802553016126251}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: RopeTrim2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11545,7 +11594,7 @@ GameObject:
   - component: {fileID: 7018427920896877533}
   - component: {fileID: 4821888532897981112}
   - component: {fileID: 8062934686347553098}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Top3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11626,7 +11675,7 @@ GameObject:
   - component: {fileID: 1495932676318637213}
   - component: {fileID: 7882482009132983452}
   - component: {fileID: 8199598412891379049}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: GRAPPEL
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11707,7 +11756,7 @@ GameObject:
   - component: {fileID: 8350860455968009615}
   - component: {fileID: 4851017968660391574}
   - component: {fileID: 1351223814428095463}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: RopeTrim1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11787,7 +11836,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5992702108249531865}
   - component: {fileID: 7773344004743274542}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: DashRings
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11842,7 +11891,7 @@ GameObject:
   - component: {fileID: 4791780031452003812}
   - component: {fileID: 1326689667108035144}
   - component: {fileID: 2589711153888982933}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Top3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11921,7 +11970,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3536191708733149467}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: CanDash
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11959,7 +12008,7 @@ GameObject:
   - component: {fileID: 2494147038480616916}
   - component: {fileID: 3979324912886422109}
   - component: {fileID: 270409261959648779}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Top1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12040,7 +12089,7 @@ GameObject:
   - component: {fileID: 160356967735970405}
   - component: {fileID: 2341211101650512362}
   - component: {fileID: 8501927807579843827}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Back2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12121,7 +12170,7 @@ GameObject:
   - component: {fileID: 6159305054309768585}
   - component: {fileID: 9128067816133432177}
   - component: {fileID: 1501668666859336062}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: HandleTop
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12202,7 +12251,7 @@ GameObject:
   - component: {fileID: 3502289538782870863}
   - component: {fileID: 8266634789377484114}
   - component: {fileID: 4164197548078801832}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Back1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12283,7 +12332,7 @@ GameObject:
   - component: {fileID: 7754109535462550504}
   - component: {fileID: 8309437088910256401}
   - component: {fileID: 5001618009260624890}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Back2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12364,7 +12413,7 @@ GameObject:
   - component: {fileID: 9064665574026798016}
   - component: {fileID: 3181850683598640401}
   - component: {fileID: 7359921279707120493}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Trigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12445,7 +12494,7 @@ GameObject:
   - component: {fileID: 1106009092672518299}
   - component: {fileID: 5015507024265239255}
   - component: {fileID: 420537276550495140}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Pommel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12526,7 +12575,7 @@ GameObject:
   - component: {fileID: 7312572934333741436}
   - component: {fileID: 2795016940713133153}
   - component: {fileID: 7669812101073515411}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Top2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12607,7 +12656,7 @@ GameObject:
   - component: {fileID: 7477807200386112540}
   - component: {fileID: 247710488455610093}
   - component: {fileID: 2597904776630705024}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Back2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12688,7 +12737,7 @@ GameObject:
   - component: {fileID: 3289903803291385529}
   - component: {fileID: 6736675181388974696}
   - component: {fileID: 5736346751133549317}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Ring002
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12769,7 +12818,7 @@ GameObject:
   - component: {fileID: 6838929467090994296}
   - component: {fileID: 8150415352871204526}
   - component: {fileID: 4550870249194187065}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Top1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12850,7 +12899,7 @@ GameObject:
   - component: {fileID: 4046187323439550257}
   - component: {fileID: 3472020967452237427}
   - component: {fileID: 8430457023403521216}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: HandGuard
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12931,7 +12980,7 @@ GameObject:
   - component: {fileID: 4748355818017644625}
   - component: {fileID: 6357466067877635359}
   - component: {fileID: 8798227865190918618}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Back3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13012,7 +13061,7 @@ GameObject:
   - component: {fileID: 3849163064358074834}
   - component: {fileID: 1423537818535535687}
   - component: {fileID: 9121114850771887488}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: RopeCasing
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13094,7 +13143,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7457503678466340623}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: GrappleV1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13127,7 +13176,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 33672512158283291}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: CannotDash
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13165,7 +13214,7 @@ GameObject:
   - component: {fileID: 8843341651311202224}
   - component: {fileID: 8490100420981397375}
   - component: {fileID: 509759687639770977}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Back1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13246,7 +13295,7 @@ GameObject:
   - component: {fileID: 1364843160868226517}
   - component: {fileID: 2594707517729954700}
   - component: {fileID: 8323120769656529347}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Handle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13331,7 +13380,7 @@ GameObject:
   - component: {fileID: 6421147486282709291}
   - component: {fileID: 1568163552862347914}
   - component: {fileID: 1708751397260734084}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: HAND
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13412,7 +13461,7 @@ GameObject:
   - component: {fileID: 5763484170365195704}
   - component: {fileID: 5956500967347130202}
   - component: {fileID: 702121042383368772}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Top1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13493,7 +13542,7 @@ GameObject:
   - component: {fileID: 6169741307993669262}
   - component: {fileID: 8357713298913475596}
   - component: {fileID: 8031490775440977188}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Canister
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13577,7 +13626,7 @@ GameObject:
   - component: {fileID: 1699994236051849207}
   - component: {fileID: 8921065575743696669}
   - component: {fileID: 4587360213406132362}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Back3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13657,6 +13706,22 @@ PrefabInstance:
     - target: {fileID: 8340241066303211088, guid: 69c706c5f7694914f974ad6a8e8ee3b8, type: 3}
       propertyPath: m_Name
       value: ParticleShot
+      objectReference: {fileID: 0}
+    - target: {fileID: 8340241066303211088, guid: 69c706c5f7694914f974ad6a8e8ee3b8, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8340241066303211088, guid: 69c706c5f7694914f974ad6a8e8ee3b8, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8340241066303211090, guid: 69c706c5f7694914f974ad6a8e8ee3b8, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8340241066303211094, guid: 69c706c5f7694914f974ad6a8e8ee3b8, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8340241066303642224, guid: 69c706c5f7694914f974ad6a8e8ee3b8, type: 3}
       propertyPath: m_RootOrder

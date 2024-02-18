@@ -43,7 +43,7 @@ public static class SaveSystem
         }
         else
         {
-            Debug.LogError("Save file not found in " + path);
+            Debug.LogWarning($"[SaveSystem]: Game save file not found in {path}");
             return null;
         }
     }
@@ -63,7 +63,7 @@ public static class SaveSystem
         }
         else
         {
-            Debug.LogError("Settings save file not found in " + path);
+            Debug.LogWarning($"[SaveSystem]: Settings save file not found in {path}");
             return null;
         }
     }
@@ -77,7 +77,7 @@ public static class SaveSystem
         }
         else
         {
-            Debug.LogError("Save file not found in " + path);
+            Debug.LogWarning("[SaveSystem]: No Game save file found to delete.");
         }
     }
 }

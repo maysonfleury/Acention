@@ -29,16 +29,12 @@ public class SaveManager : MonoBehaviour
         }
         catch
         {
-            Debug.Log("No save file detected.");
+            Debug.Log("[SaveManager]: No Game save file detected, starting new game.");
         }
-    }
 
-    private void Update()
-    {
-        if(DeleteSave)
-        {
-            DeleteSave = false;
-            SaveSystem.DeleteGameState();
-        }
+        #if UNITY_EDITOR
+            if(DeleteSave)
+                SaveSystem.DeleteGameState();
+        #endif
     }
 }

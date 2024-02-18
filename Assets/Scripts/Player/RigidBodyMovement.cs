@@ -519,11 +519,6 @@ public class RigidBodyMovement : MonoBehaviour
         return new Vector2(xMag, yMag);
     }
 
-    public bool isGrounded()
-    {
-        return grounded;
-    }
-
     public bool isBouncing()
     {
         return bouncing;

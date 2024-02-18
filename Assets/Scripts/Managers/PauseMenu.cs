@@ -105,7 +105,6 @@ public class PauseMenu : MonoBehaviour
     {
         try
         {
-            Debug.Log("Loading player settings.");
             settings = SaveSystem.LoadSettings();
             
             ChangeMouseSens(settings.mouseSens);
@@ -124,7 +123,7 @@ public class PauseMenu : MonoBehaviour
         }
         catch
         {
-            Debug.Log("No settings save file detected, using defaults.");
+            Debug.Log("[PauseMenu]: No Settings save file detected, using defaults.");
             settings = new SettingsManager();
         }
     }

@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+[RequireComponent(typeof(GrappleRope))]
 public class GrapplingHook : MonoBehaviour
 {
     private Vector3 grapplePoint;
     private SpringJoint springJoint;
-    private Vector3 currentGrapplePosition;
     private bool _canShoot;
     private bool _isHedroned;
     private bool _isDestructing;
@@ -17,10 +17,14 @@ public class GrapplingHook : MonoBehaviour
     public RigidBodyMovement rbMove;
     public Transform gunTip, cam, player;
     public LayerMask whatIsGrappleable;
-    public LayerMask whatIsNotGrappleable;
     public ParticleSystem particleShot;
     public GameObject hookPrefab;
     public Image crosshair;
+    public GameObject crossLeft;
+    public GameObject crossRight;
+    public GameObject crossUp;
+    public GameObject crossDown;
+    public AnimationCurve crosshairDistanceCurve;
     public float maxGrappleDistance = 100f;
     public int shotsLeft = 99;
 
@@ -66,11 +70,12 @@ public class GrapplingHook : MonoBehaviour
                 StopRetracting();
             }
             
+            // TODO: TAKE THIS TF OUT OF UPDATE!
             // Resets shots to 1000 whenever you touch the ground
-            if (rbMove.isGrounded() || rbMove.isBouncing())
+            if (rbMove.grounded || rbMove.isBouncing())
             {
                 _canShoot = true;
-                shotsLeft = 1000;
+                //shotsLeft = 1000;
             }
 
             // If grappling a moving object, update the grapple position and spring joint
@@ -80,40 +85,75 @@ public class GrapplingHook : MonoBehaviour
                 springJoint.connectedAnchor = grapplePoint;
             }
 
-            // Change crosshair colour when hovering over grappleable object
-            RaycastHit[] crossHits;
-            crossHits = Physics.RaycastAll(cam.position, cam.forward, maxGrappleDistance);
-
-            if(crossHits.Length == 0 || shotsLeft < 1)
+            if (isGrappling())
             {
-                crosshair.color = new Color(0, 0, 0, 0.7255f);
+                // Set crosshair to grappling state
+                crosshair.color = new Color(0, 1, 1, 0.45f);
+                crossLeft.SetActive(false);
+                crossRight.SetActive(false);
+                crossUp.SetActive(false);
+                crossDown.SetActive(false);
             }
             else
             {
-                RaycastHit closestHit = crossHits[0];
-                for(int i = 1; i < crossHits.Length; i++)
-                {
-                    RaycastHit crossHit = crossHits[i];
-                    if (crossHit.distance < closestHit.distance)
-                    {
-                        closestHit = crossHit;
-                    }
-                }
+                // RayCast forward to see the surface you're looking at
+                RaycastHit[] crossHits;
+                crossHits = Physics.RaycastAll(cam.position, cam.forward, maxGrappleDistance + 50f, whatIsGrappleable);
 
-
-                if(whatIsGrappleable == (whatIsGrappleable | (1 << closestHit.collider.gameObject.layer)))
+                // If we hit nothing within our grapple range, set crosshair to default state
+                if(crossHits.Length == 0 || shotsLeft < 1)
                 {
-                    if (shotsLeft > 0)
-                        crosshair.color = new Color(0, 1, 1, 1);
-                        
-                }
-                else if(whatIsNotGrappleable == (whatIsNotGrappleable| (1 << closestHit.collider.gameObject.layer)))
-                {
-                    crosshair.color = new Color(0, 0, 0, 0.7255f);
+                    crosshair.color = new Color(0, 0, 0, 0.45f);
+                    crossLeft.SetActive(false);
+                    crossRight.SetActive(false);
+                    crossUp.SetActive(false);
+                    crossDown.SetActive(false);
+                    crossLeft.transform.localPosition = new Vector3(0, 0, 0);
+                    crossRight.transform.localPosition = new Vector3(0, 0, 0);
+                    crossUp.transform.localPosition = new Vector3(0, 0, 0);
+                    crossDown.transform.localPosition = new Vector3(0, 0, 0);
                 }
                 else
                 {
-                    crosshair.color = new Color(0, 0, 0, 0.7255f);
+                    // Put every grappleable hit within range into array.
+                    // Since raycast hit arrays are unordered, 
+                    // we loop through once to grab the closest surface
+                    RaycastHit closestHit = crossHits[0];
+                    for(int i = 1; i < crossHits.Length; i++)
+                    {
+                        RaycastHit crossHit = crossHits[i];
+                        if (crossHit.distance < closestHit.distance)
+                        {
+                            if (whatIsGrappleable == (whatIsGrappleable | (1 << closestHit.collider.gameObject.layer)))
+                            {
+                                closestHit = crossHit;
+                                break;
+                            }
+                        }
+                    }
+
+                    if (closestHit.distance <= maxGrappleDistance)
+                    {
+                        crosshair.color = new Color(0, 1, 1, 1);
+                        crossLeft.SetActive(false);
+                        crossRight.SetActive(false);
+                        crossUp.SetActive(false);
+                        crossDown.SetActive(false);
+                    }
+                    else if (closestHit.distance <= maxGrappleDistance + 50f)
+                    {
+                        // Dynamic crosshair when out of range <3
+                        crosshair.color = new Color(0, 0, 0, 0.7255f);
+                        crossLeft.SetActive(true);
+                        crossRight.SetActive(true);
+                        crossUp.SetActive(true);
+                        crossDown.SetActive(true);
+                        float delta = crosshairDistanceCurve.Evaluate(closestHit.distance / 100f);
+                        crossLeft.transform.localPosition = new Vector3(-delta, 0);
+                        crossRight.transform.localPosition = new Vector3(delta, 0, 0);
+                        crossUp.transform.localPosition = new Vector3(0, delta, 0);
+                        crossDown.transform.localPosition = new Vector3(0, -delta, 0);
+                    }
                 }
             }
         }
@@ -127,7 +167,7 @@ public class GrapplingHook : MonoBehaviour
 
         // Get a raycast array of all objects hit
         RaycastHit[] crossHits;
-        crossHits = Physics.RaycastAll(cam.position, cam.forward, maxGrappleDistance);
+        crossHits = Physics.RaycastAll(cam.position, cam.forward, maxGrappleDistance,  whatIsGrappleable);
 
         // If we're not hovering an object, nothing to grapple to
         if(crossHits.Length == 0)
@@ -147,90 +187,79 @@ public class GrapplingHook : MonoBehaviour
         }
         else
         {
-            // Gets the closest object hit by the raycast
+            // Put every grappleable hit within range into array.
+            // Since raycast hit arrays are unordered, 
+            // we loop through once to grab the closest hit
             RaycastHit closestHit = crossHits[0];
             for(int i = 1; i < crossHits.Length; i++)
             {
                 RaycastHit crossHit = crossHits[i];
                 if (crossHit.distance < closestHit.distance)
                 {
-                    closestHit = crossHit;
-                }
-            }
-
-            // If the closest object is grappleable, grapple to it
-            if(whatIsGrappleable == (whatIsGrappleable | (1 << closestHit.collider.gameObject.layer)))
-            {
-                if(closestHit.collider.gameObject.CompareTag("Wood"))
-                {
-                    Debug.Log("Wooud");
-                    am.Play("wood_impact");
-                }
-                else if(closestHit.collider.gameObject.CompareTag("Crystal"))
-                {
-                    am.Play("crystal_sound");
-                    Debug.Log("Crystal");
-                }
-                else if(closestHit.collider.gameObject.CompareTag("Mushroom"))
-                {
-                    am.Play("shroom_impact");
-                    Debug.Log("MooshMoosh");
-                }
-                else if(closestHit.collider.gameObject.CompareTag("Leaf"))
-                {
-                    Debug.Log("Lief Debugson");
-                }
-
-                // If we hit a Hedron
-                if(closestHit.collider.gameObject.GetComponent<Hedron>() != null)
-                {
-                    var hedron = closestHit.collider.gameObject.GetComponent<Hedron>();
-                    
-                    if(hedron.isDestroyable)
+                    if(whatIsGrappleable == (whatIsGrappleable | (1 << closestHit.collider.gameObject.layer)))
                     {
-                        _isDestructing = true;
-                        _grappledObject = closestHit.collider.gameObject;
-                    }
-                    if(hedron.doesRotate)
-                    {
-                        _isHedroned = true;
-                        objectWorldPos = closestHit.transform;
+                        closestHit = crossHit;
+                        break;
                     }
                 }
-
-                // Initialize Spring Component
-                grapplePoint = closestHit.point;
-                springJoint = player.gameObject.AddComponent<SpringJoint>();
-                springJoint.autoConfigureConnectedAnchor = false;
-                springJoint.connectedAnchor = grapplePoint;
-
-                // How far the rope will stretch
-                float distanceFromPoint = Vector3.Distance(player.position, grapplePoint);
-                springJoint.maxDistance = distanceFromPoint * 0.9f;
-                springJoint.minDistance = distanceFromPoint * 0.75f;
-
-                // How the rope feels
-                springJoint.spring = 4.5f;
-                springJoint.damper = 5f;
-                springJoint.massScale = 4.5f;
             }
-            else if(whatIsNotGrappleable == (whatIsNotGrappleable| (1 << closestHit.collider.gameObject.layer)))
+
+            if(closestHit.collider.gameObject.CompareTag("Wood"))
             {
-                // Play shot miss SFX if the layer is not grappleable
-                am.Play("grapple_shot");
+                Debug.Log("Wooud");
+                am.Play("wood_impact");
             }
-            else
+            else if(closestHit.collider.gameObject.CompareTag("Crystal"))
             {
-                // Just in case the code above bugs out, default to a miss (sorry players)
-                am.Play("grapple_shot");
+                am.Play("crystal_sound");
+                Debug.Log("Crystal");
             }
+            else if(closestHit.collider.gameObject.CompareTag("Mushroom"))
+            {
+                am.Play("shroom_impact");
+                Debug.Log("MooshMoosh");
+            }
+            else if(closestHit.collider.gameObject.CompareTag("Leaf"))
+            {
+                Debug.Log("Lief Debugson");
+            }
+            // If we hit a Hedron
+            if(closestHit.collider.gameObject.GetComponent<Hedron>() != null)
+            {
+                var hedron = closestHit.collider.gameObject.GetComponent<Hedron>();
+                
+                if(hedron.isDestroyable)
+                {
+                    _isDestructing = true;
+                    _grappledObject = closestHit.collider.gameObject;
+                }
+                if(hedron.doesRotate)
+                {
+                    _isHedroned = true;
+                    objectWorldPos = closestHit.transform;
+                }
+            }
+
+            // Initialize Spring Component
+            grapplePoint = closestHit.point;
+            springJoint = player.gameObject.AddComponent<SpringJoint>();
+            springJoint.autoConfigureConnectedAnchor = false;
+            springJoint.connectedAnchor = grapplePoint;
+            // How far the rope will stretch
+            float distanceFromPoint = Vector3.Distance(player.position, grapplePoint);
+            springJoint.maxDistance = distanceFromPoint * 0.9f;
+            springJoint.minDistance = 0f;
+            // How the rope feels
+            springJoint.spring = 4.5f;
+            springJoint.damper = 5f;
+            springJoint.massScale = 4.5f;
         }
 
         // No grappling more than once per airtime
         //_canShoot = false;
 
         // Reduce shots by 1
-        shotsLeft--;
+        //shotsLeft--;
         hookPrefab.SetActive(false);
     }
 
@@ -251,9 +280,8 @@ public class GrapplingHook : MonoBehaviour
     private void RetractGrapple()
     {
         grappleAnimator.SetTrigger("Retract");
-        springJoint.maxDistance = 2.5f;
-        springJoint.minDistance = 0.25f;      
-        //springJoint.spring = 10f;
+        springJoint.maxDistance = 0.05f;     
+        springJoint.spring = 5f;
     }
 
     private void StopRetracting()
@@ -261,13 +289,12 @@ public class GrapplingHook : MonoBehaviour
         grappleAnimator.SetTrigger("Idle");
         float distanceFromPoint = Vector3.Distance(player.position, grapplePoint);
         springJoint.maxDistance = distanceFromPoint * 0.9f;
-        springJoint.minDistance = distanceFromPoint * 0.65f;
         springJoint.spring = 4.5f;
     }
 
     public bool isGrappling()
     {
-        return (springJoint != null);
+        return springJoint != null;
     }
 
     public Vector3 GetGrapplePoint()

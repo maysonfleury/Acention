@@ -2,13 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(LineRenderer))]
 public class GrappleRope : MonoBehaviour
 {
     private LineRenderer lr;
     private Vector3 currentGrapplePosition;
     private RopeSpring spring;
 
-    public GrapplingHook grappleHook;
+    private GrapplingHook grappleHook;
     public int quality;
     public float damper;
     public float strength;
@@ -21,6 +22,12 @@ public class GrappleRope : MonoBehaviour
         lr = GetComponent<LineRenderer>();
         spring = new RopeSpring();
         spring.SetTarget(0);
+    }
+
+    private void Start()
+    {
+        if (grappleHook == null)
+            grappleHook = GetComponent<GrapplingHook>();
     }
 
     private void LateUpdate() {
