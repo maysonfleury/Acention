@@ -48,12 +48,14 @@ public class RigidBodyMovement : MonoBehaviour
     private Vector3 grappleGunScale = new Vector3(1, 2f, 1);
     private Vector3 playerScale;
     public float slideForce = 400;
-    public float slideCounterMovement = 0.2f;
+    public float slideCounterMovement = 0.25f;
+    public float slideDashCooldown = 0.5f;
+    private bool readyToSlideDash = true;
     private RaycastHit crouchHit;
 
     [Header("Aerial Movement")]
-    public float jumpForce = 550f;
-    public float gravity = 375f;
+    public float jumpForce = 450f;
+    public float gravity = 500f;
     public float airStrafeForward = 0.55f;
     public float airStrafeSideways = 0.55f;
     private bool readyToJump = true;
@@ -207,6 +209,19 @@ public class RigidBodyMovement : MonoBehaviour
             if (rb.velocity.magnitude > 0.5f) {
                 if (grounded) {
                     rb.AddForce(orientation.transform.forward * slideForce);
+                }
+            }
+
+            // If we're very close to the ground, give extra down + forward force
+            if (Physics.CheckSphere(groundCheck.position, groundDistance + 5f, whatIsGround))
+            {
+                rb.AddForce(-orientation.transform.up * slideForce);
+
+                if (readyToSlideDash)
+                {
+                    readyToSlideDash = false;
+                    rb.AddForce(orientation.transform.forward * slideForce);
+                    Invoke(nameof(ResetSlideDash), slideDashCooldown);
                 }
             }
         }
@@ -367,6 +382,10 @@ public class RigidBodyMovement : MonoBehaviour
     
     private void ResetJump() {
         readyToJump = true;
+    }
+
+    private void ResetSlideDash() {
+        readyToSlideDash = true;
     }
 
     private void Dash()

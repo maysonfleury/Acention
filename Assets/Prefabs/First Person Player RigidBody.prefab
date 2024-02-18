@@ -10267,12 +10267,6 @@ MonoBehaviour:
   whatIsGrappleable:
     serializedVersion: 2
     m_Bits: 705
-  whatIsNotGrappleable:
-    serializedVersion: 2
-    m_Bits: 3390
-  whatToIgnore:
-    serializedVersion: 2
-    m_Bits: 1070
   particleShot: {fileID: 847203719428501056}
   hookPrefab: {fileID: 2686209462645092893}
   crosshair: {fileID: 0}
@@ -10796,9 +10790,10 @@ MonoBehaviour:
   counterMovement: 0.25
   maxSlopeAngle: 40
   slideForce: 400
-  slideCounterMovement: 0.225
-  jumpForce: 550
-  gravity: 400
+  slideCounterMovement: 0.25
+  slideDashCooldown: 0.5
+  jumpForce: 450
+  gravity: 500
   airStrafeForward: 0.85
   airStrafeSideways: 0.75
   jumpCooldown: 0.25
