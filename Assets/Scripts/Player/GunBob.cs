@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GunBob : MonoBehaviour
 {
-    [SerializeField] private bool _enableHookBob = true;
+    [SerializeField] private bool _enableGunBob = true;
 
     [SerializeField, Range(0, 0.1f)] private float _Amplitude = 0.015f;
     [SerializeField, Range(0, 30)] private float _frequency = 10.0f;
@@ -23,7 +23,7 @@ public class GunBob : MonoBehaviour
 
     void Update()
     {
-        if (!_enableHookBob) return;
+        if (!_enableGunBob) return;
         if (!_rigidbody.grounded) return;
         CheckMotion();
     }

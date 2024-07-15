@@ -15,6 +15,9 @@ public class RigidBodyMovement : MonoBehaviour
     
     // Other
     private Rigidbody rb;
+    private GameOver gameOver;
+
+    private AudioManager am;
 
     // Rotation and look
     private float xRotation;
@@ -99,10 +102,9 @@ public class RigidBodyMovement : MonoBehaviour
     public bool gameStart;
     public bool gameWon;
 
-    GameOver gameOver;
-
     void Awake() {
         rb = GetComponent<Rigidbody>();
+        am = FindObjectOfType<AudioManager>();
         stepRayUpper.transform.position = new Vector3(stepRayUpper.position.x, stepHeight, stepRayUpper.position.z);
     }
     
@@ -205,16 +207,16 @@ public class RigidBodyMovement : MonoBehaviour
             isCrouched = true;
             transform.localScale = crouchScale;
             grapplePosition.localScale = grappleGunScale;
-            transform.position = new Vector3(transform.position.x, transform.position.y - 0.3f, transform.position.z);
             if (rb.velocity.magnitude > 0.5f) {
                 if (grounded) {
                     rb.AddForce(orientation.transform.forward * slideForce);
                 }
             }
 
-            // If we're very close to the ground, give extra down + forward force
+            // If we're very close to the ground, give extra downward and forward force
             if (Physics.CheckSphere(groundCheck.position, groundDistance + 5f, whatIsGround))
             {
+                transform.position = new Vector3(transform.position.x, transform.position.y - 0.3f, transform.position.z);
                 rb.AddForce(-orientation.transform.up * slideForce);
 
                 if (readyToSlideDash)
@@ -244,15 +246,10 @@ public class RigidBodyMovement : MonoBehaviour
 
     private void Movement() {
         if(gameOver.isGameOver)
-        {
-            // Mommy I'm scared
             return;
-        }
-        else
-        {
-            // Extra gravity
-            rb.AddForce(Vector3.down * Time.deltaTime * gravity);
-        }
+
+        // Extra gravity
+        rb.AddForce(Vector3.down * Time.deltaTime * gravity);
         
         // Find actual velocity relative to where player is looking
         Vector2 mag = FindVelRelativeToLook();
@@ -318,9 +315,7 @@ public class RigidBodyMovement : MonoBehaviour
         // Movement while hitting a Bouncy obstacle
         if (bouncing)
         {
-            canDash = true;
-            dashR.SetRings(3);
-            dashR.Unlock();
+            ResetDash();
         }
 
         // Movement while in wind area
@@ -399,15 +394,22 @@ public class RigidBodyMovement : MonoBehaviour
             rb.AddForce(dashForce * y * orientation.transform.forward, ForceMode.Impulse);
             rb.AddForce(dashForce * x * orientation.transform.right, ForceMode.Impulse);
 
+            cameraFOV.GoDashing();
+
             dashR.SetRings(0);
+            am.Play("dash_impact");
             Invoke(nameof(ResetDash), dashCooldown);
         }
     }
 
     private void ResetDash() {
-        canDash = true;
-        dashR.SetRings(3);
-        dashR.Unlock();
+        if (!canDash)
+        {
+            canDash = true;
+            dashR.SetRings(3);
+            dashR.Unlock();
+            am.Play("dash_recharge");
+        }
     }
 
     private bool OnSlope()
@@ -489,16 +491,16 @@ public class RigidBodyMovement : MonoBehaviour
     {
         // Apply SpeedLines UI and change camera FOV depending on velocity
         float velo = Mathf.Abs(mag.x) + Mathf.Abs(mag.y);
-        if(velo > 80)
+        if (velo > 150)
+        {
+            cameraFOV.GoingTooFast();
+        }
+        else if(velo > 80 && velo < 120)
         {
             speedlinesFast.Play();
             cameraFOV.GoingFaster();
         }
-        else if (velo > 70)
-        {
-            // Buffer
-        }
-        else if (velo > 50)
+        else if (velo > 50 && velo < 70)
         {
             if(speedlinesFast.isPlaying)
             {

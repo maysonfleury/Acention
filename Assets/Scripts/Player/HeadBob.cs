@@ -18,7 +18,7 @@ public class HeadBob : MonoBehaviour
 
     private void Awake()
     {
-        _rigidbody = GetComponent<RigidBodyMovement>();
+        _rigidbody = GetComponentInParent<RigidBodyMovement>();
         _startPos = _camera.localPosition;
     }
 
@@ -48,8 +48,8 @@ public class HeadBob : MonoBehaviour
     private Vector3 FootStepMotion()
     {
         Vector3 pos = Vector3.zero;
-        pos.y += Mathf.Sin(Time.time * _frequency) * _Amplitude;
-        pos.x += Mathf.Cos(Time.time * _frequency / 2) * _Amplitude * 2;
+        pos.y += Mathf.Sin(Time.time * _frequency) * _Amplitude / 20f;
+        pos.x += Mathf.Cos(Time.time * _frequency / 2) * _Amplitude / 10f;
         return pos;
     }
 

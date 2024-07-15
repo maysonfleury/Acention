@@ -5,13 +5,21 @@ using UnityEngine;
 public class CameraFOV : MonoBehaviour
 {
     private Camera cam;
+    private CameraShake camShake;
     [SerializeField] private float baseFOV = 65f;
     [SerializeField] private float delta = 3f;
     [SerializeField] private float zoomSpeed = 50f;
+    [SerializeField] private float shakeMagnitude = 1.2f;
+    [SerializeField] AnimationCurve dashFOV;
 
     private float currentFOV;
     private float desiredFOV;
 
+    private void Awake()
+    {
+        cam = GetComponent<Camera>();
+        camShake = GetComponent<CameraShake>();
+    }
     private void Start()
     {
         cam = GetComponent<Camera>();
@@ -22,40 +30,60 @@ public class CameraFOV : MonoBehaviour
 
     private void Update()
     {
-        ProcessFOV();
-        SetFOV();
+        // Calculates what the FOV of the screen should be at the current frame 
+        currentFOV = Mathf.MoveTowards(currentFOV, desiredFOV, zoomSpeed * Time.deltaTime);
+        // Then sets this FOV to the main camera
+        cam.fieldOfView = currentFOV;
     }
 
-    public void GoingFaster()
+    // Used by the settings menu to change the base FOV of the screen
+    public void SetBaseFOV(int newFOV)
     {
-        //cam.fieldOfView = baseFOV + delta * 2;
-        desiredFOV = baseFOV + delta * 2;
-    }
-
-    public void GoingFast()
-    {
-        //cam.fieldOfView = baseFOV + delta;
-        desiredFOV = baseFOV + delta;
+        baseFOV = newFOV;
     }
 
     public void GoingSlow()
     {
         //cam.fieldOfView = baseFOV;
         desiredFOV = baseFOV;
+        camShake.StopShake();
     }
 
-    public void SetBaseFOV(int newFOV)
+    public void GoingFast()
     {
-        baseFOV = newFOV;
+        //cam.fieldOfView = baseFOV + delta;
+        desiredFOV = baseFOV + delta;
+        camShake.StopShake();
     }
- 
-    void ProcessFOV()
+
+    public void GoingFaster()
     {
-        currentFOV = Mathf.MoveTowards(currentFOV, desiredFOV, zoomSpeed * Time.deltaTime);
+        //cam.fieldOfView = baseFOV + delta * 2;
+        desiredFOV = baseFOV + delta * 2;
+        camShake.StopShake();
     }
- 
-    void SetFOV()
+
+    public void GoingTooFast()
     {
-        cam.fieldOfView = currentFOV;
+        desiredFOV = baseFOV + delta * 10;
+        camShake.StartShake(shakeMagnitude);
+    }
+
+    public void GoDashing()
+    {
+        StartCoroutine(GoDashRoutine());
+    }
+
+    IEnumerator GoDashRoutine()
+    {
+        float timer = 0f;
+        Debug.Log(dashFOV[dashFOV.length - 1].time);
+        while (timer <= dashFOV[dashFOV.length - 1].time)
+        {
+            currentFOV = desiredFOV * dashFOV.Evaluate(timer);
+            yield return new WaitForSeconds(0.01f);
+            timer += 0.01f;
+        }
+        yield return null;
     }
 }

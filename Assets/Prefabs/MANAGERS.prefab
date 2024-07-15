@@ -207,6 +207,20 @@ MonoBehaviour:
     pitch: 1.2
     loop: 0
     source: {fileID: 0}
+  - clip: {fileID: 8300000, guid: 5a98649925366614e9a6b937345ca5de, type: 3}
+    group: {fileID: 8055230971828797560, guid: 744e29381e4a0534ba09cc4e61ed626d, type: 2}
+    name: dash_impact
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - clip: {fileID: 8300000, guid: 702811df31341ed4499c68ba769a19e5, type: 3}
+    group: {fileID: 8055230971828797560, guid: 744e29381e4a0534ba09cc4e61ed626d, type: 2}
+    name: dash_recharge
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
 --- !u!1 &2526831976203021445
 GameObject:
   m_ObjectHideFlags: 0

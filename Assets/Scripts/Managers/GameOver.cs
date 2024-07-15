@@ -15,8 +15,6 @@ public class GameOver : MonoBehaviour
     {
         isGameOver = true;
         CameraShake camera = FindObjectOfType<CameraShake>();
-        StartCoroutine(camera.Shake(100f, 1.2f));
-
-        
+        StartCoroutine(camera.ShakeAndQuit(100f, 1.2f));
     }
 }
