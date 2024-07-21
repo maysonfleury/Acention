@@ -9939,7 +9939,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: efeb5652fa0fe7e4ea8fa0ee8870b5be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _enableHookBob: 1
+  _enableGunBob: 1
   _Amplitude: 0.025
   _frequency: 10
   _Gun: {fileID: 342311682150972132}
@@ -10264,6 +10264,7 @@ MonoBehaviour:
   gunTip: {fileID: 342311681357748142}
   cam: {fileID: 342311682988872372}
   player: {fileID: 342311683032374150}
+  EnableAimAssist: 0
   whatIsGrappleable:
     serializedVersion: 2
     m_Bits: 705
@@ -10302,6 +10303,9 @@ MonoBehaviour:
   shotsLeft: 1
   isPaused: 0
   grappleAnimator: {fileID: 510595148}
+  sphereCastRadius: 1
+  aimAssistCastRadius: 5
+  sphere: {fileID: 0}
 --- !u!114 &508518608
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10652,6 +10656,31 @@ MonoBehaviour:
   baseFOV: 65
   delta: 3
   zoomSpeed: 50
+  shakeMagnitude: 1.35
+  dashFOV:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: -0.00034332275
+      value: 1
+      inSlope: -17.44052
+      outSlope: -17.44052
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.012578616
+    - serializedVersion: 3
+      time: 0.17475586
+      value: 1
+      inSlope: -6.6315947
+      outSlope: -6.6315947
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.035038404
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &342311683032374147
 GameObject:
   m_ObjectHideFlags: 0

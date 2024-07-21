@@ -1759,6 +1759,93 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1076736772}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1148495639 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 342311682988872375, guid: 9b4a87acbca3e0b4d9e918afbf0722c1, type: 3}
+  m_PrefabInstance: {fileID: 342311681028919722}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1148495640 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 342311682988872372, guid: 9b4a87acbca3e0b4d9e918afbf0722c1, type: 3}
+  m_PrefabInstance: {fileID: 342311681028919722}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1148495641
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1148495639}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b9a305e18de0c04dbd257a21cd47087, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sharedProfile: {fileID: 11400000, guid: 4a6059962f22d59419632e5cea81d6fe, type: 2}
+  isGlobal: 1
+  blendDistance: 0
+  weight: 1
+  priority: 0
+--- !u!114 &1148495642
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1148495639}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 948f4100a11a5c24981795d21301da5c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  volumeTrigger: {fileID: 1148495640}
+  volumeLayer:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  stopNaNPropagation: 1
+  finalBlitToCameraTarget: 0
+  antialiasingMode: 0
+  temporalAntialiasing:
+    jitterSpread: 0.75
+    sharpness: 0.25
+    stationaryBlending: 0.95
+    motionBlending: 0.85
+  subpixelMorphologicalAntialiasing:
+    quality: 2
+  fastApproximateAntialiasing:
+    fastMode: 0
+    keepAlpha: 0
+  fog:
+    enabled: 1
+    excludeSkybox: 1
+  debugLayer:
+    lightMeter:
+      width: 512
+      height: 256
+      showCurves: 1
+    histogram:
+      width: 512
+      height: 256
+      channel: 3
+    waveform:
+      exposure: 0.12
+      height: 256
+    vectorscope:
+      size: 256
+      exposure: 0.12
+    overlaySettings:
+      linearDepth: 0
+      motionColorIntensity: 4
+      motionGridSize: 64
+      colorBlindnessType: 0
+      colorBlindnessStrength: 1
+  m_Resources: {fileID: 11400000, guid: d82512f9c8e5d4a4d938b575d47f88d4, type: 2}
+  m_ShowToolkit: 1
+  m_ShowCustomSorter: 0
+  breakBeforeColorGrading: 0
+  m_BeforeTransparentBundles: []
+  m_BeforeStackBundles: []
+  m_AfterStackBundles: []
 --- !u!1 &1156805374
 GameObject:
   m_ObjectHideFlags: 17
@@ -3116,52 +3203,28 @@ PrefabInstance:
     m_TransformParent: {fileID: 1412425188}
     m_Modifications:
     - target: {fileID: 1488179292, guid: 9b4a87acbca3e0b4d9e918afbf0722c1, type: 3}
-      propertyPath: shakeMagnitude
-      value: 1.35
-      objectReference: {fileID: 0}
-    - target: {fileID: 1488179292, guid: 9b4a87acbca3e0b4d9e918afbf0722c1, type: 3}
-      propertyPath: dashFOV.m_Curve.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 1488179292, guid: 9b4a87acbca3e0b4d9e918afbf0722c1, type: 3}
-      propertyPath: dashFOV.m_Curve.Array.data[0].time
-      value: -0.00034332275
-      objectReference: {fileID: 0}
-    - target: {fileID: 1488179292, guid: 9b4a87acbca3e0b4d9e918afbf0722c1, type: 3}
-      propertyPath: dashFOV.m_Curve.Array.data[1].time
-      value: 0.17475586
-      objectReference: {fileID: 0}
-    - target: {fileID: 1488179292, guid: 9b4a87acbca3e0b4d9e918afbf0722c1, type: 3}
-      propertyPath: dashFOV.m_Curve.Array.data[0].value
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1488179292, guid: 9b4a87acbca3e0b4d9e918afbf0722c1, type: 3}
-      propertyPath: dashFOV.m_Curve.Array.data[1].value
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1488179292, guid: 9b4a87acbca3e0b4d9e918afbf0722c1, type: 3}
       propertyPath: dashFOV.m_Curve.Array.data[0].inSlope
-      value: -17.44052
+      value: -15.813381
       objectReference: {fileID: 0}
     - target: {fileID: 1488179292, guid: 9b4a87acbca3e0b4d9e918afbf0722c1, type: 3}
       propertyPath: dashFOV.m_Curve.Array.data[1].inSlope
-      value: -6.6315947
+      value: -2.1904256
       objectReference: {fileID: 0}
     - target: {fileID: 1488179292, guid: 9b4a87acbca3e0b4d9e918afbf0722c1, type: 3}
       propertyPath: dashFOV.m_Curve.Array.data[0].outSlope
-      value: -17.44052
+      value: -15.813381
       objectReference: {fileID: 0}
     - target: {fileID: 1488179292, guid: 9b4a87acbca3e0b4d9e918afbf0722c1, type: 3}
       propertyPath: dashFOV.m_Curve.Array.data[1].inWeight
-      value: 0.035038404
+      value: 0.047018364
       objectReference: {fileID: 0}
     - target: {fileID: 1488179292, guid: 9b4a87acbca3e0b4d9e918afbf0722c1, type: 3}
       propertyPath: dashFOV.m_Curve.Array.data[1].outSlope
-      value: -6.6315947
+      value: -2.1904256
       objectReference: {fileID: 0}
     - target: {fileID: 1488179292, guid: 9b4a87acbca3e0b4d9e918afbf0722c1, type: 3}
       propertyPath: dashFOV.m_Curve.Array.data[0].outWeight
-      value: 0.012578616
+      value: 0.008385736
       objectReference: {fileID: 0}
     - target: {fileID: 342311681363546929, guid: 9b4a87acbca3e0b4d9e918afbf0722c1, type: 3}
       propertyPath: m_Layer
