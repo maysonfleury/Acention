@@ -19,6 +19,7 @@ public class GrapplingHook : MonoBehaviour
     public Transform gunTip, cam, player;
     public bool EnableAimAssist;
     public LayerMask whatIsGrappleable;
+    public LayerMask whatIsNotGrappleable;
     public ParticleSystem particleShot;
     public GameObject hookPrefab;
     public Image crosshair;
@@ -26,7 +27,10 @@ public class GrapplingHook : MonoBehaviour
     public GameObject crossRight;
     public GameObject crossUp;
     public GameObject crossDown;
+    public List<Image> outerCrosshairs;
     public AnimationCurve crosshairDistanceCurve;
+    public Color grappleableColor;
+    public Color nongrappleableColor;
     public float maxGrappleDistance = 100f;
     public int shotsLeft = 99;
 
@@ -38,6 +42,7 @@ public class GrapplingHook : MonoBehaviour
 
     private RaycastHit sphereHit;
     private RaycastHit raycastHit;
+    private RaycastHit nonHit;
     private Transform predictedHitPoint;
     public float sphereCastRadius = 1f;
     public float aimAssistCastRadius = 5f;
@@ -54,6 +59,7 @@ public class GrapplingHook : MonoBehaviour
         {
             GetInput();
             GetAiming();
+            DrawDynamicCrosshair();
             
             //if (rbMove.grounded || rbMove.isBouncing())
             //{
@@ -103,59 +109,27 @@ public class GrapplingHook : MonoBehaviour
 
     private void GetAiming()
     {
-        // Set crosshair to default state
-        crosshair.color = new Color(0, 0, 0, 0.45f);
-        crossLeft.SetActive(false);
-        crossRight.SetActive(false);
-        crossUp.SetActive(false);
-        crossDown.SetActive(false);
-        sphere.SetActive(false);
-
+        // SphereCast for Aim Assist, RayCast for regular aiming
         if (EnableAimAssist)
         {
             Physics.Raycast(cam.position, cam.forward, out raycastHit, maxGrappleDistance, whatIsGrappleable);
             Physics.SphereCast(cam.position, sphereCastRadius, cam.forward, out sphereHit, maxGrappleDistance, whatIsGrappleable);
+            Physics.SphereCast(cam.position, sphereCastRadius, cam.forward, out nonHit, maxGrappleDistance, whatIsNotGrappleable);
         }
         else
         {
             Physics.Raycast(cam.position, cam.forward, out raycastHit, maxGrappleDistance, whatIsGrappleable);
             Physics.Raycast(cam.position, cam.forward, out sphereHit, maxGrappleDistance * 2f, whatIsGrappleable);
+            Physics.Raycast(cam.position, cam.forward, out nonHit, maxGrappleDistance * 2f, whatIsNotGrappleable);
         }
 
-        // If we can grapple
-        if(raycastHit.point != Vector3.zero && shotsLeft > 0)
-        {
-            if (isGrappling())
-                crosshair.color = new Color(0, 1, 1, 0.4f);
-            else
-                crosshair.color = new Color(0, 1, 1, 1f);
-        }
-        else
-        {
-            // Dynamic crosshair <3
-            if (sphereHit.point != Vector3.zero && shotsLeft > 0)
-            {
-                Vector3 direction = Vector3.zero;
-                if (EnableAimAssist)
-                {
-                    sphere.SetActive(true);
-                    sphere.transform.position = sphereHit.point;
-                    Vector3 centerOfScreen = new Vector3(Screen.width/2, Screen.height/2);
-                    Vector3 screenHitPoint = Camera.main.WorldToScreenPoint(sphereHit.point);
-                    direction = (screenHitPoint - centerOfScreen) / 2;
-                }
-
-                crossLeft.SetActive(true);
-                crossRight.SetActive(true);
-                crossUp.SetActive(true);
-                crossDown.SetActive(true);
-                float delta = crosshairDistanceCurve.Evaluate(sphereHit.distance / 100f);
-                crossLeft.transform.localPosition = new Vector3(-delta + direction.x, direction.y);
-                crossRight.transform.localPosition = new Vector3(delta + direction.x, direction.y);
-                crossUp.transform.localPosition = new Vector3(direction.x, direction.y + delta);
-                crossDown.transform.localPosition = new Vector3(direction.x, direction.y - delta);
-            }
-        }
+        // Check if a nongrappleable is covering a grappleable
+        if (nonHit.point != Vector3.zero && raycastHit.point != Vector3.zero)
+            if (nonHit.distance < raycastHit.distance)
+                raycastHit.point = Vector3.zero;
+        if (nonHit.point != Vector3.zero && sphereHit.point != Vector3.zero)
+            if (nonHit.distance < sphereHit.distance)
+                sphereHit.point = Vector3.zero;
     }
 
     private void StartGrapple()
@@ -285,6 +259,81 @@ public class GrapplingHook : MonoBehaviour
         float distanceFromPoint = Vector3.Distance(player.position, grapplePoint);
         springJoint.maxDistance = distanceFromPoint * 0.9f;
         springJoint.spring = 4.5f;
+    }
+
+    private void DrawDynamicCrosshair()
+    {
+        // Set crosshair to default state
+        crosshair.color = new Color(0, 0, 0, 0.45f);
+        crossLeft.SetActive(false);
+        crossRight.SetActive(false);
+        crossUp.SetActive(false);
+        crossDown.SetActive(false);
+        // Hit point visual
+        sphere.SetActive(false);
+
+        // If we're already grappling, no need to have dynamic crosshair
+        if (isGrappling())
+            crosshair.color = new Color(0, 0.3f, 0.3f, 0.7f); // Dim Cyan
+        else if(raycastHit.point != Vector3.zero && shotsLeft > 0)
+        {
+            // Bright Cyan crosshair if we can grapple and we're not already
+            crosshair.color = new Color(0, 1, 1, 1f);
+        }
+        else if (sphereHit.point != Vector3.zero && shotsLeft > 0)
+        {
+            Vector3 direction = Vector3.zero;
+            if (EnableAimAssist)
+            {
+                sphere.SetActive(true);
+                sphere.transform.position = sphereHit.point;
+                Vector3 centerOfScreen = new Vector3(Screen.width/2, Screen.height/2);
+                Vector3 screenHitPoint = Camera.main.WorldToScreenPoint(sphereHit.point);
+                direction = (screenHitPoint - centerOfScreen) / 2;
+            }
+
+            crossLeft.SetActive(true);
+            crossRight.SetActive(true);
+            crossUp.SetActive(true);
+            crossDown.SetActive(true);
+
+            float delta = crosshairDistanceCurve.Evaluate(sphereHit.distance / 100f);
+            crossLeft.transform.localPosition = new Vector3(-delta + direction.x, direction.y);
+            crossRight.transform.localPosition = new Vector3(delta + direction.x, direction.y);
+            crossUp.transform.localPosition = new Vector3(direction.x, direction.y + delta);
+            crossDown.transform.localPosition = new Vector3(direction.x, direction.y - delta);
+
+            foreach (Image cros in outerCrosshairs)
+                cros.color = grappleableColor;
+            crosshair.color = new Color(0, 0, 0, 0.7f); // Dim black when hovering an out-of-range grappleable
+        }
+        else if (nonHit.point != Vector3.zero || shotsLeft <= 0)
+        {
+            Vector3 direction = Vector3.zero;
+            if (EnableAimAssist)
+            {
+                sphere.SetActive(true);
+                sphere.transform.position = nonHit.point;
+                Vector3 centerOfScreen = new Vector3(Screen.width/2, Screen.height/2);
+                Vector3 screenHitPoint = Camera.main.WorldToScreenPoint(nonHit.point);
+                direction = (screenHitPoint - centerOfScreen) / 2;
+            }
+
+            crossLeft.SetActive(true);
+            crossRight.SetActive(true);
+            crossUp.SetActive(true);
+            crossDown.SetActive(true);
+
+            float delta = crosshairDistanceCurve.Evaluate(nonHit.distance / 100f);
+            crossLeft.transform.localPosition = new Vector3(-delta + direction.x, direction.y);
+            crossRight.transform.localPosition = new Vector3(delta + direction.x, direction.y);
+            crossUp.transform.localPosition = new Vector3(direction.x, direction.y + delta);
+            crossDown.transform.localPosition = new Vector3(direction.x, direction.y - delta);
+            
+            foreach (Image cros in outerCrosshairs)
+                cros.color = nongrappleableColor;
+            crosshair.color = new Color(0.4f, 0, 0, 0.7f); // Dim red when we can't grapple
+        }
     }
 
     public bool isGrappling()

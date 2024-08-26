@@ -6,6 +6,8 @@ public class CameraFOV : MonoBehaviour
 {
     private Camera cam;
     private CameraShake camShake;
+    private GunShake gunShake;
+    private RippleEffect rippleEffect;
     [SerializeField] private float baseFOV = 65f;
     [SerializeField] private float delta = 3f;
     [SerializeField] private float zoomSpeed = 50f;
@@ -19,6 +21,8 @@ public class CameraFOV : MonoBehaviour
     {
         cam = GetComponent<Camera>();
         camShake = GetComponent<CameraShake>();
+        gunShake = GetComponent<GunShake>();
+        rippleEffect = GetComponent<RippleEffect>();
     }
     private void Start()
     {
@@ -72,6 +76,8 @@ public class CameraFOV : MonoBehaviour
     public void GoDashing()
     {
         StartCoroutine(GoDashRoutine());
+        rippleEffect.Emit(new Vector3(0.5f, 0.5f, 0)); // Percentage of the screen, so emits at 50%/50% - middle of screen.
+        Debug.Log(transform.position);
     }
 
     IEnumerator GoDashRoutine()

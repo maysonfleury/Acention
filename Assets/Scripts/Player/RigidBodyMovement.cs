@@ -130,7 +130,7 @@ public class RigidBodyMovement : MonoBehaviour
     private void Update() {
         
         // Get player input
-        MyInput();
+        GetInput();
         Look();
 
         // Checking for what type of object the player is currently on for physics
@@ -184,7 +184,7 @@ public class RigidBodyMovement : MonoBehaviour
     /// <summary>
     /// Find user input.
     /// </summary>
-    private void MyInput() {
+    private void GetInput() {
         x = _input.move.x;
         y = _input.move.y;
         jumping = _input.jump;
