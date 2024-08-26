@@ -10267,7 +10267,10 @@ MonoBehaviour:
   EnableAimAssist: 0
   whatIsGrappleable:
     serializedVersion: 2
-    m_Bits: 705
+    m_Bits: 704
+  whatIsNotGrappleable:
+    serializedVersion: 2
+    m_Bits: 2305
   particleShot: {fileID: 847203719428501056}
   hookPrefab: {fileID: 2686209462645092893}
   crosshair: {fileID: 0}
@@ -10275,23 +10278,41 @@ MonoBehaviour:
   crossRight: {fileID: 0}
   crossUp: {fileID: 0}
   crossDown: {fileID: 0}
+  outerCrosshairs:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   crosshairDistanceCurve:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
       time: 0.35
-      value: 0
-      inSlope: 53.846157
-      outSlope: 53.846157
-      tangentMode: 34
+      value: -3.5
+      inSlope: 165.41371
+      outSlope: 165.41371
+      tangentMode: 0
       weightedMode: 0
       inWeight: 0
-      outWeight: 0.33333334
+      outWeight: 1
+    - serializedVersion: 3
+      time: 0.355
+      value: -0.55
+      inSlope: 72.06382
+      outSlope: 72.06382
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.037560854
     - serializedVersion: 3
       time: 1
-      value: 35
-      inSlope: 53.846157
-      outSlope: 53.846157
+      value: 45
+      inSlope: 70.620155
+      outSlope: 70.620155
       tangentMode: 34
       weightedMode: 0
       inWeight: 0.33333334
@@ -10299,7 +10320,9 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  maxGrappleDistance: 40
+  grappleableColor: {r: 0, g: 0.37254903, b: 0.37254903, a: 1}
+  nongrappleableColor: {r: 0.37254903, g: 0.0029274235, b: 0, a: 1}
+  maxGrappleDistance: 38
   shotsLeft: 1
   isPaused: 0
   grappleAnimator: {fileID: 510595148}
@@ -10542,6 +10565,9 @@ GameObject:
   - component: {fileID: 170263021}
   - component: {fileID: 170263024}
   - component: {fileID: 1488179292}
+  - component: {fileID: 7550721400596373837}
+  - component: {fileID: 135754177629371559}
+  - component: {fileID: 8167037254898897538}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: Untagged
@@ -10590,7 +10616,7 @@ Camera:
     width: 1
     height: 1
   near clip plane: 0.3
-  far clip plane: 1669
+  far clip plane: 3000
   field of view: 60
   orthographic: 0
   orthographic size: 5
@@ -10606,7 +10632,7 @@ Camera:
   m_AllowMSAA: 1
   m_AllowDynamicResolution: 0
   m_ForceIntoRT: 0
-  m_OcclusionCulling: 1
+  m_OcclusionCulling: 0
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
 --- !u!81 &342311682988872330
@@ -10663,24 +10689,224 @@ MonoBehaviour:
     - serializedVersion: 3
       time: -0.00034332275
       value: 1
-      inSlope: -17.44052
-      outSlope: -17.44052
+      inSlope: -15.430039
+      outSlope: -15.430039
       tangentMode: 0
       weightedMode: 0
       inWeight: 0
-      outWeight: 0.012578616
+      outWeight: 0.012578608
     - serializedVersion: 3
       time: 0.17475586
       value: 1
-      inSlope: -6.6315947
-      outSlope: -6.6315947
+      inSlope: -5.0674734
+      outSlope: -5.0674734
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0.035038404
+      inWeight: 0.03459111
       outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &7550721400596373837
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 342311682988872375}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b9a305e18de0c04dbd257a21cd47087, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sharedProfile: {fileID: 11400000, guid: 4a6059962f22d59419632e5cea81d6fe, type: 2}
+  isGlobal: 1
+  blendDistance: 0
+  weight: 1
+  priority: 0
+--- !u!114 &135754177629371559
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 342311682988872375}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 948f4100a11a5c24981795d21301da5c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  volumeTrigger: {fileID: 342311682988872372}
+  volumeLayer:
+    serializedVersion: 2
+    m_Bits: 8
+  stopNaNPropagation: 1
+  finalBlitToCameraTarget: 0
+  antialiasingMode: 0
+  temporalAntialiasing:
+    jitterSpread: 0.75
+    sharpness: 0.25
+    stationaryBlending: 0.95
+    motionBlending: 0.85
+  subpixelMorphologicalAntialiasing:
+    quality: 2
+  fastApproximateAntialiasing:
+    fastMode: 0
+    keepAlpha: 0
+  fog:
+    enabled: 1
+    excludeSkybox: 1
+  debugLayer:
+    lightMeter:
+      width: 512
+      height: 256
+      showCurves: 1
+    histogram:
+      width: 512
+      height: 256
+      channel: 3
+    waveform:
+      exposure: 0.12
+      height: 256
+    vectorscope:
+      size: 256
+      exposure: 0.12
+    overlaySettings:
+      linearDepth: 0
+      motionColorIntensity: 4
+      motionGridSize: 64
+      colorBlindnessType: 0
+      colorBlindnessStrength: 1
+  m_Resources: {fileID: 11400000, guid: d82512f9c8e5d4a4d938b575d47f88d4, type: 2}
+  m_ShowToolkit: 0
+  m_ShowCustomSorter: 0
+  breakBeforeColorGrading: 0
+  m_BeforeTransparentBundles: []
+  m_BeforeStackBundles: []
+  m_AfterStackBundles: []
+--- !u!114 &8167037254898897538
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 342311682988872375}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1bc7030f5bb244b09b8037c2ded95f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  waveform:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0.5
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.05
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.15
+      value: 0.1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.25
+      value: 0.8
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.35
+      value: 0.3
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.45
+      value: 0.6
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.55
+      value: 0.4
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.65
+      value: 0.55
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.75
+      value: 0.46
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.85
+      value: 0.52
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.99
+      value: 0.5
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  refractionStrength: 0.69
+  reflectionColor: {r: 0.47036314, g: 0.6603774, b: 0.65068346, a: 1}
+  reflectionStrength: 0.75
+  waveSpeed: 2
+  dropInterval: 0.5
+  shader: {fileID: 4800000, guid: 162fe242d486f4dab90ed53db15b9c19, type: 3}
 --- !u!1 &342311683032374147
 GameObject:
   m_ObjectHideFlags: 0
