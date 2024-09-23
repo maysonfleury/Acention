@@ -77,13 +77,13 @@ public class CameraFOV : MonoBehaviour
     {
         StartCoroutine(GoDashRoutine());
         rippleEffect.Emit(new Vector3(0.5f, 0.5f, 0)); // Percentage of the screen, so emits at 50%/50% - middle of screen.
-        Debug.Log(transform.position);
+        //Debug.Log(transform.position);
     }
 
     IEnumerator GoDashRoutine()
     {
         float timer = 0f;
-        Debug.Log(dashFOV[dashFOV.length - 1].time);
+        //Debug.Log(dashFOV[dashFOV.length - 1].time);
         while (timer <= dashFOV[dashFOV.length - 1].time)
         {
             currentFOV = desiredFOV * dashFOV.Evaluate(timer);

@@ -29,6 +29,7 @@ public class GrapplingHook : MonoBehaviour
     public GameObject crossDown;
     public List<Image> outerCrosshairs;
     public AnimationCurve crosshairDistanceCurve;
+    public AnimationCurve crosshairOpacityCurve;
     public Color grappleableColor;
     public Color nongrappleableColor;
     public float maxGrappleDistance = 100f;
@@ -119,7 +120,7 @@ public class GrapplingHook : MonoBehaviour
         else
         {
             Physics.Raycast(cam.position, cam.forward, out raycastHit, maxGrappleDistance, whatIsGrappleable);
-            Physics.Raycast(cam.position, cam.forward, out sphereHit, maxGrappleDistance * 2f, whatIsGrappleable);
+            Physics.Raycast(cam.position, cam.forward, out sphereHit, maxGrappleDistance * 2f, whatIsGrappleable); // sphereHit is not actually a spherecast if we're not using aim assist
             Physics.Raycast(cam.position, cam.forward, out nonHit, maxGrappleDistance * 2f, whatIsNotGrappleable);
         }
 
@@ -290,7 +291,11 @@ public class GrapplingHook : MonoBehaviour
             crossUp.transform.localPosition = new Vector3(0, delta);
             crossDown.transform.localPosition = new Vector3(0, -delta);
             foreach (Image cros in outerCrosshairs)
-                cros.color = new Color(0, 0.4f, 0.4f, 1f); // Dim cyan outer for visibility
+            {
+                // Dim cyan outer for visibility with opacity depending on distance
+                cros.color = new Color(0, 0.4f, 0.4f, 0.7f);
+            }
+            
         }
         else if (sphereHit.point != Vector3.zero && shotsLeft > 0)
         {
@@ -307,12 +312,17 @@ public class GrapplingHook : MonoBehaviour
                 direction = (screenHitPoint - centerOfScreen) / 2;
             }
             float delta = crosshairDistanceCurve.Evaluate(sphereHit.distance / 100f);
+            float alpha = crosshairOpacityCurve.Evaluate(delta);
             crossLeft.transform.localPosition = new Vector3(-delta + direction.x, direction.y);
             crossRight.transform.localPosition = new Vector3(delta + direction.x, direction.y);
             crossUp.transform.localPosition = new Vector3(direction.x, direction.y + delta);
             crossDown.transform.localPosition = new Vector3(direction.x, direction.y - delta);
             foreach (Image cros in outerCrosshairs)
-                cros.color = grappleableColor;
+            {
+                Color outerColor = grappleableColor;
+                outerColor.a = alpha;
+                cros.color = outerColor;
+            }
         }
         else if (nonHit.point != Vector3.zero || shotsLeft <= 0)
         {
@@ -329,12 +339,17 @@ public class GrapplingHook : MonoBehaviour
                 direction = (screenHitPoint - centerOfScreen) / 2;
             };
             float delta = crosshairDistanceCurve.Evaluate(nonHit.distance / 100f);
+            float alpha = crosshairOpacityCurve.Evaluate(delta);
             crossLeft.transform.localPosition = new Vector3(-delta + direction.x, direction.y);
             crossRight.transform.localPosition = new Vector3(delta + direction.x, direction.y);
             crossUp.transform.localPosition = new Vector3(direction.x, direction.y + delta);
             crossDown.transform.localPosition = new Vector3(direction.x, direction.y - delta);
             foreach (Image cros in outerCrosshairs)
-                cros.color = nongrappleableColor;
+            {
+                Color outerColor = nongrappleableColor;
+                outerColor.a = alpha;
+                cros.color = outerColor;
+            }
         }
         else
         {

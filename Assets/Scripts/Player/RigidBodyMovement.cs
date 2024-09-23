@@ -101,6 +101,8 @@ public class RigidBodyMovement : MonoBehaviour
     public bool isPaused;
     public bool gameStart;
     public bool gameWon;
+    private float stepTimer = 0f; // used to play step sound
+    private float fallTimer = 0f; // used to play landing sound
 
     void Awake() {
         rb = GetComponent<Rigidbody>();
@@ -123,7 +125,7 @@ public class RigidBodyMovement : MonoBehaviour
         Movement();
         if(allowStairClimb)
         {
-            StepCheck();
+            StairCheck();
         }
     }
 
@@ -140,8 +142,10 @@ public class RigidBodyMovement : MonoBehaviour
         inWindArea = Physics.CheckSphere(groundCheck.position, groundDistance, whatIsWindArea);
         sloped = OnSlope();
 
+        FallCheck();
         if(grounded)
         {
+            fallTimer = 0f;
             //canDash = true;
         }
 
@@ -157,8 +161,6 @@ public class RigidBodyMovement : MonoBehaviour
             rb.useGravity = false;
             gameObject.GetComponentInChildren<CapsuleCollider>().enabled = false;
         }
-
-
     }
 
     private void OnTriggerEnter(Collider other)
@@ -196,6 +198,9 @@ public class RigidBodyMovement : MonoBehaviour
             StartCrouch();
         if (!crouching)
             StopCrouch();
+
+        if (x != 0 || y != 0)
+            StepCheck();
 
         if (dashing)
             Dash();
@@ -545,10 +550,11 @@ public class RigidBodyMovement : MonoBehaviour
         return bouncing;
     }
 
-    private void StepCheck()
+    // Only called if 'allowStairClimb' is enabled
+    private void StairCheck()
     {
         RaycastHit lower;
-        if(Physics.Raycast(stepRayLower.position, orientation.forward, out lower, 0.4f, whatIsGround))
+        if(Physics.SphereCast(stepRayLower.position, 0.4f, orientation.forward, out lower, whatIsGround))
         {
             Debug.Log("Lower Raycast Hit");
             RaycastHit upper;
@@ -560,6 +566,57 @@ public class RigidBodyMovement : MonoBehaviour
             else{
                 Debug.Log("Upper Raycast Hit");
             }
+        }
+    }
+
+    // Used to play walking sounds depending on material below
+    private void StepCheck()
+    {
+        stepTimer += Time.deltaTime;;
+        if (grounded && stepTimer > 0.5f)
+        {
+            Debug.Log("making sound");
+            RaycastHit lower;
+            if(Physics.SphereCast(stepRayLower.position, 0.2f, orientation.forward, out lower, whatIsGround))
+            {
+                Debug.Log("getting mat");
+                int variation = Random.Range(0, 2);
+                Debug.Log(lower.collider.gameObject.tag);
+                if (lower.collider.gameObject.CompareTag("Leaf"))
+                {
+                    if (variation == 0)
+                        am.Play("walk1_leaf");
+                    else
+                        am.Play("walk2_leaf");
+                }
+                else if (lower.collider.gameObject.CompareTag("Wood"))
+                {
+                    if (variation == 0)
+                        am.Play("walk1_wood");
+                    else
+                        am.Play("walk2_wood");
+                }
+                else
+                {
+                    if (variation == 0)
+                        am.Play("walk1");
+                    else
+                        am.Play("walk2");
+                }
+            }
+            stepTimer = 0f;
+        }
+    }
+
+    // Used to play falling sound
+    private void FallCheck()
+    {
+        fallTimer += Time.deltaTime;
+        if (grounded && fallTimer > 1.5f)
+        {
+            Debug.Log("Fall time: " + fallTimer);
+            am.Play("landing_heavy");
+            fallTimer = 0f;
         }
     }
 
