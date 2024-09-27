@@ -75,6 +75,10 @@ public class GrapplingHook : MonoBehaviour
                 springJoint.connectedAnchor = grapplePoint;
             }
         }
+        else
+        {
+            if (springJoint != null) StopGrapple();
+        }
     }
 
     private void GetInput()

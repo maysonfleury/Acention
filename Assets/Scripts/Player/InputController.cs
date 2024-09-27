@@ -3,6 +3,7 @@ using UnityEngine;
     using UnityEngine.InputSystem;
 #endif
 
+[RequireComponent(typeof(PlayerInput))]
 public class InputController : MonoBehaviour
 {
 	[Header("Character Input Values")]
@@ -21,68 +22,51 @@ public class InputController : MonoBehaviour
 		public bool cursorLocked = true;
 		public bool cursorInputForLook = true;
 
+	//[Header("Input and Actions")]
+	//InputAction jumpAction;
+
+	void Start()
+	{
+		//playerInput = GetComponent<PlayerInput>();
+		//jumpAction = playerInput.actions.FindAction("Jump");
+		//jumpAction.started += OnStartJump;
+		//jumpAction.canceled += OnCancelJump;
+	}
+
     #if ENABLE_INPUT_SYSTEM
 	    public void OnMove(InputValue value)
 	    {
-	    	MoveInput(value.Get<Vector2>());
+	    	move = value.Get<Vector2>();
 	    }
 	    public void OnLook(InputValue value)
 	    {
 	    	if(cursorInputForLook)
 	    	{
-	    		LookInput(value.Get<Vector2>());
+	    		look = value.Get<Vector2>();
 	    	}
 	    }
 	    public void OnJump(InputValue value)
 	    {
-	    	JumpInput(value.isPressed);
+			jump = value.isPressed;
 	    }
 	    public void OnDash(InputValue value)
 	    {
-	    	DashInput(value.isPressed);
+	    	dash = value.isPressed;
 	    }
 	    public void OnCrouch(InputValue value)
 	    {
-	    	CrouchInput(value.isPressed);
+	    	crouch = value.isPressed;
 	    }
 	    public void OnShoot(InputValue value)
 	    {
-	    	ShootInput(value.isPressed);
+	    	shoot = value.isPressed;
 	    }
 	    public void OnADS(InputValue value)
 	    {
-	    	ADSInput(value.isPressed);
+	    	ads = value.isPressed;
 	    }
     #endif
 
-	public void MoveInput(Vector2 newMoveDirection)
-	{
-		move = newMoveDirection;
-	} 
-	public void LookInput(Vector2 newLookDirection)
-	{
-		look = newLookDirection;
-	}
-	public void JumpInput(bool newJumpState)
-	{
-		jump = newJumpState;
-	}
-	public void DashInput(bool newDashState)
-	{
-		dash = newDashState;
-	}
-	public void CrouchInput(bool newCrouchState)
-	{
-		crouch = newCrouchState;
-	}
-	public void ShootInput(bool newShootState)
-	{
-		shoot = newShootState;
-	}
-	public void ADSInput(bool newADSState)
-	{
-		ads = newADSState;
-	}
 	private void OnApplicationFocus(bool hasFocus)
 	{
 		SetCursorState(cursorLocked);

@@ -10267,10 +10267,10 @@ MonoBehaviour:
   EnableAimAssist: 0
   whatIsGrappleable:
     serializedVersion: 2
-    m_Bits: 704
+    m_Bits: 192
   whatIsNotGrappleable:
     serializedVersion: 2
-    m_Bits: 2305
+    m_Bits: 2817
   particleShot: {fileID: 847203719428501056}
   hookPrefab: {fileID: 2686209462645092893}
   crosshair: {fileID: 0}
@@ -10317,6 +10317,39 @@ MonoBehaviour:
       weightedMode: 0
       inWeight: 0.33333334
       outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  crosshairOpacityCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 136
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 2
+      value: 1
+      inSlope: -0.019608134
+      outSlope: -0.019608134
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.053251565
+    - serializedVersion: 3
+      time: 30.030396
+      value: 0.0016479492
+      inSlope: -0.0758985
+      outSlope: -0.0758985
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.03361874
+      outWeight: 0.33333334
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
@@ -11023,7 +11056,7 @@ MonoBehaviour:
   stepRayUpper: {fileID: 214414385}
   stepRayLower: {fileID: 299018508}
   sensMultiplier: 1
-  moveSpeed: 2250
+  moveSpeed: 50
   maxSpeed: 17
   grounded: 0
   sloped: 0
@@ -11048,7 +11081,7 @@ MonoBehaviour:
   slideCounterMovement: 0.25
   slideDashCooldown: 0.5
   jumpForce: 450
-  gravity: 500
+  gravity: 10
   airStrafeForward: 0.85
   airStrafeSideways: 0.75
   jumpCooldown: 0.25

@@ -25,8 +25,8 @@ public class RigidBodyMovement : MonoBehaviour
     public float sensMultiplier = 1f;
     
     [Header("Movement")]
-    public float moveSpeed = 1750;
-    public float maxSpeed = 13;
+    public float moveSpeed = 50;
+    public float maxSpeed = 17;
     public bool grounded;
     public bool sloped;
     public bool sliding;
@@ -38,11 +38,11 @@ public class RigidBodyMovement : MonoBehaviour
     public LayerMask whatIsBouncy;
     public LayerMask whatIsWindArea;
     
-    public float counterMovement = 0.175f;
+    public float counterMovement = 0.25f;
     private float threshold = 0.01f;
 
     // Slope Movement
-    public float maxSlopeAngle = 35f;
+    public float maxSlopeAngle = 40f;
     private RaycastHit slopeHit;
     private bool steepSlope = false;
 
@@ -58,15 +58,15 @@ public class RigidBodyMovement : MonoBehaviour
 
     [Header("Aerial Movement")]
     public float jumpForce = 450f;
-    public float gravity = 500f;
-    public float airStrafeForward = 0.55f;
-    public float airStrafeSideways = 0.55f;
+    public float gravity = 10f;
+    public float airStrafeForward = 0.85f;
+    public float airStrafeSideways = 0.75f;
     private bool readyToJump = true;
     public float jumpCooldown = 0.25f;
 
     // Dashing
     private bool canDash = true;
-    public float dashForce = 40f;
+    public float dashForce = 30f;
     public float dashCooldown = 5f;
     private DashRings dashR;
 
@@ -84,11 +84,11 @@ public class RigidBodyMovement : MonoBehaviour
     private Vector3 windDirection;
 
     // Ground Check
-    private float groundDistance = 0.3f;
+    private float groundDistance = 0.2f;
 
     [Header("Stair Climbing")]
     public bool allowStairClimb = false;
-    public float stepHeight = 0.95f;
+    public float stepHeight = 1f;
     public float stepSmooth = 3f;
 
     [Header("Particle Systems")]
@@ -107,7 +107,7 @@ public class RigidBodyMovement : MonoBehaviour
     void Awake() {
         rb = GetComponent<Rigidbody>();
         am = FindObjectOfType<AudioManager>();
-        stepRayUpper.transform.position = new Vector3(stepRayUpper.position.x, stepHeight, stepRayUpper.position.z);
+        stepRayUpper.transform.localPosition = new Vector3(stepRayUpper.localPosition.x, stepHeight, stepRayUpper.localPosition.z);
     }
     
     void Start() {
@@ -227,7 +227,7 @@ public class RigidBodyMovement : MonoBehaviour
                 if (readyToSlideDash)
                 {
                     readyToSlideDash = false;
-                    rb.AddForce(orientation.transform.forward * slideForce);
+                    rb.AddForce(orientation.transform.forward * slideForce * 1.35f);
                     Invoke(nameof(ResetSlideDash), slideDashCooldown);
                 }
             }
@@ -254,7 +254,7 @@ public class RigidBodyMovement : MonoBehaviour
             return;
 
         // Extra gravity
-        rb.AddForce(Vector3.down * Time.deltaTime * gravity);
+        rb.AddForce(Vector3.down * gravity);
         
         // Find actual velocity relative to where player is looking
         Vector2 mag = FindVelRelativeToLook();
@@ -275,7 +275,7 @@ public class RigidBodyMovement : MonoBehaviour
         
         // If sliding down a ramp, add force down so player stays grounded and also builds speed
         if (crouching && grounded && readyToJump) {
-            rb.AddForce(3000 * Time.deltaTime * Vector3.down);
+            rb.AddForce(60f * Vector3.down);
             return;
         }
         
@@ -297,26 +297,6 @@ public class RigidBodyMovement : MonoBehaviour
         // Movement while sliding
         if (grounded && crouching) multiplierV = 0.1f;
 
-        // Movement while being on a Slide
-        if (sliding)
-        {
-            // Give player a bit less control while on slides
-            multiplierV = 0.5f;
-            multiplier = 0.5f;
-
-            // If going too slowly on a Slide, give player some speed so they don't get stuck
-            if (velo < 18f)
-            {
-                // Get the down direction of the slide's slope
-                Vector3 slopeCross = Vector3.Cross(Vector3.up, slopeHit.normal);
-                Vector3 slopeDown = Vector3.Cross(slopeCross, slopeHit.normal);
-
-                // Apply force both globally down, as well as on the slope's down
-                rb.AddForce(1500 * Time.deltaTime * Vector3.down);
-                rb.AddForce(3000 * Time.deltaTime * slopeDown);
-            }
-        }
-
         // Movement while hitting a Bouncy obstacle
         if (bouncing)
         {
@@ -329,19 +309,39 @@ public class RigidBodyMovement : MonoBehaviour
             rb.AddForce(windDirection * windMagnitude);
         }
 
+        // Movement while being on a Slide
+        if (sliding && !grounded)
+        {
+            // Give player less control while on slides
+            multiplier = 0.15f;
+            multiplierV = 0.15f;
+
+            // If going too slowly on a Slide, give player some speed so they don't get stuck
+            if (velo < 18f)
+            {
+                // Get the down direction of the slide's slope
+                Vector3 slopeCross = Vector3.Cross(Vector3.up, slopeHit.normal);
+                Vector3 slopeDown = Vector3.Cross(slopeCross, slopeHit.normal);
+
+                // Apply force both globally down, as well as on the slope's down
+                rb.AddForce(30f * Vector3.down);
+                rb.AddForce(60f * slopeDown);
+            }
+        }
+
         // Movement while on a steep slope
         if (steepSlope)
         {
-            rb.AddForce(1750f * Time.deltaTime * slopeHit.normal);
-            rb.AddForce(3000f * Time.deltaTime * Vector3.down);
+            rb.AddForce(35f * slopeHit.normal);
+            rb.AddForce(60f * Vector3.down);
             return;
         }
-
+    
         // Movement while on a slope
-        if (sloped)
+        if (sloped && !sliding)
         {
-            rb.AddForce(2f * moveSpeed * multiplier * multiplierV * Time.deltaTime * y * GetSlopeMoveDirection());
-            rb.AddForce(1.75f * moveSpeed * multiplier * Time.deltaTime * x * GetSlopeMoveDirectionRight());
+            rb.AddForce(2f * moveSpeed * multiplier * multiplierV * y * GetSlopeMoveDirection());
+            rb.AddForce(2f * moveSpeed * multiplier * x * GetSlopeMoveDirectionRight());
 
             // Prevent the player from sliding downwards when there's no movement
             if (rb.velocity.y < 1f)
@@ -350,15 +350,15 @@ public class RigidBodyMovement : MonoBehaviour
             }
             else // Otherwise, give a bit of extra gravity so there's no bounciness
             {
-                rb.AddForce(1350f * Time.deltaTime * Vector3.down);
+                rb.AddForce(50f * Vector3.down);
             }
 
             return;
         }
 
         // Apply forces to move player regularly
-        rb.AddForce(orientation.transform.forward * y * moveSpeed * Time.deltaTime * multiplier * multiplierV);
-        rb.AddForce(orientation.transform.right * x * moveSpeed * Time.deltaTime * multiplier);
+        rb.AddForce(orientation.transform.forward * y * moveSpeed * multiplier * multiplierV);
+        rb.AddForce(orientation.transform.right * x * moveSpeed * multiplier);
     }
 
     private void Jump() {
@@ -377,6 +377,11 @@ public class RigidBodyMovement : MonoBehaviour
                 rb.velocity = new Vector3(vel.x, vel.y / 2, vel.z);
             
             Invoke(nameof(ResetJump), jumpCooldown);
+        }
+        else
+        {
+            // Resets jump input, forcing the player to let go of jump key while in the air
+            _input.jump = false;
         }
     }
     
@@ -471,16 +476,16 @@ public class RigidBodyMovement : MonoBehaviour
 
         // Slow down sliding
         if (crouching) {
-            rb.AddForce(moveSpeed * Time.deltaTime * -rb.velocity.normalized * slideCounterMovement);
+            rb.AddForce(moveSpeed * -rb.velocity.normalized * slideCounterMovement);
             return;
         }
 
         // Counter movement
         if (Mathf.Abs(mag.x) > threshold && Mathf.Abs(x) < 0.05f || (mag.x < -threshold && x > 0) || (mag.x > threshold && x < 0)) {
-            rb.AddForce(-mag.x * counterMovement * moveSpeed * Time.deltaTime * orientation.transform.right);
+            rb.AddForce(-mag.x * counterMovement * moveSpeed * orientation.transform.right);
         }
         if (Mathf.Abs(mag.y) > threshold && Mathf.Abs(y) < 0.05f || (mag.y < -threshold && y > 0) || (mag.y > threshold && y < 0)) {
-            rb.AddForce(-mag.y * counterMovement * moveSpeed * Time.deltaTime * orientation.transform.forward);
+            rb.AddForce(-mag.y * counterMovement * moveSpeed * orientation.transform.forward);
         }
         
         // Limit diagonal running. This will also cause a full stop if sliding fast and un-crouching, so not optimal.
@@ -572,12 +577,12 @@ public class RigidBodyMovement : MonoBehaviour
     // Used to play walking sounds depending on material below
     private void StepCheck()
     {
-        stepTimer += Time.deltaTime;;
+        stepTimer += Time.deltaTime;
         if (grounded && stepTimer > 0.5f)
         {
             Debug.Log("making sound");
             RaycastHit lower;
-            if(Physics.SphereCast(stepRayLower.position, 0.2f, orientation.forward, out lower, whatIsGround))
+            if(Physics.SphereCast(stepRayLower.position, 0.01f, orientation.up * -1, out lower, whatIsGround))
             {
                 Debug.Log("getting mat");
                 int variation = Random.Range(0, 2);
