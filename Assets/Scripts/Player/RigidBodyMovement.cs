@@ -103,14 +103,17 @@ public class RigidBodyMovement : MonoBehaviour
     public bool gameWon;
     private float stepTimer = 0f; // used to play step sound
     private float fallTimer = 0f; // used to play landing sound
+    private float jumpTimer = 0f; // used to allow jump buffering
 
-    void Awake() {
+    void Awake()
+    {
         rb = GetComponent<Rigidbody>();
         am = FindObjectOfType<AudioManager>();
         stepRayUpper.transform.localPosition = new Vector3(stepRayUpper.localPosition.x, stepHeight, stepRayUpper.localPosition.z);
     }
     
-    void Start() {
+    void Start()
+    {
         gameOver = FindObjectOfType<GameOver>();
         playerScale = transform.localScale;
         _input = GetComponent<InputController>();
@@ -129,8 +132,8 @@ public class RigidBodyMovement : MonoBehaviour
         }
     }
 
-    private void Update() {
-        
+    private void Update()
+    {
         // Get player input
         GetInput();
         Look();
@@ -186,7 +189,8 @@ public class RigidBodyMovement : MonoBehaviour
     /// <summary>
     /// Find user input.
     /// </summary>
-    private void GetInput() {
+    private void GetInput()
+    {
         x = _input.move.x;
         y = _input.move.y;
         jumping = _input.jump;
@@ -206,7 +210,8 @@ public class RigidBodyMovement : MonoBehaviour
             Dash();
     }
 
-    private void StartCrouch() {
+    private void StartCrouch()
+    {
         if(!isCrouched)
         {
             isCrouched = true;
@@ -227,14 +232,16 @@ public class RigidBodyMovement : MonoBehaviour
                 if (readyToSlideDash)
                 {
                     readyToSlideDash = false;
-                    rb.AddForce(orientation.transform.forward * slideForce * 1.35f);
+                    rb.AddForce(slideForce * y * orientation.transform.forward * 1.35f);
+                    rb.AddForce(slideForce * x * orientation.transform.right);
                     Invoke(nameof(ResetSlideDash), slideDashCooldown);
                 }
             }
         }
     }
 
-    private void StopCrouch() {
+    private void StopCrouch()
+    {
         if(isCrouched)
         {
             // Don't uncrouch if there's an object directly above player
@@ -249,9 +256,9 @@ public class RigidBodyMovement : MonoBehaviour
         }
     }
 
-    private void Movement() {
-        if(gameOver.isGameOver)
-            return;
+    private void Movement()
+    {
+        if(gameOver.isGameOver) return;
 
         // Extra gravity
         rb.AddForce(Vector3.down * gravity);
@@ -264,20 +271,16 @@ public class RigidBodyMovement : MonoBehaviour
         // Counteract gliding and sloppy movement
         CounterMovement(x, y, mag);
         
-        // If holding jump && ready to jump, then jump
-        if (readyToJump && jumping) Jump();
+        // If we can jump, then jump
+        // otherwise, begin jump buffer timer
+        if (readyToJump && jumping) 
+        {
+            if (grounded && !steepSlope) Jump();
+            else JumpBuffer();
+        }
 
         // Apply SpeedLines UI and change camera FOV depending on velocity
         ApplySpeedEffects(mag);
-
-        // Set max speed
-        float maxSpeed = this.maxSpeed;
-        
-        // If sliding down a ramp, add force down so player stays grounded and also builds speed
-        if (crouching && grounded && readyToJump) {
-            rb.AddForce(60f * Vector3.down);
-            return;
-        }
         
         // If speed is larger than maxspeed, cancel out the input so you don't go over max speed
         if (x > 0 && xMag > maxSpeed) x = 0;
@@ -285,7 +288,7 @@ public class RigidBodyMovement : MonoBehaviour
         if (y > 0 && yMag > maxSpeed) y = 0;
         if (y < 0 && yMag < -maxSpeed) y = 0;
 
-        // Some multipliers
+        // Movement multipliers
         float multiplier = 1f, multiplierV = 1f;
         
         // Movement in air
@@ -295,7 +298,12 @@ public class RigidBodyMovement : MonoBehaviour
         }
         
         // Movement while sliding
-        if (grounded && crouching) multiplierV = 0.1f;
+        if (grounded && crouching) 
+        {
+            rb.AddForce(60f * Vector3.down);
+            multiplier = 0.1f;
+            multiplierV = 0.1f;
+        }
 
         // Movement while hitting a Bouncy obstacle
         if (bouncing)
@@ -348,7 +356,7 @@ public class RigidBodyMovement : MonoBehaviour
             {
                 rb.AddForce(-rb.velocity.normalized);
             }
-            else // Otherwise, give a bit of extra gravity so there's no bounciness
+            else // Otherwise, give a bit of extra gravity so there's no bounciness when walking up slopes
             {
                 rb.AddForce(50f * Vector3.down);
             }
@@ -361,27 +369,39 @@ public class RigidBodyMovement : MonoBehaviour
         rb.AddForce(orientation.transform.right * x * moveSpeed * multiplier);
     }
 
-    private void Jump() {
-        if (grounded && readyToJump && !steepSlope) {
-            readyToJump = false;
+    private void Jump()
+    {
+        // Reset jump controls
+        readyToJump = false;
+        jumpTimer = 0f;
 
-            // Add jump forces
-            rb.AddForce(1.5f * jumpForce * Vector2.up);
-            rb.AddForce(0.5f * jumpForce * normalVector);
+        // Add jump forces
+        rb.AddForce(1.5f * jumpForce * Vector2.up);
+        rb.AddForce(0.5f * jumpForce * normalVector);
+
+        // If holding forward, give a bit of forward velocity when jumping
+        //if (y > 0) rb.AddForce(0.5f * jumpForce * orientation.transform.forward);
             
-            // If jumping while falling, reset y velocity.
-            Vector3 vel = rb.velocity;
-            if (rb.velocity.y < 0.5f)
-                rb.velocity = new Vector3(vel.x, 0, vel.z);
-            else if (rb.velocity.y > 0) 
-                rb.velocity = new Vector3(vel.x, vel.y / 2, vel.z);
+        // If jumping while falling, reset y velocity.
+        Vector3 vel = rb.velocity;
+        if (rb.velocity.y < 0.5f)
+            rb.velocity = new Vector3(vel.x, 0, vel.z);
+        else if (rb.velocity.y > 0) 
+            rb.velocity = new Vector3(vel.x, vel.y / 2, vel.z);
             
-            Invoke(nameof(ResetJump), jumpCooldown);
-        }
-        else
+        Invoke(nameof(ResetJump), jumpCooldown);
+    }
+
+    // Allows Jump Buffering, leading to more responsive inputs
+    private void JumpBuffer()
+    {
+        jumpTimer += 0.02f; // 0.02f = Time.deltaTime (usually)
+        if (jumpTimer > 0.09f) // roughly 4-5 frames
         {
-            // Resets jump input, forcing the player to let go of jump key while in the air
+            // Resets jump input, forcing the player to let go of jump key to jump again
             _input.jump = false;
+            jumpTimer = 0f;
+            return;
         }
     }
     
@@ -471,7 +491,8 @@ public class RigidBodyMovement : MonoBehaviour
         }
     }
 
-    private void CounterMovement(float x, float y, Vector2 mag) {
+    private void CounterMovement(float x, float y, Vector2 mag)
+    {
         if (!grounded || jumping || steepSlope) return;
 
         // Slow down sliding
@@ -497,9 +518,9 @@ public class RigidBodyMovement : MonoBehaviour
         }
     }
 
+    // Apply SpeedLines UI and change camera FOV depending on velocity
     private void ApplySpeedEffects(Vector2 mag)
     {
-        // Apply SpeedLines UI and change camera FOV depending on velocity
         float velo = Mathf.Abs(mag.x) + Mathf.Abs(mag.y);
         if (velo > 150)
         {
@@ -531,12 +552,10 @@ public class RigidBodyMovement : MonoBehaviour
         }
     }
 
-    /// <summary>
-    /// Find the velocity relative to where the player is looking
-    /// Useful for vectors calculations regarding movement and limiting movement
-    /// </summary>
-    /// <returns></returns>
-    public Vector2 FindVelRelativeToLook() {
+    // Find the velocity relative to where the player is looking
+    // Useful for vectors calculations regarding movement and limiting movement
+    public Vector2 FindVelRelativeToLook()
+    {
         float lookAngle = orientation.transform.eulerAngles.y;
         float moveAngle = Mathf.Atan2(rb.velocity.x, rb.velocity.z) * Mathf.Rad2Deg;
 
@@ -628,5 +647,4 @@ public class RigidBodyMovement : MonoBehaviour
     private void StopGrounded() {
         grounded = false;
     }
-    
 }

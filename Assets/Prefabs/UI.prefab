@@ -760,7 +760,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: b51a3e520f9164da198dc59c8acfccd6, type: 3}
+    m_Font: {fileID: 12800000, guid: 1f8866609fc92f647b3947420a112199, type: 3}
     m_FontSize: 25
     m_FontStyle: 0
     m_BestFit: 0
@@ -772,7 +772,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: New Text
+  m_Text: Press any key to rebind
 --- !u!1 &1424437057
 GameObject:
   m_ObjectHideFlags: 0
@@ -8061,7 +8061,6 @@ MonoBehaviour:
   pauseMenu: {fileID: 7478014835035687161}
   controlMenu: {fileID: 7478014833979235367}
   settingsMenu: {fileID: 6401550503580855784}
-  anykeyButton: {fileID: 0}
   returnButton: {fileID: 7478014833778943818}
   masterSlider: {fileID: 7478014835073245029}
   sfxSlider: {fileID: 7478014834944785163}
