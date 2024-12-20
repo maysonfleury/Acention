@@ -6,9 +6,27 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/LoadManager.unity
+    guid: 2e9cce93a5262594e95aa082ff9607f8
+  - enabled: 1
     path: Assets/Scenes/Main Menu.unity
     guid: 5eea284492bb83341a28b14883f1bcac
   - enabled: 1
-    path: Assets/Scenes/Acention.unity
-    guid: 56307525fb4ebb64387d9d3e6795f722
+    path: Assets/Scenes/Base.unity
+    guid: 8af7a5a32e2c4a74791116611e7f4c2b
+  - enabled: 1
+    path: Assets/Scenes/Grotto.unity
+    guid: 1c45de66e2d2f4e4c864c328ca5879c7
+  - enabled: 1
+    path: Assets/Scenes/CrystalCaverns.unity
+    guid: 2b1a8e46022825e4f87b6ee8fc5a6268
+  - enabled: 1
+    path: Assets/Scenes/Fun.unity
+    guid: dc25075fad1e75b4582249dcbe23384d
+  - enabled: 1
+    path: Assets/Scenes/SmallCaverns.unity
+    guid: 66a5a39a8b8ac3d4691862734d14ab6e
+  - enabled: 1
+    path: Assets/Scenes/Mountains.unity
+    guid: b531d9729c0af8b43ab1f191a9bed956
   m_configObjects: {}

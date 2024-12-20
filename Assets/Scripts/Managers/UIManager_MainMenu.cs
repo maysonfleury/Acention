@@ -57,7 +57,7 @@ public class UIManager_MainMenu : MonoBehaviour
 
         // Switch to Main Game Scene
         Debug.Log("Starting Acention");
-        SceneManager.LoadScene("Acention");
+        LoadManager.Instance.LoadGame();
     }
 
     public void ContinueGame()
@@ -70,7 +70,7 @@ public class UIManager_MainMenu : MonoBehaviour
 
         // Switch to Main Game Scene
         Debug.Log("Starting Acention");
-        SceneManager.LoadScene("Acention");
+        LoadManager.Instance.LoadGame();
     }
 
     public void QuitGame()
