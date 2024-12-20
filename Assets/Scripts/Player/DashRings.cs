@@ -19,7 +19,7 @@ public class DashRings : MonoBehaviour
     public void Lock()
     {
         //Debug.Log("Locking Dash Rings");
-        lockedRings.SetActive(true);
+        //lockedRings.SetActive(true);
     }
 
     public void Unlock()

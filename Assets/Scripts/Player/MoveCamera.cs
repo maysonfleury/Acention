@@ -6,7 +6,7 @@ public class MoveCamera : MonoBehaviour
 {
     public Transform playerHead;
 
-    void Update() {
+    void LateUpdate() {
         transform.position = playerHead.transform.position;
     }
 }

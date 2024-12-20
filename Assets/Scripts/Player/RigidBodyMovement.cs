@@ -28,6 +28,7 @@ public class RigidBodyMovement : MonoBehaviour
     public float moveSpeed = 50;
     public float maxSpeed = 17;
     public bool grounded;
+    public bool moving;
     public bool sloped;
     public bool sliding;
     public bool bouncing;
@@ -67,7 +68,7 @@ public class RigidBodyMovement : MonoBehaviour
     // Dashing
     private bool canDash = true;
     public float dashForce = 30f;
-    public float dashCooldown = 5f;
+    public int dashCooldown = 5;
     private DashRings dashR;
 
     // Input
@@ -116,6 +117,7 @@ public class RigidBodyMovement : MonoBehaviour
     {
         gameOver = FindObjectOfType<GameOver>();
         playerScale = transform.localScale;
+        crouchScale = new Vector3(playerScale.x, playerScale.y / 2, playerScale.z);
         _input = GetComponent<InputController>();
         cameraFOV = GetComponentInChildren<CameraFOV>();
         dashR = GetComponentInChildren<DashRings>();
@@ -215,7 +217,8 @@ public class RigidBodyMovement : MonoBehaviour
         if(!isCrouched)
         {
             isCrouched = true;
-            transform.localScale = crouchScale;
+            playerScale = transform.localScale;
+            transform.localScale = new Vector3(playerScale.x, playerScale.y / 2, playerScale.z);
             grapplePosition.localScale = grappleGunScale;
             if (rb.velocity.magnitude > 0.5f) {
                 if (grounded) {
@@ -305,10 +308,23 @@ public class RigidBodyMovement : MonoBehaviour
             multiplierV = 0.1f;
         }
 
+        // Movement while on a moving platform
+        if (moving)
+        {
+            RaycastHit moveHit;
+            if (Physics.Raycast(groundCheck.position, Vector3.down, out moveHit, groundDistance))
+            {
+                Vector3 hitVelo = moveHit.rigidbody.GetPointVelocity(moveHit.point);
+                hitVelo.y = 0f;
+                //Debug.Log(hitVelo);
+                rb.AddForce(hitVelo * hitVelo.magnitude);
+            }
+        }
+
         // Movement while hitting a Bouncy obstacle
         if (bouncing)
         {
-            ResetDash();
+            ResetDashImmediate();
         }
 
         // Movement while in wind area
@@ -428,17 +444,45 @@ public class RigidBodyMovement : MonoBehaviour
 
             dashR.SetRings(0);
             am.Play("dash_impact");
-            Invoke(nameof(ResetDash), dashCooldown);
+            dashRoutine = StartCoroutine(ResetDashRoutine());
+            //Invoke(nameof(ResetDashImmediate), dashCooldown);
         }
     }
 
-    private void ResetDash() {
+    public void ResetDashImmediate() {
         if (!canDash)
         {
+            Debug.Log("ResetDashImmediate: canDash = true");
+            if (dashRoutine != null)
+                StopCoroutine(dashRoutine);
             canDash = true;
             dashR.SetRings(3);
             dashR.Unlock();
             am.Play("dash_recharge");
+        }
+        else {return;}
+    }
+
+    private Coroutine dashRoutine;
+    IEnumerator ResetDashRoutine() {
+        if (!canDash)
+        {
+            for(int i = 0; i < dashCooldown; i++)
+            {
+                yield return new WaitForSeconds(1);
+                dashR.SetRings(i);
+                Debug.Log("ResetDashRoutine: " + i);
+            }
+            Debug.Log("ResetDashRoutine: canDash = true");
+            canDash = true;
+            //dashR.SetRings(3);
+            dashR.Unlock();
+            am.Play("dash_recharge");
+            dashRoutine = null;
+        }
+        else
+        {
+            yield return null;
         }
     }
 
@@ -522,9 +566,17 @@ public class RigidBodyMovement : MonoBehaviour
     private void ApplySpeedEffects(Vector2 mag)
     {
         float velo = Mathf.Abs(mag.x) + Mathf.Abs(mag.y);
-        if (velo > 150)
+        if (velo > 200)
+        {
+            cameraFOV.GoingWayTooFast();
+        }
+        if (velo > 150 && velo < 185)
         {
             cameraFOV.GoingTooFast();
+        }
+        else if (velo > 125 && velo < 145)
+        {
+            cameraFOV.GoingVeryFast();
         }
         else if(velo > 80 && velo < 120)
         {
@@ -599,13 +651,13 @@ public class RigidBodyMovement : MonoBehaviour
         stepTimer += Time.deltaTime;
         if (grounded && stepTimer > 0.5f)
         {
-            Debug.Log("making sound");
+            //Debug.Log("making sound");
             RaycastHit lower;
             if(Physics.SphereCast(stepRayLower.position, 0.01f, orientation.up * -1, out lower, whatIsGround))
             {
-                Debug.Log("getting mat");
+                //Debug.Log("getting mat");
+                //Debug.Log(lower.collider.gameObject.tag);
                 int variation = Random.Range(0, 2);
-                Debug.Log(lower.collider.gameObject.tag);
                 if (lower.collider.gameObject.CompareTag("Leaf"))
                 {
                     if (variation == 0)

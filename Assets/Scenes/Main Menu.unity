@@ -361,46 +361,52 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sounds:
-  - clip: {fileID: 8300000, guid: 78bd2ac4dd9495e49a18867499a5d1db, type: 3}
+  - name: area_0
+    clip: {fileID: 8300000, guid: 78bd2ac4dd9495e49a18867499a5d1db, type: 3}
     group: {fileID: -5269753176496455026, guid: 744e29381e4a0534ba09cc4e61ed626d, type: 2}
-    name: area_0
     volume: 0
     pitch: 1
+    randomPitch: 0
     loop: 1
     source: {fileID: 0}
-  - clip: {fileID: 8300000, guid: 9bd7b5206885dba45ad2c9ca310c374a, type: 3}
+  - name: area_1
+    clip: {fileID: 8300000, guid: 9bd7b5206885dba45ad2c9ca310c374a, type: 3}
     group: {fileID: -5269753176496455026, guid: 744e29381e4a0534ba09cc4e61ed626d, type: 2}
-    name: area_1
     volume: 0
     pitch: 1
+    randomPitch: 0
     loop: 1
     source: {fileID: 0}
-  - clip: {fileID: 8300000, guid: f3fafe61cb0d1b1409a5099298464649, type: 3}
+  - name: area_2
+    clip: {fileID: 8300000, guid: f3fafe61cb0d1b1409a5099298464649, type: 3}
     group: {fileID: -5269753176496455026, guid: 744e29381e4a0534ba09cc4e61ed626d, type: 2}
-    name: area_2
     volume: 0
     pitch: 1
+    randomPitch: 0
     loop: 1
     source: {fileID: 0}
-  - clip: {fileID: 8300000, guid: 5a086fe42a53e754da0b0edd4b80fab8, type: 3}
+  - name: area_3
+    clip: {fileID: 8300000, guid: 5a086fe42a53e754da0b0edd4b80fab8, type: 3}
     group: {fileID: -5269753176496455026, guid: 744e29381e4a0534ba09cc4e61ed626d, type: 2}
-    name: area_3
     volume: 0
     pitch: 1
+    randomPitch: 0
     loop: 1
     source: {fileID: 0}
-  - clip: {fileID: 8300000, guid: d8480901927ee2e48a7d9106257b2a45, type: 3}
+  - name: area_4
+    clip: {fileID: 8300000, guid: d8480901927ee2e48a7d9106257b2a45, type: 3}
     group: {fileID: -5269753176496455026, guid: 744e29381e4a0534ba09cc4e61ed626d, type: 2}
-    name: area_4
     volume: 0
     pitch: 1
+    randomPitch: 0
     loop: 1
     source: {fileID: 0}
-  - clip: {fileID: 8300000, guid: f160f06933127da4f9d5a2f6cadf3762, type: 3}
+  - name: siren
+    clip: {fileID: 8300000, guid: f160f06933127da4f9d5a2f6cadf3762, type: 3}
     group: {fileID: -5269753176496455026, guid: 744e29381e4a0534ba09cc4e61ed626d, type: 2}
-    name: siren
     volume: 0
     pitch: 1
+    randomPitch: 0
     loop: 0
     source: {fileID: 0}
 --- !u!1 &40377134
@@ -5471,7 +5477,7 @@ Camera:
     width: 1
     height: 1
   near clip plane: 0.3
-  far clip plane: 1000
+  far clip plane: 775
   field of view: 60
   orthographic: 0
   orthographic size: 5
@@ -10279,7 +10285,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 5428729825818428663}
   m_Direction: 2
   m_Value: 0
-  m_Size: 0.7
+  m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -12090,7 +12096,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 0.7}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}

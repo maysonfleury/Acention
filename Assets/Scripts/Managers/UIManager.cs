@@ -30,8 +30,9 @@ public class UIManager : MonoBehaviour
 
     bool transitioning;
 
-    [SerializeField] Transform tutorial_start;
-    [SerializeField] Transform area1_start;
+    [SerializeField] Transform tutorial_startPos;
+    [SerializeField] Transform area1_startPos;
+    private Vector3 player_startPos;
 
     public bool area1_discovered;
     public bool area2_discovered;
@@ -48,7 +49,7 @@ public class UIManager : MonoBehaviour
     bool gameWon;
     MusicManager mm;
 
-    private DiscordController discordController;
+    //private DiscordController discordController;
 
     private void Awake()
     {
@@ -56,14 +57,16 @@ public class UIManager : MonoBehaviour
         dash1 = locationBroadcast.gameObject.transform.GetChild(0).gameObject.GetComponent<Image>();
         dash2 = locationBroadcast.gameObject.transform.GetChild(1).gameObject.GetComponent<Image>();
 
+        player_startPos = playerGO.transform.position;
+
         mm = FindObjectOfType<MusicManager>();
     }
 
     private void Start()
     {
-        discordController = FindObjectOfType<DiscordController>();
-        discordController.SetArea("Area 0");
-        discordController.SetStatus("60");
+        //discordController = FindObjectOfType<DiscordController>();
+        //discordController.SetArea("Area 0");
+        //discordController.SetStatus("60");
     }
 
     private void Update()
@@ -103,69 +106,14 @@ public class UIManager : MonoBehaviour
         speedText.text = ((int)velocity).ToString() + " m/s";
 
         // Gets the player's distance to the EndGame location in percentage
-        dToD = (playerGO.transform.position.y / destination.position.y * 100)-0.88f;
-        if (dToD < 0f)
-            dToD = 0;
-        if (dToD > 100f)
-            dToD = 100f;
-        progressPercentage.text = dToD.ToString("F2") + "%";
-
-        if (dToD < 32.4f && player.gameStart == true)
-        {
-            if (!area1_discovered)
-            {
-                mm.GameStart();
-                mm.ChangeSong(1);
-            }
-            else
-                mm.ChangeSong(1);
-
-            UpdateLocation("The World Tree", area1_discovered);
-            area1_discovered = true;
-            UpdateSkybox(1);
-            discordController.SetArea("Area 1");
-        }
-        else if (dToD >= 32.4f && dToD < 53.3f)
-        {
-            if (!area1_discovered)
-            {
-                mm.GameStart();
-                mm.ChangeSong(2);
-            }
-            UpdateLocation("Crystal Core", area2_discovered);
-            area2_discovered = true;
-            UpdateSkybox(2);
-            mm.ChangeSong(2);
-            discordController.SetArea("Area 2");
-        }
-        else if (dToD >= 53.3f && dToD < 98f)
-        {
-            if (!area1_discovered)
-            {
-                mm.GameStart();
-                mm.ChangeSong(3);
-            }
-            UpdateLocation("Sacred Spire", area3_discovered);
-            area3_discovered = true;
-            UpdateSkybox(3);
-            mm.ChangeSong(3);
-            discordController.SetArea("Area 3");
-        }
-        else if (dToD >= 98f )
-        {
-            if (!area1_discovered)
-            {
-                mm.GameStart();
-                mm.ChangeSong(4);
-            }
-            UpdateLocation("True Core", area4_discovered);
-            area4_discovered = true;
-            UpdateSkybox(4);
-            mm.ChangeSong(4);
-            discordController.SetArea("Area 4");
-            if (!gameWon && player.gameWon)
-                WinGame();
-        }    
+        //dToD = (playerGO.transform.position.y / destination.position.y * 100)-0.88f;
+        //if (dToD < 0f)
+        //    dToD = 0;
+        //if (dToD > 100f)
+        //    dToD = 100f;
+        //progressPercentage.text = dToD.ToString("F2") + "%";
+        dToD = playerGO.transform.position.y - player_startPos.y;
+        progressPercentage.text = ((int)dToD).ToString() + "m";
     }
 
     private float timeFlag = 60;
@@ -173,22 +121,22 @@ public class UIManager : MonoBehaviour
     {
         if (timeRemain < 5 && timeFlag > 5)
         {
-            discordController.SetStatus("5");
+            //discordController.SetStatus("5");
             timeFlag = 5;
         }
         else if (timeRemain < 10 && timeFlag > 15)
         {
-            discordController.SetStatus("15");
+            //discordController.SetStatus("15");
             timeFlag = 15;
         }
         else if (timeRemain < 30 && timeFlag > 30)
         {
-            discordController.SetStatus("30");
+            //discordController.SetStatus("30");
             timeFlag = 30;
         }
         else if (timeRemain < 45 && timeFlag > 45)
         {
-            discordController.SetStatus("45");
+            //discordController.SetStatus("45");
             timeFlag = 45;
         }
     }
@@ -204,7 +152,7 @@ public class UIManager : MonoBehaviour
         locationText.gameObject.SetActive(false);
         timer.gameObject.SetActive(false);
         UpdateLocation("The Crystal Hungers", false);
-        discordController.SetStatus("loss");
+        //discordController.SetStatus("loss");
         dash1.rectTransform.position += new Vector3(-45f, 0, 0);
         dash2.rectTransform.position += new Vector3(45f, 0, 0);
         am.Play("gameover_1");
@@ -223,7 +171,7 @@ public class UIManager : MonoBehaviour
         Time.timeScale = 0f;
         reticle.SetActive(false);
 
-        discordController.SetStatus("win");
+        //discordController.SetStatus("win");
 
         GrapplingHook grapple = FindObjectOfType<GrapplingHook>();
         player.isPaused = true;
@@ -267,16 +215,79 @@ public class UIManager : MonoBehaviour
         Application.Quit();
     }
 
+    public void DiscoverArea(int area)
+    {
+        if (area == 1 && player.gameStart == true)
+        {
+            if (!area1_discovered)
+            {
+                mm.GameStart();
+                mm.ChangeSong(1);
+            }
+            else
+                mm.ChangeSong(1);
+
+            UpdateLocation("Forgotten Grotto", area1_discovered);
+            area1_discovered = true;
+            UpdateSkybox(1);
+            //discordController.SetArea("Area 1");
+        }
+        else if (area == 2)
+        {
+            if (!area1_discovered) // Happens when Continuing a saved game in area 2
+            {
+                mm.GameStart();
+                mm.ChangeSong(2);
+            }
+            UpdateLocation("Crystal Caverns", area2_discovered);
+            area2_discovered = true;
+            UpdateSkybox(2);
+            mm.ChangeSong(2);
+            //discordController.SetArea("Area 2");
+        }
+        else if (area == 3)
+        {
+            if (!area1_discovered)  // Happens when Continuing a saved game in area 3
+            {
+                mm.GameStart();
+                mm.ChangeSong(3);
+            }
+            UpdateLocation("Mushroom Peak", area3_discovered);
+            area3_discovered = true;
+            UpdateSkybox(3);
+            mm.ChangeSong(3);
+            //discordController.SetArea("Area 3");
+        }
+        else if (area == 4)
+        {
+            if (!area1_discovered)  // Happens when Continuing a saved game in area 4
+            {
+                mm.GameStart();
+                mm.ChangeSong(4);
+            }
+            UpdateLocation("End of Playtest", area4_discovered);
+            area4_discovered = true;
+            UpdateSkybox(4);
+            mm.ChangeSong(4);
+            //discordController.SetArea("Area 4");
+        }
+        else if (area == -1)
+        {
+            if (!gameWon && player.gameWon)
+                WinGame();
+        }
+    }
+
     public void ResetPosition()
     {
         if (player.gameStart == true)
-            playerGO.transform.position = area1_start.position;
+            playerGO.transform.position = area1_startPos.position;
         else
-            playerGO.transform.position = tutorial_start.position;
+            playerGO.transform.position = tutorial_startPos.position;
     }
     public void UpdateLocation(string locationName, bool locationDiscovered)
     {      
-        locationText.text = locationName;      
+        locationText.text = locationName;
         if (!locationDiscovered)
             BroadcastLocation(locationName);
     }

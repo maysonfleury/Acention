@@ -186,6 +186,7 @@ public class GrapplingHook : MonoBehaviour
 
                 case "Crystal":
                     am.Play("crystal_sound");
+                    rbMove.ResetDashImmediate();
                 break;
 
                 case "Mushroom":

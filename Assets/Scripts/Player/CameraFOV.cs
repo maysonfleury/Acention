@@ -67,10 +67,25 @@ public class CameraFOV : MonoBehaviour
         camShake.StopShake();
     }
 
+    public void GoingVeryFast()
+    {
+        desiredFOV = baseFOV + delta * 2.15f;
+        camShake.StopShake();
+        camShake.StartShake(shakeMagnitude / 2f);
+    }
+
     public void GoingTooFast()
     {
         desiredFOV = baseFOV + delta * 10;
+        camShake.StopShake();
         camShake.StartShake(shakeMagnitude);
+    }
+
+    public void GoingWayTooFast()
+    {
+        desiredFOV = baseFOV + delta * 13;
+        camShake.StopShake();
+        camShake.StartShake(shakeMagnitude * 2f);
     }
 
     public void GoDashing()
